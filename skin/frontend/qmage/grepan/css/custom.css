@@ -251,6 +251,13 @@ script#bx24_form_button {
 }
 
 /* Footer */
+.parallax-slider {
+}
+
+.parallax {
+    background-size: auto 100% !important;
+}
+
 .footer-middle ul.links li {
     padding: 0 0 0 0;
     margin: 10px 0;
@@ -301,8 +308,12 @@ script#bx24_form_button {
     color: #999;
 }
 
+.footer-middle .block.block-subscribe .label {
+    font-weight: 700;
+}
+
 @media only screen and (max-width: 992px) {
-    .cms-index-index.cms-home .container .col-md-12.col-sm-6{
+    .cms-index-index.cms-home .container .col-md-12.col-sm-6 {
         width: 100%;
     }
 }

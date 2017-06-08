@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_system_config_edit>
+        <update handle="editor"/>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><load>1</load></action>
+            <action method="addJs"><name>qmcore/jquery/jquery-1.10.2.min.js</name></action>
+            <action method="addJs"><name>qmcore/jquery/jquery.noconflict.js</name></action>
+            <action method="addJs"><name>qmcore/jquery/jquery-ui-1.10.4.min.js</name></action>
+        </reference>
+    </adminhtml_system_config_edit>
+</layout>

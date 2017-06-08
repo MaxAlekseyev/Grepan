@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+ 
+<config>
+    <sections>
+        <qm_banners translate="label" module="qm_banners">
+            <class>separator-top</class>
+            <label>Banners</label>
+            <tab>qmage</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+
+            </groups>
+        </qm_banners>
+    </sections>
+</config>

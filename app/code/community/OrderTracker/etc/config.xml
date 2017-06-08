@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_OrderTracker>
+            <version>0.1.0</version>
+        </QM_OrderTracker>
+    </modules>
+
+    <global>
+        <blocks>
+            <qm_ordertracker>
+                <class>QM_OrderTracker_Block</class>
+            </qm_ordertracker>
+        </blocks>
+
+        <models>
+            <qm_ordertracker>
+                <class>QM_OrderTracker_Model</class>
+                <resourceModel>qm_ordertracker_resource</resourceModel>
+            </qm_ordertracker>
+            <qm_ordertracker_resource>
+                <class>QM_OrderTracker_Model_Resource</class>
+                <entities>
+                    <tracking>
+                        <table>qm_ordertracking_tracking</table>
+                    </tracking>
+                </entities>
+            </qm_ordertracker_resource>
+        </models>
+
+        <resources>
+            <qm_ordertracker_setup>
+                <setup>
+                    <module>QM_OrderTracker</module>
+                </setup>
+            </qm_ordertracker_setup>
+        </resources>
+
+        <helpers>
+            <qm_ordertracker>
+                <class>QM_OrderTracker_Helper</class>
+            </qm_ordertracker>
+        </helpers>
+
+        <resources>
+            <qm_ordertracker_setup>
+                <setup>
+                    <module>QM_OrderTracker</module>
+                </setup>
+            </qm_ordertracker_setup>
+        </resources>
+
+        <events>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <qm_ordertracker_sales_order_shipment_save_after>
+                        <type>singleton</type>
+                        <class>qm_ordertracker/observer</class>
+                        <method>shipmentSaved</method>
+                    </qm_ordertracker_sales_order_shipment_save_after>
+                </observers>
+            </sales_order_shipment_save_after>
+
+            <sales_order_place_after>
+                <observers>
+                    <qm_ordertracker_sales_order_place_after>
+                        <type>singleton</type>
+                        <class>qm_ordertracker/observer</class>
+                        <method>orderCreated</method>
+                    </qm_ordertracker_sales_order_place_after>
+                </observers>
+            </sales_order_place_after>
+        </events>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <QM_OrderTracker>
+                    <files>
+                        <default>QM_OrderTracker.csv</default>
+                    </files>
+                </QM_OrderTracker>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <qm_ordertracker>
+                    <file>qm_ordertracker.xml</file>
+                </qm_ordertracker>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <frontend>
+        <translate>
+            <modules>
+                <QM_OrderTracker>
+                    <files>
+                        <default>QM_OrderTracker.csv</default>
+                    </files>
+                </QM_OrderTracker>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <qm_ordertracker>
+                    <file>qm_ordertracker.xml</file>
+                </qm_ordertracker>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <QM_OrderTracker before="Mage_Adminhtml">QM_OrderTracker_Adminhtml</QM_OrderTracker>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <crontab>
+        <jobs>
+            <qm_ordertracker_sync>
+                <run>
+                    <model>qm_ordertracker/service::updateAllOrders</model>
+                </run>
+            </qm_ordertracker_sync>
+        </jobs>
+    </crontab>
+</config>

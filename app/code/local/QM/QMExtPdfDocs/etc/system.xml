@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <sales_pdf>
+            <groups>
+                <invoice>
+                    <fields>
+                        <custom_pdf_options_details translate="label comment">
+                            <label>Invoice Details</label>
+                            <comment>Write Details</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_pdf_options_details>
+                        <custom_pdf_options_sales_terms translate="label comment">
+                            <label>Sales Terms</label>
+                            <comment>Write terms</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_pdf_options_sales_terms>
+                    </fields>
+                </invoice>
+            </groups>
+        </sales_pdf>
+    </sections>
+</config> 

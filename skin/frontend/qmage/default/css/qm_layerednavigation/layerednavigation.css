@@ -1,0 +1,182 @@
+
+div.layerednavigation-column {
+    float:left; width:83px;
+}
+
+select.layerednavigation-select {
+    width:170px;
+}
+
+.layerednavigation-logo{
+padding: 0pt 10px 10px 0pt; float: left;
+}
+
+.layerednavigation-featured {
+    padding: 5px 5px 5px 5px; 
+}
+
+.layerednavigation-link{
+    float:left;
+    padding-left:5px; 
+    padding-top:5px;
+}
+
+.layerednavigation-clearer {
+	display:block; 
+	clear:both; 
+	overflow: hidden;
+}
+div.block-layered-nav dd a {padding:0px 5px 0px 0px; display:block; float: left;}  
+div.block-layered-nav dd a.layerednavigation-attr {padding-left:15px; background:transparent url(../../../images/qm_layerednavigation/layerednavigation-cb1.gif) no-repeat left center;}
+div.block-layered-nav dd a.layerednavigation-attr-selected {font-weight: bold; padding-left:15px; background:transparent url(../../../images/qm_layerednavigation/layerednavigation-cb2.gif) no-repeat left center;}
+div.block-layered-nav dd a img {padding: 0px 4px 5px; float:left;} 
+
+div.block-layered-nav dd li.layerednavigation-cat-level-2 {padding-left:10px;}
+div.block-layered-nav dd li.layerednavigation-cat-level-3 {padding-left:20px;}
+
+div.block-layered-nav dd a.layerednavigation-cat-selected {font-weight: bold;
+color:black; text-decoration: none; cursor:text;}
+
+div.block-layered-nav dd li span.layerednavigation-plusminus {float:left;
+display:block; width:15px; height:15px; cursor:pointer;
+background:transparent url(../../../images/qm_layerednavigation/layerednavigation-plus.gif)  no-repeat;}
+div.block-layered-nav dd li span.minus {background:transparent
+url(../../../images/qm_layerednavigation/layerednavigation-minus.gif) no-repeat;}
+div.block-layered-nav dd li:after {display:block; content:".";
+clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
+
+
+
+div.block-layered-nav dt {
+ cursor:pointer; 
+ padding-left:15px;
+ background:url(../../images/qm_layerednavigation/layerednavigation-expanded.gif) center left no-repeat;
+}
+div.block-layered-nav dt.layerednavigation-collapsed {background:url(../../images/qm_layerednavigation/layerednavigation-collapsed.gif) center left no-repeat}
+
+
+/*
+ * Slider labels
+ */
+.layerednavigation-slider-price {
+	color: #798794;
+}
+.layerednavigation-slider-price-from {
+	float: left;
+    
+}
+.layerednavigation-slider-price-to {
+	float: right;
+}
+
+.layerednavigation-slider-handle-right {
+	position: absolute;
+	top: 14px;
+	right: 0px;
+}
+
+.layerednavigation-slider-handle-left {
+	position: absolute;
+	top: 14px;
+	left: 0px;
+}
+
+.layerednavigation-tooltip {
+    padding:2px 5px;
+    background:#FEC;
+    border:1px solid #FAA819;
+    color:#1F5070;
+    text-align:left;
+    width:200px;
+    position:absolute;
+}
+
+.layerednavigation-slider-price-range
+{
+	text-align: center;
+	font-size: 0.9em;
+}
+
+.layerednavigation-tooltip-img {
+    cursor:help;
+}
+
+div.block-layered-nav, div.layerednavigation-page-container, div.layerednavigation-filters-top {
+    position: relative;
+}
+div.layerednavigation-overlay {
+    background-color: #FFFFFF;
+    height: 100%;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity = 50);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 555;
+}
+div.layerednavigation-overlay img {
+    top: 100px;
+    left: 45%;
+    display: block;
+    position: absolute;
+}
+
+div.layerednavigation-overlay div {
+    margin: 0 auto;
+    display: block;
+	width: 300px;
+	height: 200px;
+	background:  url('../../images/qm_layerednavigation/layerednavigation-overlay.gif') 50% 50% no-repeat;
+}
+
+/*
+ * Advanced Categories
+ */
+.layerednavigation-advanced li {
+	clear: both;
+}
+.layerednavigation-advanced li.level1 {
+	padding-left: 20px;
+}
+.layerednavigation-advanced li.level2 {
+	padding-left: 30px;
+}
+.layerednavigation-advanced li.level3 {
+	padding-left: 40px;
+}
+.layerednavigation-advanced li.level4 {
+	padding-left: 50px;
+}
+
+
+.layerednavigation-advanced li.active > a {
+	font-weight: bold;
+}
+
+/*
+ * Slider Bar
+ */
+.layerednavigation-slider-bar {
+	position:absolute; 
+	background: #999; 
+	height: 6px; 
+	top: 6px; 
+	z-index: 1;  
+}
+
+/*
+ * Subcategores block
+ */
+.layerednavigation-subcategory-image {
+	overflow: auto; 
+}
+
+.btn-remove-inline { background-image: url('../../images/btn_remove.gif'); background-repeat: no-repeat; width:13px; height:12px; margin-left: 4px; }
+.btn-remove-inline:hover { /* background-position: center bottom; */ }
+.layerednavigation-hightlighted { background: yellow;}
+
+.filter_item {
+    width: 30px;
+    height: 30px;
+}

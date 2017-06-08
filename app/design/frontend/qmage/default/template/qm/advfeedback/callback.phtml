@@ -1,0 +1,38 @@
+<?php if ($this->canShowBlock()): ?>
+    <?php $_fieldsCollection = $this->getFieldsColection() ?>
+    <div class="advfeedback-callback" id="advfeedback-callback-holder" style="display:none;">
+        <div class="form-title">
+            <span
+                lang="<?php echo Mage::helper('qmadvfeedback')->getLang() ?>"><?php echo $this->__('Request a Callback') ?></span>
+        </div>
+        <form action="<?php echo $this->getPostActionUrl() ?>" method="POST" name="advfeedback-callback-form"
+              id="advfeedback-callback-form" class="advfeedback-callback-form">
+            <fieldset>
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <div class="message" style="display:none;"></div>
+                <?php foreach ($_fieldsCollection as $field): ?>
+                    <?php if (!$field->getForBot()): ?><div class="row"><?php endif ?>
+                        <label for="callback:<?php echo $field->getName() ?>" class="required"><?php echo $field->getLabel() ?><em>*</em></label>
+                        <input type="text" name="callback[<?php echo $field->getName() ?>]" id="callback:<?php echo $field->getName() ?>" class="input-text <?php echo $field->getData('additional/class') ?>"/>
+                    <?php if (!$field->getForBot()): ?></div><?php endif ?>
+                    <?php echo $field->getAfterElementHtml() ?>
+                <?php endforeach ?>
+                <div class="buttons-set">
+                    <button type="submit" class="button" title="<?php echo $this->__('Call Me') ?>" name="send" id="callback:send">
+                        <span><span><?php echo $this->__('Call Me') ?></span></span>
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        QMAdvancedFeedback.initCallback({
+            isAjax: <?php echo $this->isAjaxEnabled() ?>,
+            link: "get-callback",
+            holder: "advfeedback-callback-holder",
+            form: "advfeedback-callback-form"
+        });
+        //]]>
+    </script>
+<?php endif ?>

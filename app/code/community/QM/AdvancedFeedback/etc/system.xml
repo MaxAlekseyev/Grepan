@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <qmadvfeedback translate="label" module="qmadvfeedback">
+            <label>Advanced Feedback</label>
+            <tab>qmage</tab>
+            <frontend_type>text</frontend_type>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <sort_order>10</sort_order>
+            <groups>
+                <callback translate="label">
+                    <label>Callback</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>10</sort_order>
+                    <fields>
+                        <grid_items1 translate="label">
+                            <label>General</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                        </grid_items1>
+                        <enabled translate="label">
+                            <label>Enable Callback</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                        </enabled>
+                        <enable_ajax translate="label">
+                            <label>Enable Ajax</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>20</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </enable_ajax>
+                        <enable_confirmation translate="label">
+                            <label>Show Confirmation Dialog</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Showing after callback successfully received</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>30</sort_order>
+                            <depends><enabled>1</enabled><enable_ajax>1</enable_ajax></depends>
+                        </enable_confirmation>
+                        <confirmation_text translate="label">
+                            <label>Confirmation Dialog Html</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[You can use placeholders:<br/>{{name}}, {{telephone}}, {{preffered_time}}]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>40</sort_order>
+                            <validate>required-entry</validate>
+                            <depends><enabled>1</enabled><enable_ajax>1</enable_ajax><enable_confirmation>1</enable_confirmation></depends>
+                        </confirmation_text>
+                        <show_preferred translate="label">
+                            <label>Show Field - Preferred Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>50</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </show_preferred>
+                        <show_comment translate="label">
+                            <label>Show Field - Comment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>60</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </show_comment>
+                        <grid_items2 translate="label">
+                            <label>Notifications</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>69</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                        </grid_items2>
+                        <email_notification_enabled translate="label">
+                            <label>Enable Email Notification</label>
+                            <frontend_type>select</frontend_type>
+                            <comment><![CDATA[Enable email notification of new callback requests]]></comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>70</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </email_notification_enabled>
+                        <sender_email_identity translate="label">
+                            <label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>80</sort_order>
+                            <depends><enabled>1</enabled><email_notification_enabled>1</email_notification_enabled></depends>
+                        </sender_email_identity>
+                        <send_email_notification_to translate="label">
+                            <label>Send Emails To</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[Each email address on a new line]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>90</sort_order>
+                            <depends><enabled>1</enabled><email_notification_enabled>1</email_notification_enabled></depends>
+                        </send_email_notification_to>
+                    </fields>
+                </callback>
+                <consultation translate="label">
+                    <label>Consultation</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>20</sort_order>
+                    <fields>
+                        <grid_items1 translate="label">
+                            <label>General</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>1</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </grid_items1>
+                        <enabled translate="label">
+                            <label>Enable Consultation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                        </enabled>
+                        <enable_ajax translate="label">
+                            <label>Enable Ajax</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>20</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </enable_ajax>
+                        <enable_confirmation translate="label">
+                            <label>Show Confirmation Dialog</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Showing after consultation successfully received</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>30</sort_order>
+                            <depends><enabled>1</enabled><enable_ajax>1</enable_ajax></depends>
+                        </enable_confirmation>
+                        <confirmation_text translate="label">
+                            <label>Confirmation Dialog Html</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[You can use placeholders:<br/>{{name}}, {{telephone}}, {{email}}, {{preffered_time}}]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>40</sort_order>
+                            <validate>required-entry</validate>
+                            <depends><enabled>1</enabled><enable_ajax>1</enable_ajax><enable_confirmation>1</enable_confirmation></depends>
+                        </confirmation_text>
+                        <grid_items2 translate="label">
+                            <label>Fields</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>41</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </grid_items2>
+                        <typeof_contact_field translate="label">
+                            <label>Type of Contact Field</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>qmadvfeedback/config_source_fieldtype</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>50</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </typeof_contact_field>
+                        <show_preferred translate="label">
+                            <label>Show Field - Preferred Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>60</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </show_preferred>
+                        <show_comment translate="label">
+                            <label>Show Field - Comment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>70</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </show_comment>
+                        <grid_items3 translate="label">
+                            <label>Notifications</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>71</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </grid_items3>
+                        <email_notification_enabled translate="label">
+                            <label>Enable Email Notification</label>
+                            <frontend_type>select</frontend_type>
+                            <comment><![CDATA[Enable email notification of new consultation requests]]></comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>80</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </email_notification_enabled>
+                        <sender_email_identity translate="label">
+                            <label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>90</sort_order>
+                            <depends><enabled>1</enabled><email_notification_enabled>1</email_notification_enabled></depends>
+                        </sender_email_identity>
+                        <send_email_notification_to translate="label">
+                            <label>Send Emails To</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[Each email address on a new line]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>100</sort_order>
+                            <depends><enabled>1</enabled><email_notification_enabled>1</email_notification_enabled></depends>
+                        </send_email_notification_to>
+                    </fields>
+                </consultation>
+                <global_settings translate="label">
+                    <label>General Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>30</sort_order>
+                    <fields>
+                        <phone_mask translate="label">
+                            <label>Phone Mask</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[example: +38(099)999-99-99]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                        </phone_mask>
+                    </fields>
+                </global_settings>
+            </groups>
+        </qmadvfeedback>
+    </sections>
+</config>

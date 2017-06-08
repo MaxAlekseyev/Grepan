@@ -1,0 +1,62 @@
+<?php if ($this->isNewPostShipment()): ?>
+    <?php $_isCreateWaybill = $this->getIsCreateWaybill() ?>
+
+    <div id="shipment_new_post_waybill_data" <?php if (!$_isCreateWaybill): ?>style="display:none;"<?php endif ?>>
+        <table>
+            <tr>
+                <td><?php echo $this->__('Departure Date:') ?></td>
+                <td>
+                    <input style="width:200px;" type="text" name="shipment[new_post][departure_date]" id="shipment_new_post_departure_date"
+                           value="<?php echo Mage::getModel('core/date')->date('d.m.Y'); ?>"/>
+                    <button id="shipment_new_post_departure_date_btn" onclick="return false;" label="<?php echo $this->__('Select') ?>">
+                        <span>
+                        <span>
+                            <?php echo $this->__('Select') ?>
+                        </span>
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><?php echo $this->__('Description:') ?></td>
+                <td>
+                    <textarea style="width:198px;" class="textarea required-entry" name="shipment[new_post][description]"
+                              id="shipment_new_post_description"><?php echo $this->getDefaultDescription() ?></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br/>
+    <?php echo $this->__('Create Waybill') ?>
+    <input type="checkbox" <?php if($this->isCreateWaybillChecked()): ?>checked="checked" <?php endif ?> id="shipment_new_post_create_waybill" name="shipment[new_post][create_waybill]"/>
+
+    <script type="text/javascript">// <![CDATA[
+        Calendar.setup({
+            inputField: 'shipment_new_post_departure_date',
+            ifFormat: '%e.%m.%Y',
+            button: 'shipment_new_post_departure_date_btn',
+            align: 'Bl',
+            singleClick: true
+        });
+        // ]]>
+
+        var createWaybillCkb = $('shipment_new_post_create_waybill'),
+            waybillData = $('shipment_new_post_waybill_data'),
+            descritpion = $('shipment_new_post_description');
+
+        function observeDisableWaybill() {
+            if (createWaybillCkb.checked) {
+                descritpion.addClassName('required-entry');
+                waybillData.show();
+            } else {
+                descritpion.removeClassName('required-entry');
+                waybillData.hide();
+            }
+        }
+
+        createWaybillCkb.observe('click', observeDisableWaybill);
+
+        document.observe("dom:loaded", observeDisableWaybill);
+    </script>
+<?php endif ?>

@@ -1,0 +1,50 @@
+"Allow out of stock products to be selected","Разрешить выбор продуктов, которых нет в наличии"
+Attribute,Атрибуты
+"Autoselect first option if none specified","Выбор первой опции если не определено другое"
+"Block type for media section. Leave empty to use default","Тип блока для секции медиа. Оставьте пустым чтобы использовать поведение по умолчанию"
+Cancel,Отменить
+"Change images when these attributes are changed","Менять изображения когда эти атрибуты меняются"
+"Change media content when these attributes are changed","Менять медиа контент когда эти атрибуты меняются"
+"Changing the configurable value of these attributes will trigger the main image to change, if available.","Изменение настраиваемых значений этих атрибутов будуть менять главное изображение, если это доступно"
+"Changing the configurable value of these attributes will trigger the media block to change.","Изменение конфигурируемых значений этих атрибутов будуть менять медиа блок"
+Colors,Цвета
+Color,Цвет
+"Configurable attributes transforms","Настраиваемые атрибуты меняются"
+"Configure Colors","Конфигурировать цвета"
+"Configure Images","Конфигурировать изображения"
+"Custom images","Вабранные пользователем изображения"
+Default,Стандартное
+"Dom Media block selector","Селектор для медиа блока"
+"Dom selector for main image","Селектор для главного изображения"
+"QM Switcher","QM Switcher"
+Enabled,Включено
+"Fill Options","Заполнить опции"
+Images,Изображения
+"JS callback to be executed after the main image is changed.","JS callback будет вызван после изменения главного изображения"
+"JS callback to be executed after the media block is changed.","JS callback будет вызван после изменения медиа блока"
+"Keep previously selected values","Оставить ранее выбранные значения"
+"Label / Options image size","Метка / Опции размера изображения"
+Labels,Метки
+"Main image size","Размер главного изображения"
+"No image switch","Отключить переключение изображений"
+"No transformation","Без искажения"
+"Prototype expression that selects the main image element","Prototype выражение, которое выбирает главное изображение"
+"Prototype expression that selects the media block container","Prototype выражение, которое выбирает медиа блок"
+"Recommended if you have 2 or more configurable attributes.","Рекомендуется, если есть 2 или более конфигурируемых атрибута"
+Save,Сохранить
+Settings,Настройки
+"Show added configurable prices in label","Показывать цены добавляемых конфигураций в метке"
+"Show out of stock configurations","Показывать конфигурации которых нет в наличии"
+"Simple product images","Изображенияю простых товаров"
+"Switch all media section","Переключать все медиа секции"
+"Switch main image","Переключать главное изображеие"
+"Switch product images","Переключать изображения товаров"
+"Template for media block. Leave empty to use default.","Шаблон для медиа блока. Оставьте пустым чтобы использовать значение по умолчанию"
+"There was a problem uploading images","Возникли проблемы при загрузке изображения"
+Transformation,Искажение
+"Transformation settings","Настройки искажения"
+"Use Configuration for default store view","Использовать конфигурацию для магазина по умолчанию"
+"Use configurable product image if the simple one does not have images","Использовать изображение конфигурируемого товара если у простого товара нет изображения"
+"Use this image attribute","Использовать атрибуты этого изображения"
+"Use values like 100x80 or simply 100. Leave empty for no resize","Используйте значения типа 100х80 или просто 100. Оставьте это поле пустым чтобы бы не менять размер"
+[none],[none]

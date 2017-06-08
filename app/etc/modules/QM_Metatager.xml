@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_Metatager>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <QM_Core/>
+                <Mage_Catalog/>
+            </depends>
+        </QM_Metatager>
+    </modules>
+</config>

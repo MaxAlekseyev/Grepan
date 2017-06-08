@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_conflict_list>
+        <reference name="content">
+            <block type="qm_devtools/adminhtml_list" name="devtools_list" as="devtools_list" template="qm/devtools/list.phtml"/>
+        </reference>
+    </adminhtml_conflict_list>
+    <adminhtml_conflict_displayfix>
+        <reference name="content">
+            <block type="qm_devtools/adminhtml_displayFix" name="devtools_displayfix" as="devtools_displayfix" template="qm/devtools/displayfix.phtml"/>
+        </reference>
+    </adminhtml_conflict_displayfix>
+</layout>

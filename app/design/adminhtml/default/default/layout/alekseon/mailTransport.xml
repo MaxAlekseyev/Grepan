@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author    Marcin Frymark
+ * @email     contact@alekseon.com
+ * @company   Alekseon
+ * @website   www.alekseon.com
+ */
+-->
+<layout>
+    <adminhtml_mailtransport_sentemailshistory_index>
+        <reference name="content">
+            <block type="alekseon_mailTransport/adminhtml_sentEmail_topMessage" template="alekseon/mailTransport/sentEmail/topMessage.phtml" />
+            <block type="alekseon_mailTransport/adminhtml_sentEmail" name="sent_emails_grid_conatiner" />
+        </reference>
+    </adminhtml_mailtransport_sentemailshistory_index>
+
+    <adminhtml_mailtransport_sentemailshistory_view>
+        <reference name="content">
+            <block type="alekseon_mailTransport/adminhtml_sentEmail_view" name="sent_email_view" />
+        </reference>
+    </adminhtml_mailtransport_sentemailshistory_view>
+    
+    <adminhtml_mailtransport_sentemailshistory_mailbody>
+        <remove name="root"/>
+        <block type="alekseon_mailTransport/adminhtml_sentEmail_view_mailBody" name="mailBody" output="toHtml" />
+    </adminhtml_mailtransport_sentemailshistory_mailbody>    
+</layout>

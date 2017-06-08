@@ -1,0 +1,53 @@
+<?xml version='1.0' ?>
+<layout>
+    <qm_exportcatalog_adminhtml_config_index>
+        <reference name='content'>
+            <block type='qm_exportcatalog/adminhtml_config' name='qm_exportcatalog_config'/>
+            <block type='qm_exportcatalog/adminhtml_showErrors' name='qm_exportcatalog_errors' template='qm_exportcatalog/error_log.phtml'/>
+        </reference>
+    </qm_exportcatalog_adminhtml_config_index>
+
+    <qm_exportcatalog_adminhtml_config_edit>
+        <reference name='content'>
+            <block type='qm_exportcatalog/adminhtml_edit' name='qm_exportcatalog_edit'/>
+        </reference>
+        <reference name='head'>
+            <action method='addJs'>
+                <script>extjs/ext-tree.js</script>
+            </action>
+            <action method='addJs'>
+                <script>extjs/ext-tree-checkbox.js</script>
+            </action>
+            <action method='addItem'>
+                <type>js_css</type>
+                <name>extjs/resources/css/ext-all.css</name>
+            </action>
+            <action method='addItem'>
+                <type>js_css</type>
+                <name>extjs/resources/css/ytheme-magento.css</name>
+            </action>
+        </reference>
+    </qm_exportcatalog_adminhtml_config_edit>
+
+    <qm_exportcatalog_adminhtml_config_new>
+        <reference name='content'>
+            <block type='qm_exportcatalog/adminhtml_edit' name='qm_exportcatalog_edit'/>
+        </reference>
+        <reference name='head'>
+            <action method='addJs'>
+                <script>extjs/ext-tree.js</script>
+            </action>
+            <action method='addJs'>
+                <script>extjs/ext-tree-checkbox.js</script>
+            </action>
+            <action method='addItem'>
+                <type>js_css</type>
+                <name>extjs/resources/css/ext-all.css</name>
+            </action>
+            <action method='addItem'>
+                <type>js_css</type>
+                <name>extjs/resources/css/ytheme-magento.css</name>
+            </action>
+        </reference>
+    </qm_exportcatalog_adminhtml_config_new>
+</layout>

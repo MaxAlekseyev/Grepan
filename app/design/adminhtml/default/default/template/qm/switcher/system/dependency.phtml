@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * moved dependency here because the default dependency does not play well with custom config elements
+ */
+?>
+<script type="text/javascript">
+    var qmSwitcherDependencyModel = Class.create();
+    qmSwitcherDependencyModel.prototype = {
+        initialize : function()
+        {
+            this.enabled = $('qm_switcher_settings_enabled');
+            this.configElement = $('qm_switcher_settings_transform');
+            if (this.enabled) {
+                this.refreshEnabledSelect();
+                this.bindEnabledChange();
+            }
+        },
+        bindEnabledChange : function()
+        {
+            Event.observe(this.enabled, 'change', this.refreshEnabledSelect.bind(this));
+        },
+        refreshEnabledSelect : function(elem)
+        {
+            if (this.enabled.value == 0 || this.enabled.value == '') {
+                this.configElement.up(1).hide();
+            }
+            else{
+                this.configElement.up(1).show();
+            }
+        }
+    }
+    document.observe("dom:loaded", function() {
+        var qmSwitcherDependencyInstance = new qmSwitcherDependencyModel();
+    });
+</script>

@@ -1,0 +1,13 @@
+<?php
+$errorsArray = $this->getErrors();
+?>
+<?php if ($errorsArray) : ?>
+    <span class='error'>
+        <h1>Errors:</h1>
+        <ol>
+        <?php foreach($errorsArray as $line) :?>
+            <li><?php echo $line ?></li>
+        <?php endforeach ?>
+        </ol>
+    </span>
+<?php endif ?>

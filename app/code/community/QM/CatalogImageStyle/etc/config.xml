@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_CatalogImageStyle>
+            <version>0.2.0</version>
+        </QM_CatalogImageStyle>
+    </modules>
+    <global>
+        <helpers>
+            <qm_catalogimagestyle>
+                <class>QM_CatalogImageStyle_Helper</class>
+            </qm_catalogimagestyle>
+
+            <catalog>
+                <rewrite>
+                    <image>QM_CatalogImageStyle_Helper_Image</image>
+                </rewrite>
+            </catalog>
+        </helpers>
+
+        <models>
+            <qm_catalogimagestyle>
+                <class>QM_CatalogImageStyle_Model</class>
+            </qm_catalogimagestyle>
+
+            <catalog>
+                <rewrite>
+                    <product_image>QM_CatalogImageStyle_Model_Product_Image</product_image>
+                </rewrite>
+            </catalog>
+        </models>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <QM_CatalogImageStyle>
+                    <files>
+                        <default>QM_CatalogImageStyle.csv</default>
+                    </files>
+                </QM_CatalogImageStyle>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <QM_CatalogImageStyle>
+                    <files>
+                        <default>QM_CatalogImageStyle.csv</default>
+                    </files>
+                </QM_CatalogImageStyle>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <qm_catalogimagestyle>
+            <background>
+                <hex>#FFFFFF</hex>
+            </background>
+        </qm_catalogimagestyle>
+    </default>
+</config>

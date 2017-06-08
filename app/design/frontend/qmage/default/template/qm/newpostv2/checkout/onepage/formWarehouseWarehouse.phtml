@@ -1,0 +1,40 @@
+<?php
+$_code = $this->getCode();
+?>
+
+<ul class="form-list" id="shipping_form_<?php echo $_code ?>" style="display:none;">
+    <li id="city_<?php echo $_code ?>">
+        <label><?php echo $this->__('Warehouse City') ?></label>
+
+        <div class="input-box">
+            <select data-placeholder="<?php echo $this->__('Select City') ?>" class="select non-storable required-entry" id="select_city_<?php echo $_code ?>"
+                    name="shipping_newpost[city_id]">
+                <option value=""></option>
+            </select>
+        </div>
+    </li>
+
+    <li id="warehouse_<?php echo $_code ?>">
+        <label><?php echo $this->__('Warehouse Address') ?></label>
+
+        <div class="input-box">
+            <select data-placeholder="<?php echo $this->__('Select Warehouse') ?>" class="select non-storable required-entry" id="select_warehouse_<?php echo $_code ?>"
+                    name="shipping_newpost[warehouse_id]">
+                <option value=""></option>
+            </select>
+        </div>
+    </li>
+</ul>
+
+<script>
+    newPost.registerMethod({
+        name: '<?php echo $_code ?>',
+        radioId: 's_method_<?php echo $_code ?>_<?php echo $_code ?>',
+        wrapperId: 'shipping_form_<?php echo $_code ?>',
+        citySelectId: 'select_city_<?php echo $_code ?>',
+        cityDataId: 'data_city_<?php echo $_code ?>',
+        addressSelectId: 'select_warehouse_<?php echo $_code ?>',
+        addressDataId: 'data_warehouse_<?php echo $_code ?>',
+        addressWrapperId: 'warehouse_<?php echo $_code ?>'
+    });
+</script>

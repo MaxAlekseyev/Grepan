@@ -1,0 +1,79 @@
+<?xml version="1.0"?> 
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <layerednavigation translate="title" module="qm_layerednavigation">
+                    <title>Layered Navigation</title>
+                    <sort_order>900</sort_order>
+                    <children>
+                        <filters translate="title" module="qm_layerednavigation">
+                            <title>Filters</title>
+                            <action>layerednavigation/adminhtml_filter</action>
+                            <sort_order>10</sort_order>
+                        </filters>
+                        <ranges translate="title" module="qm_layerednavigation">
+                            <title>Price Ranges</title>
+                            <action>layerednavigation/adminhtml_range</action>
+                            <sort_order>20</sort_order>
+                        </ranges>
+                        <pages translate="title" module="qm_layerednavigation">
+                            <title>Pages</title>
+                            <action>layerednavigation/adminhtml_page</action>
+                            <sort_order>25</sort_order>
+                        </pages>                            
+                        <settings translate="title" module="qm_layerednavigation">
+                            <title>Settings</title>
+                            <action>adminhtml/system_config/edit/section/qm_layerednavigation</action>
+                            <sort_order>30</sort_order>
+                        </settings>
+                    </children>
+                </layerednavigation>
+            </children>
+        </catalog>
+    </menu>     
+
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <layerednavigation>
+                                <title>Improved Navigation</title>
+                                <children>
+                                    <filters> 
+                                        <title>Filters</title>
+                                    </filters>
+                                    <ranges> 
+                                        <title>Price Ranges</title>
+                                    </ranges>
+                                    <pages> 
+                                        <title>Pages</title>
+                                    </pages>
+                                    <settings> 
+                                        <title>Settings</title>
+                                    </settings>
+                                </children>                                    
+                            </layerednavigation>
+                        </children>
+                    </catalog>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <qm_layerednavigation>
+                                        <title>Layered Navigation</title>
+                                    </qm_layerednavigation>
+                                </children>
+                            </config>
+                        </children>
+                    </system> 
+                 </children>
+            </admin> 
+        </resources>
+    </acl>
+</config> 

@@ -1,0 +1,11 @@
+<?php if (!$this->getQuote()->getIsVirtual()): ?>
+<div class="shipping-methods-holder">
+    <h2><?php echo $this->__('Choose Shipping Method') ?></h2>
+    <div id="shipping-method-load" class="shipping-methods" data-action="<?php echo $this->helper('qmcheckout')->getUpdateUrl() ?>" data-update-sections="<?php echo $this->helper('qmcheckout')->shippingDependentSections() ?>">
+        <?php echo $this->getChildHtml('available_shipping_methods') ?>
+    </div>
+    <div id="shipping-method-additional-load">
+        <?php echo $this->getChildHtml('additional_shipping_methods') ?>
+    </div>
+</div>
+<?php endif ?>

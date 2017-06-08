@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_Metatager>
+            <version>1.3.1</version>
+        </QM_Metatager>
+    </modules>
+
+    <global>
+        <helpers>
+            <qm_metatager>
+                <class>QM_Metatager_Helper</class>
+            </qm_metatager>
+        </helpers>
+
+        <models>
+            <qm_metatager>
+                <class>QM_Metatager_Model</class>
+                <resourceModel>qm_metatager_resource</resourceModel>
+            </qm_metatager>
+            <qm_metatager_resource>
+                <class>QM_Metatager_Model_Resource</class>
+                <entities>
+                    <product_metatag>
+                        <table>qm_metatager_product_metatag</table>
+                    </product_metatag>
+                    <category_metatag>
+                        <table>qm_metatager_category_metatag</table>
+                    </category_metatag>
+                    <product_image_alt>
+                        <table>qm_metatager_product_image_alt</table>
+                    </product_image_alt>
+                </entities>
+            </qm_metatager_resource>
+        </models>
+
+        <resources>
+            <qm_metatager_setup>
+                <setup>
+                    <module>QM_Metatager</module>
+                </setup>
+            </qm_metatager_setup>
+        </resources>
+
+        <index>
+            <indexer>
+                <qm_metatager_product>
+                    <model>qm_metatager/indexer_productMetatag</model>
+                </qm_metatager_product>
+
+                <qm_metatager_category>
+                    <model>qm_metatager/indexer_categoryMetatag</model>
+                </qm_metatager_category>
+
+                <qm_metatager_product_image_alt>
+                    <model>qm_metatager/indexer_productImageAlt</model>
+                </qm_metatager_product_image_alt>
+            </indexer>
+        </index>
+
+        <events>
+            <!--<admin_system_config_changed_section_qm_metatager>
+                <observers>
+                    <qm_metatager_config_save>
+                        <type>singleton</type>
+                        <class>qm_metatager/system_config_observer</class>
+                        <method>systemConfigChange</method>
+                    </qm_metatager_config_save>
+                </observers>
+            </admin_system_config_changed_section_qm_metatager>-->
+
+            <!--<adminhtml_catalog_product_edit_prepare_form>
+                <observers>
+                    <qm_metatager_product_edit>
+                        <type>singleton</type>
+                        <class>qm_metatager/form_observer</class>
+                        <method>prepareProductForm</method>
+                    </qm_metatager_product_edit>
+                </observers>
+            </adminhtml_catalog_product_edit_prepare_form>-->
+        </events>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <QM_Metatager>
+                    <files>
+                        <default>QM_Metatager.csv</default>
+                    </files>
+                </QM_Metatager>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <qm_metatager>
+            <product>
+                <reindex_all>0</reindex_all>
+                <reindex_only_active_store>1</reindex_only_active_store>
+                <add_on_save>0</add_on_save>
+                <meta_title_enable>0</meta_title_enable>
+                <meta_description_enable>1</meta_description_enable>
+                <meta_keyword_enable>1</meta_keyword_enable>
+            </product>
+            <category>
+                <reindex_all>0</reindex_all>
+                <reindex_only_active_store>1</reindex_only_active_store>
+                <add_on_save>0</add_on_save>
+                <meta_title_enable>0</meta_title_enable>
+                <meta_description_enable>1</meta_description_enable>
+                <meta_keywords_enable>1</meta_keywords_enable>
+            </category>
+            <product_image>
+                <reindex_all>0</reindex_all>
+                <reindex_only_active_store>1</reindex_only_active_store>
+                <add_on_save>0</add_on_save>
+            </product_image>
+        </qm_metatager>
+    </default>
+</config>

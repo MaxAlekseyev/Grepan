@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_cms_page_edit>
+        <reference name="cms_page_edit_tabs">
+            <block type="qmcmspagestyle/cms_page_edit_tab_style" name="cms_page_edit_tab_style" />
+            <action method="addTab"><name>style_section</name><block>cms_page_edit_tab_style</block></action>
+        </reference>
+    </adminhtml_cms_page_edit>
+</layout>

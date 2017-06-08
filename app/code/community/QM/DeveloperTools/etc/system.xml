@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <devtools translate="label comment" module="qm_devtools">
+            <label>Developer Tools</label>
+            <tab>qmage</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <storemaintenance translate="label comment">
+                    <label>Store Maintenance</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Store Maintenance?</label>
+                            <comment>enable or disable Store Maintenance</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <allow_frontend_for_admins translate="label comment">
+                            <label>Frontend Access for Admins?</label>
+                            <comment>logged in admins bypass Store Maintenance?</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allow_frontend_for_admins>
+                        <allowed_ips translate="label comment">
+                            <label>Allowed IPs</label>
+                            <comment>IPs that bypass Store Maintenance</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowed_ips>
+                        <maintenance_page translate="label comment">
+                            <label>Maintenance Page HTML Code</label>
+                            <comment><![CDATA[Instead of blank page, show this HTML code<br />(leave empty for blank page)]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maintenance_page>
+                        <log_verbosity translate="label comment">
+                            <label>Log Verbosity</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>qm_devtools/adminhtml_system_config_source_logging</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </log_verbosity>
+                        <log_file translate="label comment">
+                            <label>Logfile</label>
+                            <comment><![CDATA[log file to log access while maintenance mode<br />(default: maintenance.log)]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </log_file>
+                        <version translate="label comment">
+                            <label>Module version</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>qm_devtools/adminhtml_form_renderer_config_version</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                    </fields>
+                </storemaintenance>
+                <developertoolbar translate="label comment">
+                    <label>Developer Toolbar</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </developertoolbar>
+            </groups>
+        </devtools>
+    </sections>
+</config>

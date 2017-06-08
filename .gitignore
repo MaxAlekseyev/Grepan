@@ -1,0 +1,93 @@
+/var/backup
+#Exclude backups, archives and logs
+*.tar
+*.gz
+*.log
+*.tar.gz
+*.zip
+*.rar
+*.tgz
+
+# Exclude OS trash
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Exclude Sitemap
+/sitemap.xml
+
+# Exclude IDEs directories
+.idea/
+/nbproject/
+*.komodoproject
+.vscode/
+
+
+# Exclude Magento var dir
+/var/cache
+/var/session
+/var/log
+/var/locks
+/var/export
+/var/import
+/var/importexport
+/var/report
+/var/tmp
+/var/resource_config.json
+/var/data-response.txt
+/var/data.txt
+/var/package
+/var/dump
+!/var/dump/dump.sh
+
+# Composer
+/var/composer
+
+#Exclude Magmi
+/magmi/state/*
+/magmi/conf/*
+!/magmi/conf/magmi.ini.default
+
+#Exclude Magento media directory
+/media/*
+!/media/.htaccess
+!/media/xmlconnect
+!/media/downloadable
+!/media/dhl
+!/media/customer
+
+#Exclude webstat
+/webstat/
+/index.html
+
+#Exclude other Magento dirs
+/pkginfo/
+/includes/
+
+#Exclude configs
+/app/etc/local.xml
+
+#Downloader and installer
+/downloader/
+/install.php
+
+#Other
+/magicento.phpstorm.meta.php
+.tmp_*
+*.tmproj
+*.bak
+*.tmp
+*.bak2
+*.swp
+*~.nib
+/*.sample
+/LICENSE*
+/RELEASE_NOTES.txt
+/qmage/
+tmp/
+
+#Specific theme directories

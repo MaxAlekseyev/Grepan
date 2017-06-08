@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <qm_banners translate="title" module="qm_banners">
+                                        <title>Banners</title>
+                                    </qm_banners>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <promo>
+                        <children>
+                            <qm_banners translate="title" module="qm_banners">
+                                <title>Banners</title>
+                                <sort_order>0</sort_order>
+                            </qm_banners>
+                        </children>
+                    </promo>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <promo>
+            <children>
+                <qm_banners translate="title" module="qm_banners">
+                    <title>Banners</title>
+                    <sort_order>100</sort_order>
+                    <action>adminhtml/banners_banner</action>
+                </qm_banners>
+            </children>
+        </promo>
+    </menu>
+</config>

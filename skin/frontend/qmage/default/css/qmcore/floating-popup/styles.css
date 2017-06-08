@@ -1,0 +1,90 @@
+.floating-popup-wrapper {
+    position: relative;
+}
+.floating-popup-outer {
+    position: absolute;
+    z-index: 999;
+    display: none;
+    opacity: 0;
+}
+/** ARROW */
+.floating-popup-inner {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #cccccc;
+    min-width: 200px;
+    padding: 10px;
+}
+.floating-popup-inner:after,
+.floating-popup-inner:before {
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.floating-popup-inner:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-width: 8px;
+}
+.floating-popup-inner:before {
+    border-color: rgba(204, 204, 204, 0);
+    border-width: 11px;
+}
+/** ARROW UP */
+.floating-popup-inner.arrow-up:after,
+.floating-popup-inner.arrow-up:before {
+    bottom: 100%;
+    left: 50%;
+}
+.floating-popup-inner.arrow-up:after {
+    border-bottom-color: #ffffff;
+    margin-left: -8px;
+}
+.floating-popup-inner.arrow-up:before {
+    border-bottom-color: #cccccc;
+    margin-left: -11px;
+}
+/** ARROW RIGHT */
+.floating-popup-inner.arrow-right:after,
+.floating-popup-inner.arrow-right:before {
+    left: 100%;
+    top: 50%;
+}
+.floating-popup-inner.arrow-right:after {
+    border-left-color: #ffffff;
+    margin-top: -8px;
+}
+.floating-popup-inner.arrow-right:before {
+    border-left-color: #cccccc;
+    margin-top: -11px;
+}
+/** ARROW LEFT */
+.floating-popup-inner.arrow-left:after,
+.floating-popup-inner.arrow-left:before {
+    right: 100%;
+    top: 50%;
+}
+.floating-popup-inner.arrow-left:after {
+    border-right-color: #ffffff;
+    margin-top: -8px;
+}
+.floating-popup-inner.arrow-left:before {
+    border-right-color: #cccccc;
+    margin-top: -11px;
+}
+/** ARROW DOWN */
+.floating-popup-inner.arrow-down:after,
+.floating-popup-inner.arrow-down:before {
+    top: 100%;
+    left: 50%;
+}
+.floating-popup-inner.arrow-down:after {
+    border-top-color: #ffffff;
+    margin-left: -8px;
+}
+.floating-popup-inner.arrow-down:before {
+    border-top-color: #cccccc;
+    margin-left: -11px;
+}

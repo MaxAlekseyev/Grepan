@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <append_cms_page_styles>
+        <reference name="head">
+            <block type="qmcmspagestyle/style" name="cms_page_styles" />
+        </reference>
+    </append_cms_page_styles>
+</layout>

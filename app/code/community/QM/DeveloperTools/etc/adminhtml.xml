@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <system>
+            <children>
+                <devtools translate="title" module="qm_devtools">
+                    <title>Developer Tools</title>
+                    <children>
+                        <extension_conflict>
+                            <title>Extension Conflict</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/conflict/list</action>
+                        </extension_conflict>
+                    </children>
+                </devtools>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <devtools translate="title" module="qm_devtools">
+                                <title>Developer Tools</title>
+                                <children>
+                                    <extension_conflict>
+                                        <title>Extension Conflict</title>
+                                    </extension_conflict>
+                                </children>
+                            </devtools>
+                            <config>
+                                <children>
+                                    <devtools>
+                                        <title>devtools</title>
+                                    </devtools>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

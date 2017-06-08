@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_NewFromTo>
+            <version>0.2.0</version>
+        </QM_NewFromTo>
+    </modules>
+
+    <global>
+        <helpers>
+            <qmnewfromto>
+                <class>QM_NewFromTo_Helper</class>
+            </qmnewfromto>
+        </helpers>
+        <models>
+            <qmnewfromto>
+                <class>QM_NewFromTo_Model</class>
+            </qmnewfromto>
+        </models>
+        <blocks>
+            <qmnewfromto>
+                <class>QM_NewFromTo_Block</class>
+            </qmnewfromto>
+        </blocks>
+
+        <events>
+            <adminhtml_catalog_product_edit_prepare_form>
+                <observers>
+                    <modulename>
+                        <type>singleton</type>
+                        <class>qmnewfromto/form_observer</class>
+                        <method>prepareForm</method>
+                    </modulename>
+                </observers>
+            </adminhtml_catalog_product_edit_prepare_form>
+        </events>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <QM_NewFromTo>
+                    <files>
+                        <default>QM_NewFromTo.csv</default>
+                    </files>
+                </QM_NewFromTo>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <QM_NewFromTo>
+                    <files>
+                        <default>QM_NewFromTo.csv</default>
+                    </files>
+                </QM_NewFromTo>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>

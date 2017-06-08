@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_Switcher>
+            <codePool>community</codePool>
+            <active>true</active>
+            <depends>
+                <QM_Core/>
+                <Mage_Catalog />
+            </depends>
+        </QM_Switcher>
+    </modules>
+</config>

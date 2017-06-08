@@ -1,0 +1,133 @@
+/**
+ * OVERLAY
+ */
+.advfeedback-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,.5) url("../images/qmadvfeedback/m-wait.gif") 50% 50% no-repeat;
+}
+
+/**
+ * CALLBACK
+ */
+.advfeedback-callback {
+    width: 320px;
+}
+.advfeedback-callback .form-title {
+    border-bottom: 1px solid #d9ddd3;
+    margin-bottom: 10px;
+}
+.advfeedback-callback-form .row {
+    margin-bottom: 5px;
+    vertical-align: top;
+}
+.advfeedback-callback-form label {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+}
+.advfeedback-callback-form textarea {
+    resize: vertical;
+}
+.advfeedback-callback-form .input-text {
+    display: inline-block;
+    width: 180px;
+}
+.advfeedback-callback-form .buttons-set {
+    margin-top: 10px;
+}
+/* .advfeedback-callback-form .validation-advice {
+    display: none;
+} */
+.advfeedback-callback-confirmation .buttons-set {
+    margin-top: 10px;
+}
+
+/**
+ * CALLBACK BOT PROTTECTION
+ */
+.advfeedback-callback-form input[name="callback[name]"] ,
+.advfeedback-callback-form input[name="callback[telephone]"] ,
+.advfeedback-callback-form input[name="callback[preferred_time]"] ,
+.advfeedback-callback-form input[name="callback[comment]"],
+.advfeedback-callback-form label[for="callback:name"] ,
+.advfeedback-callback-form label[for="callback:telephone"] ,
+.advfeedback-callback-form label[for="callback:preferred_time"] ,
+.advfeedback-callback-form label[for="callback:comment"]{
+    display: none
+}
+
+/**
+ * CONSULTATION
+ */
+.advfeedback-consultation {
+    width: 320px;
+}
+.advfeedback-consultation .form-title {
+    border-bottom: 1px solid #d9ddd3;
+    margin-bottom: 10px;
+}
+.advfeedback-consultation-form .row {
+    margin-bottom: 5px;
+    vertical-align: top;
+}
+.advfeedback-consultation-form label {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+}
+.advfeedback-consultation-form textarea {
+    resize: vertical;
+}
+.advfeedback-consultation-form .input-text {
+    display: inline-block;
+    width: 180px;
+}
+.advfeedback-consultation-form .buttons-set {
+    margin-top: 10px;
+}
+/* .advfeedback-consultation-form .validation-advice {
+    display: none;
+} */
+.advfeedback-consultation-confirmation .buttons-set {
+    margin-top: 10px;
+}
+
+/**
+ * CONSULTATION BOT PROTTECTION
+ */
+.advfeedback-consultation-form input[name="consultation[name]"] ,
+.advfeedback-consultation-form input[name="consultation[email]"] ,
+.advfeedback-consultation-form input[name="consultation[telephone]"] ,
+.advfeedback-consultation-form input[name="consultation[emailorphone]"] ,
+.advfeedback-consultation-form input[name="consultation[preferred_time]"] ,
+.advfeedback-consultation-form input[name="consultation[comment]"],
+.advfeedback-consultation-form label[for="consultation:name"] ,
+.advfeedback-consultation-form label[for="consultation:email"] ,
+.advfeedback-consultation-form label[for="consultation:telephone"] ,
+.advfeedback-consultation-form label[for="consultation:emailorphone"] ,
+.advfeedback-consultation-form label[for="consultation:preferred_time"] ,
+.advfeedback-consultation-form label[for="consultation:comment"]{
+    display: none
+}
+
+
+/**
+ * All
+ */
+
+p { margin-bottom: 0.08in; }
+
+/**
+ * Fix translate label
+ */
+#translate-inline-trig {
+	z-index: 8020 !important;
+}
+
+#translate-inline {
+	z-index: 8020 !important;
+}

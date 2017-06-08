@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <qmage translate="label" module="qmcore">
+            <label>QMage</label>
+            <sort_order>10</sort_order>
+        </qmage>
+    </tabs>
+    <sections>
+        <qmcore translate="label comment" module="qmcore">
+            <label>Core</label>
+            <tab>qmage</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>0</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <extended_ifconfig translate="label comment">
+                    <label>Extended Ifconfig</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_ifconfig</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                    </fields>
+                </extended_ifconfig>
+                <extended_system_fields translate="label comment">
+                    <label>Extended System Fields</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_fields</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                    </fields>
+                </extended_system_fields>
+                <google_sitemap>
+                	<label>Google sitemap</label>
+                	<frontend_type>text</frontend_type>
+                	<sort_order>30</sort_order>
+                	<show_in_default>1</show_in_default>
+                	<show_in_website>1</show_in_website>
+                	<show_in_store>1</show_in_store>
+                	<fields>
+                	    <info translate="label comment">
+                	        <label>User Guide</label>
+                	        <frontend_model>qmcore/adminhtml_form_renderer_config_sitemap</frontend_model>
+                	        <sort_order>10</sort_order>
+                	        <show_in_default>1</show_in_default>
+                	        <show_in_website>1</show_in_website>
+                	        <show_in_store>1</show_in_store>
+                	    </info>
+                	</fields>
+                </google_sitemap>
+                <creating_store_view>
+                    <label>Creating store view</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_createStoreView</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                    </fields>
+                </creating_store_view>
+                <change_store_view>
+                    <label>Change store view</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_changeStoreView</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                        <force_remove_from_store translate="label comment">
+                            <label>Force remove '___from_store' on change store view </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </force_remove_from_store>
+                    </fields>
+                </change_store_view>
+                <disable_blocks>
+                    <label>Disable blocks</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_disableBlocks</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                        <disable_compare translate="label comment">
+                            <label>Disable compare block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disable_compare>
+                    </fields>
+                </disable_blocks>
+                <catalog_image_style>
+                    <label>Catalog Image Style</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_catalogImageStyle</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                        <background_hex translate="label comment">
+                            <label>Hex</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>qmcore/system_config_backend_validateHex</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </background_hex>
+                    </fields>
+                </catalog_image_style>
+                <manage_customers>
+                    <label>Manage Customers</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>75</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_manageCustomers</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                    </fields>
+                </manage_customers>
+                <add_js>
+                    <label>Add Js</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_addJs</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </info>
+                        <js_files translate="label comment">
+                            <label>Js Files</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_jsFilesSelect</frontend_model>
+                            <source_model>qmcore/system_config_backend_jsFiles</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </js_files>
+                        <at_end>
+                            <label>Add Js At End</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </at_end>
+                    </fields>
+                </add_js>
+                <add_css>
+                    <label>Add Css</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <info translate="label comment">
+                            <label>User Guide</label>
+                            <frontend_model>qmcore/adminhtml_form_renderer_config_addCss</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </info>
+                        <css_files translate="label comment">
+                            <label>Css Files</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>qmcore/system_config_backend_cssFiles</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </css_files>
+                    </fields>
+                </add_css>
+            </groups>
+        </qmcore>
+        <design>
+            <groups>
+                <header>
+                    <fields>
+                        <custom_header_logo translate="label comment">
+                            <label>Custom Header Logo</label>
+                            <comment>Allowed file types: PNG, JPG, JPEG, GIF.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>qmcore/system_config_backend_image_logo</backend_model>
+                            <base_url type="media" scope_info="1">logo</base_url>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_header_logo>
+                    </fields>
+                </header>
+                <footer>
+                    <fields>
+                        <custom_footer_logo translate="label comment">
+                            <label>Custom Footer Logo</label>
+                            <comment>Allowed file types: PNG, JPG, JPEG, GIF.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>qmcore/system_config_backend_image_logo</backend_model>
+                            <base_url type="media" scope_info="1">logo</base_url>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_footer_logo>
+                    </fields>
+                </footer>
+            </groups>
+        </design>
+    </sections>
+</config> 

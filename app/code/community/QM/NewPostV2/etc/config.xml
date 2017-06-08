@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_NewPostV2>
+            <version>0.3.9</version>
+        </QM_NewPostV2>
+    </modules>
+
+    <global>
+        <blocks>
+            <qm_newpostv2>
+                <class>QM_NewPostV2_Block</class>
+            </qm_newpostv2>
+        </blocks>
+
+        <models>
+            <qm_newpostv2>
+                <class>QM_NewPostV2_Model</class>
+                <resourceModel>qm_newpostv2_resource</resourceModel>
+            </qm_newpostv2>
+            <qm_newpostv2_resource>
+                <class>QM_NewPostV2_Model_Resource</class>
+                <entities>
+                    <table_city>
+                        <table>qm_newpostv2_city_entities</table>
+                    </table_city>
+                    <table_area>
+                        <table>qm_newpostv2_area_entities</table>
+                    </table_area>
+                    <table_street>
+                        <table>qm_newpostv2_street_entities</table>
+                    </table_street>
+                    <table_warehouse>
+                        <table>qm_newpostv2_warehouse_entities</table>
+                    </table_warehouse>
+                    <table_waybill>
+                        <table>qm_newpostv2_waybill_entities</table>
+                    </table_waybill>
+                </entities>
+            </qm_newpostv2_resource>
+        </models>
+
+        <helpers>
+            <qm_newpostv2>
+                <class>QM_NewPostV2_Helper</class>
+            </qm_newpostv2>
+        </helpers>
+
+        <resources>
+            <qm_newpostv2_setup>
+                <setup>
+                    <module>QM_NewPostV2</module>
+                </setup>
+            </qm_newpostv2_setup>
+        </resources>
+
+        <events>
+            <qmcheckout_before_save_shipping_method>
+                <observers>
+                    <qm_newpost_qmcheckout_before_save_shipping_method>
+                        <type>model</type>
+                        <class>qm_newpostv2/observer</class>
+                        <method>saveShippingMethod</method>
+                    </qm_newpost_qmcheckout_before_save_shipping_method>
+                </observers>
+            </qmcheckout_before_save_shipping_method>
+
+            <qmcheckout_build_session_order>
+                <observers>
+                    <qm_newpost_qmcheckout_build_session_order>
+                        <type>model</type>
+                        <class>qm_newpostv2/observer</class>
+                        <method>updateSessionOrderCity</method>
+                    </qm_newpost_qmcheckout_build_session_order>
+                </observers>
+            </qmcheckout_build_session_order>
+
+            <qm_ordertracker_data_collect>
+                <observers>
+                    <qm_newpost_qm_ordertracker_data_collect>
+                        <type>singleton</type>
+                        <class>qm_newpostv2/trackingObserver</class>
+                        <method>collect</method>
+                    </qm_newpost_qm_ordertracker_data_collect>
+                </observers>
+            </qm_ordertracker_data_collect>
+
+            <sales_quote_collect_totals_before>
+                <observers>
+                    <qm_newpost_sales_quote_collect_totals_before>
+                        <type>singleton</type>
+                        <class>qm_newpostv2/observer</class>
+                        <method>observeBeforeCollectQuote</method>
+                    </qm_newpost_sales_quote_collect_totals_before>
+                </observers>
+            </sales_quote_collect_totals_before>
+        </events>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <qm_newpostv2>
+                    <file>qm_newpostv2.xml</file>
+                </qm_newpostv2>
+            </updates>
+        </layout>
+    </frontend>
+
+    <default>
+        <qm_newpostv2>
+            <settings>
+                <default_volume>0.001</default_volume>
+                <default_weight>0.001</default_weight>
+                <force_translit>1</force_translit>
+                <default_description_for_waybill>Order From Magento</default_description_for_waybill>
+            </settings>
+        </qm_newpostv2>
+        <carriers>
+            <qm_newpostv2_warehouse_warehouse>
+                <model>qm_newpostv2/warehouseWarehouseCarrier</model>
+                <sort>10</sort>
+            </qm_newpostv2_warehouse_warehouse>
+
+            <qm_newpostv2_warehouse_doors>
+                <model>qm_newpostv2/warehouseDoorsCarrier</model>
+                <sort>20</sort>
+            </qm_newpostv2_warehouse_doors>
+        </carriers>
+        <payment>
+            <qm_newpostv2_pay_on_delivery>
+                <sort_order>0</sort_order>
+                <title>New Post Cash On Delivery</title>
+                <model>qm_newpostv2/payment_cashOnDelivery</model>
+                <order_status>pending</order_status>
+                <payment_action>sale</payment_action>
+            </qm_newpostv2_pay_on_delivery>
+        </payment>
+    </default>
+
+    <admin>
+        <routers>
+            <qm_newpostv2_admin>
+                <use>admin</use>
+                <args>
+                    <module>QM_NewPostV2</module>
+                    <frontName>qm_newpost_v2_admin</frontName>
+                </args>
+            </qm_newpostv2_admin>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <QM_NewPostV2 before="Mage_Adminhtml">QM_NewPostV2_Adminhtml</QM_NewPostV2>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <qm_newpostv2>
+                    <file>qm_newpostv2.xml</file>
+                </qm_newpostv2>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

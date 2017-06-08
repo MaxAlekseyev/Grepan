@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="before_body_end">
+            <block type="core/template" name="developertoolbar" as="developertoolbat">
+                <action method="setTemplate" ifconfig="devtools/developertoolbar/enabled">
+                    <template>qm/devtools/toolbar.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addCss" ifconfig="devtools/developertoolbar/enabled"><stylesheet>css/qm/devtools/devtools.css</stylesheet></action>
+            <action method="addItem" ifconfig="devtools/developertoolbar/enabled"><type>skin_js</type><name>js/qm/devtools/developertoolbar.js</name></action>
+        </reference>
+    </default>
+</layout>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<jstranslator>
+    <days translate="message">
+        <message>days</message>
+    </days>
+    <day translate="message">
+        <message>day</message>
+    </day>
+    <hour translate="message">
+        <message>hour</message>
+    </hour>
+    <min translate="message">
+        <message>min</message>
+    </min>
+    <sec translate="message">
+        <message>sec</message>
+    </sec>
+</jstranslator>

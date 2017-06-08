@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="sales_order_tabs">
+            <block type="qm_ordertracker/adminhtml_tracking" name="qm_ordertracker_tab_tracking" template="qm/ordertracker/tracking.phtml"/>
+            <action method="addTab"><name>qm_ordertracker_tracking</name><block>qm_ordertracker_tab_tracking</block></action>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

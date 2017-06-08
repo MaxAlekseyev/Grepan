@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <qmoneclickorder translate="title" module="qmoneclickorder">
+                                        <title>OneClick Order</title>
+                                    </qmoneclickorder>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <sales>
+                        <children>
+                            <qmoneclickorder translate="title" module="qmoneclickorder">
+                                <title>OneClick Order</title>
+                            </qmoneclickorder>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <sales>
+            <children>
+                <qmoneclickorder translate="title" module="qmoneclickorder">
+                    <title>OneClick Order</title>
+                    <sort_order>15</sort_order>
+                    <action>adminhtml/oneclickorder_order</action>
+                </qmoneclickorder>
+            </children>
+        </sales>
+    </menu>
+</config>

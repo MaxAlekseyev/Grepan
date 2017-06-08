@@ -1,0 +1,91 @@
+/**
+ * OVERLAY
+ */
+.oneclickorder-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,.5) url("../images/qmoneclickorder/m-wait.gif") 50% 50% no-repeat;
+}
+
+/**
+ * ORDER
+ */
+.oneclickorder-order {
+    width: 320px;
+}
+.oneclickorder-order .form-title {
+    border-bottom: 1px solid #d9ddd3;
+    margin-bottom: 10px;
+}
+.oneclickorder-order-form .row {
+    margin-bottom: 5px;
+    vertical-align: top;
+}
+.oneclickorder-order-form label {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+}
+.oneclickorder-order-form textarea {
+    resize: vertical;
+}
+.oneclickorder-order-form .input-text {
+    display: inline-block;
+    width: 180px;
+}
+.oneclickorder-order-form .buttons-set {
+    margin-top: 10px;
+}
+/* .oneclickorder-order-form .validation-advice {
+    display: none;
+} */
+.oneclickorder-order-confirmation .buttons-set {
+    margin-top: 10px;
+}
+.oneclickorder-order-form .validation-advice {
+    /* display: none; */
+    margin-left: 120px;
+}
+
+
+.fx-popup {
+    position: absolute;
+    padding: 10px;
+    display: none;
+    z-index: 999;
+    opacity: 0;
+}
+.fx-popup-inner {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    padding: 7px;
+    background: #fff;
+    position: relative;
+    font-size: 13px !important;
+    color:#555;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+}
+.fx-popup .fx-popup-inner:after, .fx-popup .fx-popup-inner:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.fx-popup .fx-popup-inner:after {
+    border-bottom-color: #fff;
+    border-width: 7px;
+    margin-left: -7px;
+}
+.fx-popup .fx-popup-inner:before {
+    border-bottom-color: #bbb;
+    border-width: 8px;
+    margin-left: -8px;
+}

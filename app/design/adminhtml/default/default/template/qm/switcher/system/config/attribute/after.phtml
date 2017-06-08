@@ -1,0 +1,8 @@
+<?php
+
+/** @var QM_Switcher_Block_Adminhtml_System_Attribute_After_Options $this*/
+echo $this->getButton();
+?>
+<div>
+    <input class="real-value"<?php echo ($this->getDisabled() ? ' disabled="disabled"' : '');?> type="hidden" name="<?php echo $this->getInputName();?>" id="<?php echo $this->getInputId();?>" value="<?php echo $this->getInputValue()?>" />
+</div>

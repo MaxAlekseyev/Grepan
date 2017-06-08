@@ -1,0 +1,181 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if ($this->getRoot()): ?>
+    <div class="categories-side-col">
+        <div class="tree-holder">
+            <div id="tree-div" style="width:100%; overflow:auto;"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var tree;
+        var allNodes = new Array();
+
+        /**
+         * Fix ext compatibility with prototype 1.6
+         */
+        Ext.lib.Event.getTarget = function (e) {
+            var ee = e.browserEvent || e;
+            return ee.target ? Event.element(ee) : null;
+        };
+
+        Ext.tree.TreePanel.Enhanced = function (el, config) {
+            Ext.tree.TreePanel.Enhanced.superclass.constructor.call(this, el, config);
+        };
+
+        Ext.extend(Ext.tree.TreePanel.Enhanced, Ext.tree.TreePanel, {
+
+            loadTree: function (config) {
+                var parameters = config['parameters'];
+                var data = config['data'];
+
+                this.storeId = parameters['store_id'];
+
+                var root = new Ext.tree.TreeNode(parameters);
+
+                this.setRootNode(root);
+
+                this.loader.buildCategoryTree(root, data);
+
+                this.el.dom.innerHTML = '';
+
+                // render the tree
+                this.render();
+
+                this.expandAll();
+            }
+
+        });
+
+        function _renderNewTree(config, storeParam) {
+
+            if (!config) {
+                var config = defaultLoadTreeParams;
+            }
+            if (tree) {
+                tree.purgeListeners();
+                tree.el.dom.innerHTML = '';
+            }
+            tree = new Ext.tree.TreePanel.Enhanced('tree-div', newTreeParams);
+
+            tree.addListener('check', _addTreeToForm);
+
+            tree.loadTree(config);
+
+        }
+
+        Ext.onReady(function () {
+
+            categoryLoader = new Ext.tree.TreeLoader();
+
+            categoryLoader.buildCategoryTree = function (parent, config) {
+                if (!config) {
+                    return null;
+                }
+
+                if (parent && config && config.length) {
+                    for (var i = 0; i < config.length; i++) {
+                        var node;
+                        var _node = Object.clone(config[i]);
+
+                        _node.uiProvider = Ext.tree.CheckboxNodeUI;
+
+                        if (_node.children && !_node.children.length) {
+                            delete(_node.children);
+                            node = new Ext.tree.AsyncTreeNode(_node);
+                        } else {
+                            node = new Ext.tree.TreeNode(_node);
+                        }
+
+                        allNodes.push(node);
+
+                        parent.appendChild(node);
+                        node.loader = node.getOwnerTree().loader;
+                        if (_node.children) {
+                            this.buildCategoryTree(node, _node.children);
+                        }
+                    }
+                }
+            };
+
+            newTreeParams = {
+                animate: false,
+                loader: categoryLoader,
+                enableDD: true,
+                containerScroll: true,
+                selModel: new Ext.tree.CheckNodeMultiSelectionModel(),
+                rootVisible: '<?php echo $this->getRoot()->getIsVisible() ?>',
+                rootUIProvider: Ext.tree.CheckboxNodeUI,
+                useAjax: false,
+                switchTreeUrl: '<?php echo $this->getSwitchTreeUrl() ?>',
+                editUrl: '<?php echo $this->getEditUrl() ?>',
+                currentNodeId: <?php echo (int) $this->getCategoryId() ?>,
+                listeners: {
+                    click: _addTreeToForm
+                }
+            };
+
+            defaultLoadTreeParams = {
+                parameters: {
+                    text: '<?php echo htmlentities($this->getRoot()->getName()) ?>',
+                    draggable: false,
+                    allowDrop: false,
+                    id: <?php echo (int) $this->getRoot()->getId() ?>,
+                    expanded: <?php echo (int) $this->getIsWasExpanded() ?>,
+                    store_id: <?php echo (int) $this->getStore()->getId() ?>,
+                    category_id: <?php echo (int) $this->getCategoryId() ?>
+                },
+                data: <?php echo $this->getTreeJson() ?>
+            };
+
+            _renderNewTree();
+
+        });
+
+
+        function _addTreeToForm() {
+            var selectedNodes = Array();
+
+            allNodes.forEach(function (node) {
+                if (node.attributes.checked) {
+                    selectedNodes.push(node.attributes.id);
+                }
+            });
+
+            if (!this.categoryInput) {
+                this.categoryInput = document.getElementById('export_catalogs');
+            }
+
+            if (this.categoryInput) {
+                this.categoryInput.value = JSON.stringify(selectedNodes);
+            }
+        }
+
+        //]]>
+    </script>
+<?php endif; ?>

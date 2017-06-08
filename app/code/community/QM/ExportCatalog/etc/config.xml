@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <QM_ExportCatalog>
+            <version>0.2.1</version>
+        </QM_ExportCatalog>
+    </modules>
+
+    <global>
+        <blocks>
+            <qm_exportcatalog>
+                <class>QM_ExportCatalog_Block</class>
+            </qm_exportcatalog>
+        </blocks>
+
+        <helpers>
+            <qm_exportcatalog>
+                <class>QM_ExportCatalog_Helper</class>
+            </qm_exportcatalog>
+        </helpers>
+
+        <models>
+            <qm_exportcatalog>
+                <class>QM_ExportCatalog_Model</class>
+                <resourceModel>qm_exportcatalog_resource</resourceModel>
+            </qm_exportcatalog>
+            <qm_exportcatalog_resource>
+                <class>QM_ExportCatalog_Model_Resource</class>
+                <entities>
+                    <table_config>
+                        <table>qm_exportcatalog_config_entities</table>
+                    </table_config>
+                </entities>
+            </qm_exportcatalog_resource>
+        </models>
+
+        <resources>
+            <qm_exportcatalog_setup>
+                <setup>
+                    <module>QM_ExportCatalog</module>
+                </setup>
+            </qm_exportcatalog_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <qm_exportcatalog>
+                <use>admin</use>
+                <args>
+                    <module>QM_ExportCatalog</module>
+                    <frontName>exportcatalog</frontName>
+                </args>
+            </qm_exportcatalog>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <qm_exportcatalog>
+                    <file>qm_exportcatalog.xml</file>
+                </qm_exportcatalog>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <QM_ExportCatalog>
+                    <files>
+                        <default>QM_ExportCatalog.csv</default>
+                    </files>
+                </QM_ExportCatalog>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <frontend>
+        <routers>
+            <qm_exportcatalog>
+                <use>standard</use>
+                <args>
+                    <module>QM_ExportCatalog</module>
+                    <frontName>ymlcatalog</frontName>
+                </args>
+            </qm_exportcatalog>
+        </routers>
+        <translate>
+            <modules>
+                <QM_ExportCatalog>
+                    <files>
+                        <default>QM_ExportCatalog.csv</default>
+                    </files>
+                </QM_ExportCatalog>
+            </modules>
+        </translate>
+    </frontend>
+
+    <crontab>
+        <jobs>
+            <qm_exportcatalog>
+                <schedule>
+                    <cron_expr>* * */5 * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>qm_exportcatalog/observer::exportAll</model>
+                </run>
+            </qm_exportcatalog>
+        </jobs>
+    </crontab>
+
+    <default>
+        <qm_exportcatalog>
+            <qm_exportcatalog_settings>
+                <file_path>catalog/</file_path>
+            </qm_exportcatalog_settings>
+        </qm_exportcatalog>
+    </default>
+</config>

@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_LayeredNavigation>
+            <version>2.5.1</version>
+        </QM_LayeredNavigation>
+    </modules>
+    <global>
+        <models>
+            <qm_layerednavigation>
+                <class>QM_LayeredNavigation_Model</class>
+                <resourceModel>qm_layerednavigation_mysql4</resourceModel>
+            </qm_layerednavigation>
+            <qm_layerednavigation_mysql4>
+                <class>QM_LayeredNavigation_Model_Mysql4</class>
+                <entities>
+                    <filter>
+                        <table>layerednavigation_filter</table>
+                    </filter> 
+                    <value>
+                        <table>layerednavigation_value</table>
+                    </value> 
+                    <range>
+                        <table>layerednavigation_range</table>
+                    </range>
+                    <page>
+                        <table>layerednavigation_page</table>
+                    </page>
+                </entities>
+            </qm_layerednavigation_mysql4>
+
+            <catalog>
+                <rewrite>
+                    <layer_filter_price>QM_LayeredNavigation_Model_Catalog_Layer_Filter_Price</layer_filter_price>
+                    <layer_filter_decimal>QM_LayeredNavigation_Model_Catalog_Layer_Filter_Decimal</layer_filter_decimal>
+                    <layer_filter_attribute>QM_LayeredNavigation_Model_Catalog_Layer_Filter_Attribute</layer_filter_attribute>
+                    <layer_filter_category>QM_LayeredNavigation_Model_Catalog_Layer_Filter_Category</layer_filter_category>
+                    <layer_filter_item>QM_LayeredNavigation_Model_Catalog_Layer_Filter_Item</layer_filter_item>
+            </rewrite> 
+            </catalog>   
+            <catalogsearch>
+                <rewrite>
+                    <layer_filter_attribute>QM_LayeredNavigation_Model_Search_Layer_Filter_Attribute</layer_filter_attribute>
+                </rewrite> 
+            </catalogsearch>
+        </models>
+        
+        <resources>
+            <qm_layerednavigation_setup>
+                <setup>
+                    <module>QM_LayeredNavigation</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </qm_layerednavigation_setup>
+            
+            <qm_layerednavigation_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </qm_layerednavigation_write>
+            
+            <qm_layerednavigation_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </qm_layerednavigation_read>
+        </resources>
+
+        <blocks>
+            <qm_layerednavigation>
+                <class>QM_LayeredNavigation_Block</class>
+            </qm_layerednavigation>
+            <catalog>
+                <rewrite>
+                    <layer_filter_attribute>QM_LayeredNavigation_Block_Catalog_Layer_Filter_Attribute</layer_filter_attribute>
+                    <product_list_toolbar>QM_LayeredNavigation_Block_Catalog_Product_List_Toolbar</product_list_toolbar>
+                </rewrite> 
+            </catalog>  
+            <catalogsearch>
+                <rewrite>
+                    <layer_filter_attribute>QM_LayeredNavigation_Block_Search_Layer_Filter_Attribute</layer_filter_attribute>
+                </rewrite> 
+            </catalogsearch>  
+        </blocks>
+         
+        <helpers>
+            <qm_layerednavigation>
+                <class>QM_LayeredNavigation_Helper</class>
+            </qm_layerednavigation>
+            <catalog>
+                <rewrite>
+                    <image>QM_LayeredNavigation_Helper_Image</image>
+                </rewrite>
+            </catalog>            
+        </helpers>
+        
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <qm_layerednavigation>
+                        <type>singleton</type>
+                        <class>QM_LayeredNavigation_Model_Observer</class>
+                        <method>handleControllerFrontInitRouters</method>
+                    </qm_layerednavigation>
+                </observers>
+            </controller_front_init_routers>
+        </events> 
+                
+    </global>
+    
+     <frontend>
+        <events>
+        
+  <core_block_abstract_to_html_before>
+   <observers>
+    <cacheBlock>
+     <type>singleton</type>
+     <class>qm_layerednavigation/observer</class>
+     <method>customBlockCache</method>
+    </cacheBlock>
+   </observers>
+  </core_block_abstract_to_html_before>
+        
+            <catalog_controller_category_init_after>
+                <observers>
+                    <qm_layerednavigation>
+                        <type>singleton</type>
+                        <class>qm_layerednavigation/observer</class>
+                        <method>handleCatalogControllerCategoryInitAfter</method>
+                    </qm_layerednavigation>
+                </observers>
+            </catalog_controller_category_init_after>
+            
+            <controller_action_layout_render_before_catalog_category_view>
+                <observers>
+                    <qm_layerednavigation>
+                        <type>singleton</type>
+                        <class>qm_layerednavigation/observer</class>
+                        <method>handleLayoutRender</method>
+                    </qm_layerednavigation>
+                </observers>
+            </controller_action_layout_render_before_catalog_category_view>
+
+            <controller_action_layout_render_before_layerednavigation_index_index>
+                <observers>
+                    <qm_layerednavigation>
+                        <type>singleton</type>
+                        <class>qm_layerednavigation/observer</class>
+                        <method>handleLayoutRender</method>
+                    </qm_layerednavigation>
+                </observers>
+            </controller_action_layout_render_before_layerednavigation_index_index>
+            
+            <controller_action_layout_render_before_catalogsearch_result_index>
+                <observers>
+                    <qm_layerednavigation>
+                        <type>singleton</type>
+                        <class>qm_layerednavigation/observer</class>
+                        <method>handleLayoutRender</method>
+                    </qm_layerednavigation>
+                </observers>
+            </controller_action_layout_render_before_catalogsearch_result_index> 
+        </events> 
+        <translate>
+            <modules>
+                <QM_LayeredNavigation>
+                    <files>
+                        <default>QM_LayeredNavigation.csv</default>
+                    </files>
+                </QM_LayeredNavigation>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <qm_layerednavigation module="QM_LayeredNavigation">
+                    <file>qm_layerednavigation.xml</file>
+                </qm_layerednavigation>
+            </updates>
+        </layout>
+    </frontend>  
+     
+    <admin>
+        <routers>
+            <layerednavigation>
+                <use>admin</use>
+                <args>
+                    <module>QM_LayeredNavigation</module>
+                    <frontName>layerednavigation</frontName>
+                </args>
+            </layerednavigation>
+        </routers>
+    </admin> 
+        
+   <adminhtml>
+        <menu>
+            <catalog>
+                <children>
+                    <layerednavigation translate="title" module="qm_layerednavigation">
+                        <title>Layered Navigation</title>
+                        <sort_order>900</sort_order>
+                        <children>
+                            <filters translate="title" module="qm_layerednavigation">
+                                <title>Filters</title>
+                                <action>layerednavigation/adminhtml_filter</action>
+                                <sort_order>10</sort_order>
+                            </filters>
+                            <ranges translate="title" module="qm_layerednavigation">
+                                <title>Price Ranges</title>
+                                <action>layerednavigation/adminhtml_range</action>
+                                <sort_order>20</sort_order>
+                            </ranges>
+                            <pages translate="title" module="qm_layerednavigation">
+                                <title>Pages</title>
+                                <action>layerednavigation/adminhtml_page</action>
+                                <sort_order>25</sort_order>
+                            </pages>
+                            <settings translate="title" module="qm_layerednavigation">
+                                <title>Settings</title>
+                                <action>adminhtml/system_config/edit/section/qm_layerednavigation</action>
+                                <sort_order>30</sort_order>
+                            </settings>
+                        </children>
+                    </layerednavigation>
+                </children>
+            </catalog>
+        </menu>     
+   
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        
+                        <catalog>
+                            <children>
+                                <layerednavigation>
+                                    <title>Layered Navigation</title>
+                                    <children>
+                                        <filters> 
+                                            <title>Filters</title>
+                                        </filters>
+                                        <ranges> 
+                                            <title>Price Ranges</title>
+                                        </ranges>
+                                        <pages> 
+                                            <title>Pages</title>
+                                        </pages>
+                                        <settings> 
+                                            <title>Settings</title>
+                                        </settings>
+                                    </children>                                    
+                                </layerednavigation>
+                            </children>
+                        </catalog>
+                        
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <qm_layerednavigation translate="title" module="qm_layerednavigation">
+                                            <title>Layered Navigation</title>
+                                        </qm_layerednavigation>
+                                    </children>
+                                </config>
+                            </children>
+                        </system> 
+                     </children>
+                </admin> 
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <QM_LayeredNavigation>
+                    <files>
+                        <default>QM_LayeredNavigation.csv</default>
+                    </files>
+                </QM_LayeredNavigation>
+            </modules>
+        </translate>
+    </adminhtml> 
+    
+    <default>
+        <qm_layerednavigation>
+           <general>
+                <active>1</active>
+                <title_separator> - </title_separator>
+                <descr_separator>, </descr_separator>
+                <exclude></exclude>
+                <exclude_cat></exclude_cat>
+                <show_in_stock>0</show_in_stock>
+                <use_custom_ranges>0</use_custom_ranges>
+                <categories_type>0</categories_type>
+                <price_type>0</price_type>
+                <price_from_to>1</price_from_to> 
+                <price_collapsed>0</price_collapsed> 
+                <categories_collapsed>0</categories_collapsed> 
+                <hide_one_value>0</hide_one_value>
+                <categories_order>0</categories_order>
+                <slider_type>0</slider_type>
+                <bundle>0</bundle>
+                <stock_filter_pos>-1</stock_filter_pos>
+            </general>
+            <block>
+                <ajax>0</ajax>
+                <state_pos>left</state_pos>
+                <categories_pos>left</categories_pos>
+                <price_pos>left</price_pos>
+                
+            </block>
+            <seo>
+                <urls>0</urls>
+                <hide_attributes>0</hide_attributes>
+                <key>shopby</key>
+                <canonical>2</canonical>
+                <canonical_cat>1</canonical_cat>
+                <query_param></query_param>
+                <price_nofollow>0</price_nofollow>
+                <price_noindex>0</price_noindex>
+                <price_rel_nofollow>0</price_rel_nofollow>
+                <special_char>_</special_char>
+                <option_char>-</option_char>                                
+            </seo>
+            <brands>
+                <attr></attr>
+            </brands>
+        </qm_layerednavigation>
+    </default>
+    
+</config>

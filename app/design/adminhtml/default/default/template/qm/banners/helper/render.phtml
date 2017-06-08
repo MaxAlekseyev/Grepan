@@ -1,0 +1,312 @@
+<?php $_imageCollection = $this->getImageCollection() ?>
+<div class="qm-banner-render-wrapper">
+    <div class="grid">
+        <table cellspacing="0" class="data border" id="" width="100%">
+            <col width="1"/>
+            <col width="1"/>
+            <col width="1"/>
+            <col width="1"/>
+            <col width="190"/>
+            <col width="1"/>
+            <col width="1"/>
+            <col width="1"/>
+            <thead>
+            <tr class="headings">
+                <th><?php echo $this->__('Id') ?></th>
+                <th style="opacity:0.2" class="copy-to-render"><?php echo $this->__('Copy to render') ?></th>
+                <th><?php echo $this->__('Uploaded Image') ?></th>
+                <th><?php echo $this->__('Browse image') ?></th>
+                <th><?php echo $this->__('Alt') ?><br><?php echo $this->__('[STORE VIEW]') ?></th>
+                <th><?php echo $this->__('Offset') ?><br><?php echo $this->__('[STORE VIEW]') ?></th>
+                <th><?php echo Mage::helper('catalog')->__('Exclude') ?>
+                    <br><?php echo $this->__('[STORE VIEW]') ?></th>
+                <th class="last"><?php echo Mage::helper('catalog')->__('Remove') ?></th>
+            </tr>
+            </thead>
+            <tbody id="table_images">
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="100" class="last" style="padding:8px">
+                    <div class="buttons flex" style="position:relative;float:right;">
+                        <button id="add_image_row">
+                            <span><?php echo $this->__('Add new image') ?></span>
+                        </button>
+                    </div>
+
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="html-render">
+        <table>
+            <thead>
+            <th><h3><?php echo $this->__('Render') ?></h3></th>
+            <th></th>
+            <th><h3><?php echo $this->__('Css style') ?></h3></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <textarea id="html_render"
+                              style="opacity: 0.2;min-width:510px !important; max-width:510px !important;min-height:200px !important;
+                              <?php if ($this->getStoreId() && $this->isUseDefaultHtmlRender()): ?>
+                                  color: rgb(84, 84, 84);
+                              <?php endif ?>"
+                              name="banner[html_render]"><?php echo $this->getHtmlRender() ?></textarea>
+                </td>
+                <td class="scope-label">
+                    <span class="nobr"><?php echo $this->__('[STORE VIEW]') ?></span>
+                    <?php if ($this->getStoreId() != 0): ?>
+                        <input type="checkbox" id="use_default_html_render"
+                               name="banner[use_default_html_render]"
+                            <?php if ($this->isUseDefaultHtmlRender()): ?>
+                                checked="checked"
+                            <?php endif ?>>
+                        <label for="use_default_html_render"
+                               class="normal"><?php echo $this->__('Use Default Value') ?></label>
+                    <?php endif ?>
+                </td>
+                <td>
+                     <textarea id="render_css"
+                               style="opacity: 0.2;min-width:510px !important; max-width:510px !important;min-height:200px !important;
+                               <?php if ($this->getStoreId() && $this->isUseDefaultRenderCss()): ?>
+                                   color: rgb(84, 84, 84);
+                               <?php endif ?>"
+                               name="banner[render_css]"><?php echo $this->getRenderCss() ?></textarea>
+                </td>
+
+                <td class="scope-label">
+                    <span class="nobr"><?php echo $this->__('[STORE VIEW]') ?></span>
+                    <?php if ($this->getStoreId() != 0): ?>
+                        <input type="checkbox" id="use_default_render_css"
+                               name="banner[use_default_render_css]"
+                            <?php if ($this->isUseDefaultRenderCss()): ?>
+                                checked="checked"
+                            <?php endif ?>>
+                        <label for="use_default_render_css"
+                               class="normal"><?php echo $this->__('Use Default Value') ?></label>
+                    <?php endif ?>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot style="overflow:hidden">
+            <tr>
+                <td>
+                    <ul style="overflow:hidden">
+                        <li>
+                    <ul id="banner_note">
+                        <li><?php echo $this->__('Put the carriage to the desired position and press copy button from grid for insert specific image') ?></li>
+                        <li><?php echo $this->__('Use {{foreach}} looped body {{endforeach}} for loop. Use {{alt[i]}} and {{image[i]}} inside for cycle by images') ?></li>
+                        <li><?php echo $this->__('Nested loops are not supported') ?></li>
+                    </ul>
+                        </li>
+                        <li>
+                            <label
+                                for="banner_render_notice"><?php echo $this->__('I know how to use render') ?></label>
+
+                            <input id="banner_render_notice" type="checkbox">
+
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+<script>
+    (function () {
+        var imageTable = $('table_images'),
+            templateRow = new Template('<tr id="template_row"><td class="id">#{image_id}</td><td #{insert_td_style} class="copy-to-render"><input type="hidden" name="banner[images][id][#{image_id}]" value="#{id}"/><input type="hidden" name="banner[images][image_id][]" class="input-text image-id" value="#{image_id}"/><button style="width:100%" id="btn-copy-url-to-render-#{image_id}" class="insert_button btn-copy-url-to-render" #{insert_btn_disabled} data-image-id="#{image_id}" title="<?php echo $this->__('Copy url to render')?>"><span><?php echo $this->__('Copy url to render')?></span></button><button style="width:100%" id="btn-copy-alt-to-render-#{image_id}" class="insert_button btn-copy-alt-to-render" #{insert_btn_disabled} data-image-id="#{image_id}" title="<?php echo $this->__('Copy alt to render')?>"><span><?php echo $this->__('Copy alt to render')?></span></button></td><td class="cell-image-uploaded"><a target="_blank" href="#{image_url}"><img style="width: 100px; height: 100px" src="#{image_url}"/></a></td><td class="cell-browse-image"><input type="file" id="banner[images][image][#{image_id}]" name="banner[images][image][#{image_id}]" class="#{browse_image_class} browse-image" type="file" accept="image/*"/></td><td class="cell-alt"><input type="text" name="banner[images][alt][#{image_id}]" class="user-input input-text alt #{input_disabled_class}" #{input_disabled} value="#{alt}"/></td><td class="cell-offset"><input type="text" name="banner[images][offset][#{image_id}]" class="user-input input-text validate-number offset #{input_disabled_class}" #{input_disabled} value="#{offset}"/></td><td class="cell-exclude-from-store a-center"><input name="banner[images][exclude-from-store][#{image_id}]" id="banner[images][exclude-from-store][#{image_id}]" #{exclude_from_store_checked} class="exclude-from-store" type="checkbox"/></td><td class="cell-remove a-center last"><input name="banner[images][remove][#{image_id}]" class="remove" type="checkbox"/></td></tr>'),
+            addButton = $('add_image_row'),
+            textArea = $('html_render'),
+            renderCheckbox = $('banner_render_notice'),
+            defaultValueRenderHtmlChekbox = $('use_default_html_render');
+
+        function getLatestId() {
+            var id = 0;
+
+            $$('.image-id').each(function (el) {
+                var value = parseInt(el.value, 10);
+                id = value > id ? value : id;
+            });
+            return id;
+        }
+
+        function getNewId() {
+            return getLatestId() + 1;
+        }
+
+        function observeCopyToRenderBtn(button, ruleName) {
+            button.observe('click', function (event) {
+                var index = textArea.readAttribute('data-caret-position');
+                event.preventDefault();
+
+                if (defaultValueRenderHtmlChekbox && defaultValueRenderHtmlChekbox.checked) {
+                    return;
+                }
+                textArea.value = textArea.value.substr(0, index) + '{{' + ruleName + '[' + button.readAttribute('data-image-id') + ']}}' + textArea.value.substr(index);
+
+                if ($('banner[images][exclude-from-store][' + button.readAttribute('data-image-id') + ']').checked) {
+                    alert("<?php echo $this->__('Warning: this image not include in this store') ?>");
+                }
+            });
+        }
+
+        function addImage(id, imageUrl, alt, offset, useInStore) {
+            var imageId = getNewId(),
+                excludeFromStoreChecked = useInStore === undefined ? false : !useInStore;
+            imageTable.insert(templateRow.evaluate({
+                image_id: imageId,
+                id: id === undefined ? 0 : id,
+                image_url: imageUrl,
+                browse_image_class: id ? '' : 'required-entry',
+                alt: alt,
+                offset: offset,
+                input_disabled_class: excludeFromStoreChecked ? 'disabled' : '',
+                input_disabled: excludeFromStoreChecked ? 'disabled="disabled"' : '',
+                exclude_from_store_checked: excludeFromStoreChecked ? 'checked="checked"' : '',
+                insert_td_style: renderCheckbox.checked ? '' : 'style="opacity:0.2"',
+                insert_btn_disabled: renderCheckbox.checked ? '' : 'disabled="disabled"'
+            }));
+
+            $('banner[images][exclude-from-store][' + imageId + ']').observe('click', function (event) {
+                var checkbox = Event.element(event);
+                if (!checkbox.checked) {
+                    checkbox.up('tr').select('.user-input').each(function (el) {
+                        el.enable().removeClassName('disabled');
+                    });
+                } else {
+                    checkbox.up('tr').select('.user-input').each(function (el) {
+                        el.disable().addClassName('disabled');
+                    });
+                }
+            });
+
+            observeCopyToRenderBtn($('btn-copy-url-to-render-' + imageId), 'image');
+            observeCopyToRenderBtn($('btn-copy-alt-to-render-' + imageId), 'alt');
+
+            return imageId;
+        }
+
+        <?php foreach($_imageCollection as $_image): ?>
+        addImage(
+            '<?php echo $_image->getId() ?>',
+            '<?php echo $_image->getUrl() ?>',
+            '<?php echo $this->getImageAlt($_image->getImageId()) ?>',
+            '<?php echo $this->getImageOffset($_image->getImageId()) ?>',
+            '<?php echo $this->isUseImageInStore($_image->getImageId()) ?>'
+        );
+        <?php endforeach ?>
+
+        addButton.observe('click', function (event) {
+            var imageId = addImage(),
+                inputFile = $('banner[images][image][' + imageId + ']');
+
+            inputFile.click();
+
+            document.body.onfocus = function roar() {
+                if (!inputFile.value.length) {
+                    inputFile.up('tr').remove();
+                }
+            };
+
+            event.preventDefault();
+        });
+
+
+    })();
+</script>
+<script>
+    (function () {
+        var htmlRenderTextarea = $('html_render'),
+            renderCssTextarea = $('render_css'),
+            textAreas = $$('#html_render, #render_css'),
+            bannerNoticeCheckbox = $('banner_render_notice'),
+            defaultValueRenderHtmlChekbox = $('use_default_html_render'),
+            defaultValueRenderCssChekbox = $('use_default_render_css');
+
+        function observeDefaultValueCheckbox(checkbox, textarea) {
+            if (checkbox) {
+                checkbox.observe('click', function (event) {
+                    if (checkbox.checked) {
+                        textarea.setStyle({
+                            color: 'rgb(84, 84, 84)'
+                        });
+                    } else {
+                        textarea.setStyle({
+                            color: ''
+                        });
+                    }
+                });
+            }
+        }
+
+        observeDefaultValueCheckbox(defaultValueRenderHtmlChekbox, htmlRenderTextarea);
+        observeDefaultValueCheckbox(defaultValueRenderCssChekbox, renderCssTextarea);
+
+
+        bannerNoticeCheckbox.observe('click', function (event) {
+            var insertButtons = $$('.insert_button'),
+                copyToRenderHolders = $$('.copy-to-render');
+            if (bannerNoticeCheckbox.checked) {
+                textAreas.each(function (el) {
+                    el.setStyle({
+                        opacity: 1
+                    });
+                });
+                insertButtons.each(function (el) {
+                    el.enable();
+                });
+                copyToRenderHolders.each(function (el) {
+                    el.setStyle({
+                        opacity: 1
+                    });
+                });
+            } else {
+                textAreas.each(function (el) {
+                    el.setStyle({
+                        opacity: 0.2
+                    });
+                });
+                insertButtons.each(function (el) {
+                    el.disable();
+                });
+                copyToRenderHolders.each(function (el) {
+                    el.setStyle({
+                        opacity: 0.2
+                    });
+                });
+            }
+        });
+
+        function observeTextareaFocus(textarea, defaultCheckbox) {
+            textarea.observe('focus', function (event) {
+                if (!bannerNoticeCheckbox.checked || (defaultCheckbox && defaultCheckbox.checked)) {
+                    Event.element(event).blur();
+                }
+                event.preventDefault();
+            });
+        }
+
+        observeTextareaFocus(htmlRenderTextarea, defaultValueRenderHtmlChekbox);
+        observeTextareaFocus(renderCssTextarea, defaultValueRenderCssChekbox);
+
+
+        htmlRenderTextarea.observe('keyup', function (event) {
+            htmlRenderTextarea.writeAttribute('data-caret-position', htmlRenderTextarea.selectionStart);
+        });
+
+        htmlRenderTextarea.observe('click', function (event) {
+            htmlRenderTextarea.writeAttribute('data-caret-position', htmlRenderTextarea.selectionStart);
+        });
+
+    })();
+</script>
+

@@ -1,0 +1,33 @@
+<div class="entry-edit">
+    <fieldset>
+        <?php if ($this->isTrackingSupported()): ?>
+            <?php if ($this->isTrackingAvailable()): ?>
+                <ul>
+                    <li>
+                        <strong><?php echo $this->__('Status: ') ?></strong>
+                        <span><?php echo $this->getStatus() ?></span>
+                        <span class="separator">|</span>
+                        <strong><?php echo $this->__('Address: ') ?></strong>
+                        <span><?php echo $this->getAddress() ?></span>
+                    </li>
+                    <li>
+                        <button title="<?php echo $this->__('Refresh') ?>" type="button"
+                                class="scalable"
+                                onclick="setLocation('<?php echo $this->getSyncUrl() ?>');"
+                                style="">
+                            <span><span><span><?php echo $this->__('Refresh') ?></span></span></span>
+                        </button>
+                    </li>
+                </ul>
+            <?php else: ?>
+                <span class="error">
+                    <?php echo $this->getTrackingNotAvailableMessage() ?>
+                </span>
+            <?php endif ?>
+        <?php else: ?>
+            <span class="error">
+                <?php echo $this->__('Shipping method doesn\'t support tracking') ?>
+            </span>
+        <?php endif ?>
+    </fieldset>
+</div>

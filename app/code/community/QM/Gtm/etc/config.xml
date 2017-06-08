@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <QM_Gtm>
+            <version>0.1.0</version>
+        </QM_Gtm>
+    </modules>
+    <global>
+        <blocks>
+            <qm_gtm>
+                <class>QM_Gtm_Block</class>
+            </qm_gtm>
+        </blocks>
+        <helpers>
+            <qm_gtm>
+                <class>QM_Gtm_Helper</class>
+            </qm_gtm>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <qm_gtm>
+                    <file>qm_gtm.xml</file>
+                </qm_gtm>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <QM_Gtm>
+                    <files>
+                        <default>QM_Gtm.csv</default>
+                    </files>
+                </QM_Gtm>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <QM_Gtm>
+                    <files>
+                        <default>QM_Gtm.csv</default>
+                    </files>
+                </QM_Gtm>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>
+

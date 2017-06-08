@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <qmcore translate="label">
+            <groups>
+                <about_qmnewfromto translate="label" module="qmnewfromto">
+                    <label>Extension: Product as NewFromTo</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label">
+                            <label>User Guide</label>
+                            <frontend_model>qmnewfromto/adminhtml_form_renderer_config_about</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                    </fields>
+                </about_qmnewfromto>
+            </groups>
+        </qmcore>
+        <qmnewfromto translate="label">
+            <label>Product as NewFromTo</label>
+            <tab>qmage</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>800</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Module Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Is enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[<strong style='color:red'>Attention!</strong> Configuration apply only for created products after enable this module. For older products must specify manually.]]></comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </settings>
+                <config translate="label">
+                    <label>Config</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <new_after translate="label">
+                            <label>How many days after products becomes new</label>
+                            <backend_model>qmnewfromto/system_config_intValidator</backend_model>
+                            <frontend_type>text</frontend_type>
+                            <comment>Leave empty if you need now date</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </new_after>
+                        <count_new_days translate="label">
+                            <label>How many days products are new</label>
+                            <backend_model>qmnewfromto/system_config_intValidator</backend_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </count_new_days>
+                    </fields>
+                </config>
+            </groups>
+        </qmnewfromto>
+    </sections>
+</config>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magefast_UkrainianRegions>
+            <version>1.0.1</version>
+        </Magefast_UkrainianRegions>
+    </modules>
+    <global>
+        <resources>
+            <ukrainianregions_setup>
+                <setup>
+                    <module>Magefast_UkrainianRegions</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ukrainianregions_setup>
+            <ukrainianregions_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ukrainianregions_write>
+            <ukrainianregions_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ukrainianregions_read>
+        </resources>
+    </global>
+</config>

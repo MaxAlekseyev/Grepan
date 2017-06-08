@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_CategoryBottomText>
+            <active>true</active>
+            <codePool>local</codePool>
+        </QM_CategoryBottomText>
+    </modules>
+</config>

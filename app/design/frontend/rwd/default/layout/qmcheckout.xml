@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="top.links">
+            <block type="qmcheckout/links" after="checkout_cart_link" />
+        </reference>
+        <remove name="checkout_cart_link" />
+    </default>
+
+    <checkout_cart_index>
+        <remove name="checkout.cart.top_methods" />
+        <remove name="checkout.cart.methods.onepage" />
+        <remove name="checkout.cart.shipping" />
+        <remove name="checkout.cart.coupon" />
+
+        <reference name="head">
+            <action method="addCss"><css>css/qmcheckout.css</css></action>
+            <action method="addJs"><script>qmcheckout.js</script></action>
+        </reference>
+
+        <!-- <reference name="header">
+            <action method="unsetChild"><name>topMenu</name></action>
+            <action method="unsetChild"><name>topContainer</name></action>
+            <action method="unsetChild"><name>topLinks</name></action>
+            <action method="unsetChild"><name>topSearch</name></action>
+        </reference> -->
+
+        <!-- <reference name="footer">
+            <action method="unsetChildren"></action>
+        </reference> -->
+
+        <reference name="checkout.cart">
+            <block type="qmcheckout/block" name="qmcheckout.page" as="qmcheckout_page">
+                <block type="qmcheckout/block_info" name="qmcheckout.user_block" as="qmcheckout_user_block" template="qm/checkout/block/info.phtml">
+                    <!-- Block for custom scripts -->
+                    <block type="core/text_list" name="qmcheckout.additional.data"/>
+                </block>
+            </block>
+            <block type="qmcheckout/block_info" name="qmcheckout_shipping" template="qm/checkout/shipping.phtml">
+                <block type="checkout/onepage_shipping_method_available" name="qmcheckout.shipping_method.available" as="available_shipping_methods" template="qm/checkout/shipping/available.phtml">
+                    <!-- Block for custom scripts -->
+                    <block type="core/text_list" name="additional.shipping.available.data"/>
+                </block>
+                <block type="checkout/onepage_shipping_method_additional" name="qmcheckout.shipping_method.additional" as="additional_shipping_methods" template="checkout/onepage/shipping_method/additional.phtml"/>
+            </block>
+            <action method="unsetChild" ifconfig="checkout/easyco/hide_shipping_method">
+                <name>qmcheckout_shipping</name>
+            </action>
+            <block type="core/template" name="qmcheckout_payment" template="qm/checkout/payment.phtml">
+                <block type="qmcheckout/payment_methods" name="qmcheckout.payment_methods" as="methods" template="qm/checkout/payment_methods.phtml" >
+                    <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+                </block>
+            </block>
+            <action method="unsetChild" ifconfig="checkout/easyco/hide_payment_method">
+                <name>qmcheckout_payment</name>
+            </action>
+            <action method="setCartTemplate"><value>qm/checkout/cart.phtml</value></action>
+            <action method="setEmptyTemplate"><value>qm/checkout/cart/noItems.phtml</value></action>
+            <action method="chooseTemplate"/>
+            <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>qm/checkout/cart/item/default.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>qm/checkout/cart/item/default.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>qm/checkout/cart/item/default.phtml</template></action>
+            <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>qm/checkout/cart/item/default.phtml</template></action>
+
+        </reference>
+
+        <reference name="checkout.cart.methods">
+            <block type="checkout/cart_coupon" name="qmcheckout.cart.coupon" as="coupon" template="qm/checkout/coupon.phtml" after="checkout.onepage.agreements" />
+            <block type="qmcheckout/newsletter" name="qmcheckout.newsletter" template="qm/checkout/newsletter.phtml" after="checkout.onepage.agreements" />
+            <block type="qmcheckout/account" name="qmcheckout.create_account" template="qm/checkout/create_account.phtml" after="checkout.onepage.agreements" />
+            <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="qm/checkout/agreements.phtml" before="checkout.cart.methods.multishipping" />
+            <block type="core/template" name="qmcheckout.place_order" template="qm/checkout/link.phtml" after="checkout.onepage.agreements" />
+        </reference>
+    </checkout_cart_index>
+
+    <qmcheckout_update>
+        <reference name="content">
+            <block type="checkout/onepage_shipping_method_available" name="qmcheckout.shipping_method.available" as="available_shipping_methods" template="qm/checkout/shipping/available.phtml">
+                <!-- Block for custom scripts -->
+                <block type="core/text_list" name="additional.shipping.available.data"/>
+            </block>
+            <block type="checkout/onepage_shipping_method_additional" name="qmcheckout.shipping_method.additional" as="additional_shipping_methods" template="checkout/onepage/shipping_method/additional.phtml"/>
+            <block type="qmcheckout/payment_methods" name="qmcheckout.payment_methods" as="methods" template="qm/checkout/payment_methods.phtml">
+                <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+            </block>
+            <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+        </reference>
+    </qmcheckout_update>
+
+    <qmcheckout_checkout_success>
+        <update handle="checkout_onepage_success" />
+    </qmcheckout_checkout_success>
+
+    <centinel_index_authenticationcomplete>
+        <reference name="root">
+            <action method="setTemplate"><template>qm/checkout/centinel/complete.phtml</template></action>
+        </reference>
+    </centinel_index_authenticationcomplete>
+</layout>

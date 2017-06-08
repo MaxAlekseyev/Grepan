@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+
+
+    <menu>
+        <promo>
+            <children>
+                <qm_exportcatalog translate="title">
+                    <title>Export catalog</title>
+                    <sort_order>40</sort_order>
+                    <children>
+                        <qm_exportcatalog_config translate="title">
+                            <title>Config export</title>
+                            <action>exportcatalog/adminhtml_config</action>
+                        </qm_exportcatalog_config>
+
+                        <qm_exportcatalog_settings translate="title">
+                            <title>Settings</title>
+                            <action>adminhtml/system_config/edit/section/qm_exportcatalog</action>
+                        </qm_exportcatalog_settings>
+                    </children>
+                </qm_exportcatalog>
+            </children>
+        </promo>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <qm_exportcatalog>
+                                        <title>QM ExportCatalog</title>
+                                    </qm_exportcatalog>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

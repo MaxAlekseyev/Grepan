@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_QMExtPdfDocs>
+            <active>true</active>
+            <codePool>local</codePool>
+        </QM_QMExtPdfDocs>
+    </modules>
+</config>

@@ -1,0 +1,15 @@
+<?php if ($this->isNewPostOrder()): ?>
+    <?php if ($this->isWaybillExists()): ?>
+        <button id="new_post_print_waybill"
+                onclick="window.open('<?php echo $this->getWaybillPrintUrl() ?>');return false;"
+                label="<?php echo $this->__('Print Waybill') ?>">
+            <span>
+                <span>
+                    <?php echo $this->__('Print Waybill') ?>
+                </span>
+            </span>
+        </button>
+    <?php else: ?>
+        <span class="error"><?php echo $this->__('Waybill Printing Will Be Available After You Create It') ?></span>
+    <?php endif ?>
+<?php endif ?>

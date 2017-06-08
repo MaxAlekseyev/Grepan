@@ -1,0 +1,109 @@
+<?php $_options = $this->getValues() ?>
+<style>
+    .row_qmcore_add_js_js_files ul {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #AAA #C8C8C8 #C8C8C8 #AAA;
+        background: none repeat scroll 0% 0% #FFF;
+        font: 12px arial,helvetica,sans-serif;
+        height: 230px;
+        overflow: auto;
+    }
+
+    .row_qmcore_add_js_js_files div.selected {
+        background-color: #DDD;
+    }
+
+    .row_qmcore_add_js_js_files ul li{
+        margin: 0px;
+    }
+
+    .row_qmcore_add_js_js_files .select-file {
+        width: 285px;
+        height: 23px;
+        background-color: #FFF;
+        border-bottom: 1px solid #c9ddd6;
+    }
+
+    .row_qmcore_add_js_js_files .select-file input {
+        width: 30px;
+        height: 23px;
+        float: right;
+    }
+</style>
+<tr id="row_qmcore_add_js_js_files" class="row_qmcore_add_js_js_files">
+    <td class="label"><label for="qmcore_add_js_js_files"> Js Files</label></td>
+
+    <td class="value">
+        <ul>
+            <?php foreach ($_options as $_opt): ?>
+                <li>
+                    <?php if ($_opt['value']): ?>
+                        <div class="select-file  <?php echo $this->isSelected($_opt) ? 'selected' : '' ?>">
+                            <span><?php echo $_opt['label'] ?></span>
+                            <input class="value"
+                                   data-selected="<?php echo $this->isSelected($_opt) ? 1 : 0 ?>"
+                                   data-value="<?php echo $_opt['value'] ?>" type="hidden"
+                                   name="<?php echo $this->getName() . '[]' ?>"/>
+                            <input type="checkbox"
+                                   class="checkbox"
+                                    <?php echo $this->isSelected($_opt) ? 'checked="checked"' : '' ?>
+                                />
+                        </div>
+                    <?php else: ?>
+                        <div class="select-file"></div>
+                    <?php endif ?>
+                </li>
+            <?php endforeach ?>
+        </ul>
+        <p class="note"><span><?php echo $this->__('This is sortable list') ?></span></p>
+    </td>
+    <td class="scope-label"><?php echo $this->__('[GLOBAL]') ?></td>
+    <td class=""></td>
+</tr>
+
+<script>
+    jQuery(function ($) {
+        var holder = $('#row_qmcore_add_js_js_files'), values = holder.find('.value');
+
+        function updateInputVal(el) {
+            var data = {
+                value: el.data('value'),
+                selected: el.data('selected')
+            };
+
+            el.val(JSON.stringify(data));
+        }
+
+        function updateInputsVals() {
+            values.each(function (i, el) {
+                updateInputVal($(el));
+            });
+        }
+
+        updateInputsVals();
+
+        $('.select-file input.checkbox').click(function () {
+            var el = $(this).closest('.select-file'),
+                input = el.find('.value');
+
+            if (el.hasClass('ui-sortable-helper')) {
+                return;
+            }
+
+            if (el.hasClass('selected')) {
+                el.removeClass('selected');
+                input.data('selected', false);
+            } else {
+                el.addClass('selected');
+                input.data('selected', true);
+            }
+
+            updateInputVal(input);
+        });
+
+        holder.find('ul').sortable({
+            stop: updateInputsVals
+        });
+    })
+</script>

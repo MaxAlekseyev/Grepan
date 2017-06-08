@@ -1,0 +1,37 @@
+<?php
+/**
+ * override the superProduct variable
+ *
+ * @category    QM
+ * @package	    QM_Switcher
+ */
+?>
+<?php
+    /** @var QM_Switcher_Helper_Data $helper */
+    $helper = Mage::helper('qm_switcher');
+?>
+<?php if ($helper->isEnabledAdmin()) : ?>
+<script type="text/javascript">
+//<![CDATA[
+    if (typeof superProduct != 'undefined'){
+        var createEmptyUrl = superProduct.createEmptyUrl;
+        var createNormalUrl = superProduct.createNormalUrl;
+        var createQuickUrl = superProduct.createQuickUrl;
+        var links = superProduct.links;
+        //document.observe("dom:loaded", function() {
+            superProduct = new QM.Switcher(
+                superProduct.attributes,
+                links,
+                superProduct.idPrefix,
+                superProduct.grid,
+                superProduct.readonly,
+                '<?php echo QM_Switcher_Helper_Data::DEFAULT_CONFIGURATION_ATTRIBUTE_CODE?>'
+            );
+            superProduct.createEmptyUrl = createEmptyUrl;
+            superProduct.createNormalUrl = createNormalUrl;
+            superProduct.createQuickUrl = createQuickUrl;
+        //});
+    }
+//]]>
+</script>
+<?php endif;?>

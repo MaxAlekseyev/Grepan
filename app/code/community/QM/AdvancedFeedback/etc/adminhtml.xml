@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <qmadvfeedback translate="title" module="qmadvfeedback">
+                                        <title>AdvancedFeedback</title>
+                                    </qmadvfeedback>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <customer>
+                        <children>
+                            <qmadvfeedback translate="title" module="qmadvfeedback">
+                                <title>Advanced Feedback</title>
+                                <children>
+                                    <callback translate="title" module="qmadvfeedback">
+                                        <title>Callback</title>
+                                        <sort_order>0</sort_order>
+                                    </callback>
+                                    <consultation translate="title" module="qmadvfeedback">
+                                        <title>Сonsultation</title>
+                                        <sort_order>10</sort_order>
+                                    </consultation>
+                                </children>
+                            </qmadvfeedback>
+                        </children>
+                    </customer>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <customer>
+            <children>
+                <qmadvfeedback translate="title" module="qmadvfeedback">
+                    <title>Advanced Feedback</title>
+                    <sort_order>55</sort_order>
+                    <children>
+                        <callback translate="title" module="qmadvfeedback">
+                            <title>Callback</title>
+                            <action>adminhtml/advancedfeedback_callback</action>
+                            <sort_order>0</sort_order>
+                        </callback>
+                        <consultation translate="title" module="qmadvfeedback">
+                            <title>Сonsultation</title>
+                            <action>adminhtml/advancedfeedback_consultation</action>
+                            <sort_order>10</sort_order>
+                        </consultation>
+                    </children>
+                </qmadvfeedback>
+            </children>
+        </customer>
+
+    </menu>
+</config>

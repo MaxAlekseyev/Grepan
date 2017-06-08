@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_advancedfeedback_callback_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>customer/qmadvfeedback/callback</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="qmadvfeedback/adminhtml_callback" name="callback" />
+
+        </reference>
+    </adminhtml_advancedfeedback_callback_index>
+    <adminhtml_advancedfeedback_callback_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="qmadvfeedback/adminhtml_callback_grid" name="callback_grid"/>
+        </block>
+    </adminhtml_advancedfeedback_callback_grid>
+    <!-- Callback add/edit action -->
+    <adminhtml_advancedfeedback_callback_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>customer/qmadvfeedback/callback</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="qmadvfeedback/adminhtml_callback_edit" name="callback_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="qmadvfeedback/adminhtml_callback_edit_tabs" name="callback_tabs"></block>
+        </reference>
+    </adminhtml_advancedfeedback_callback_edit>
+
+    <adminhtml_advancedfeedback_consultation_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>customer/qmadvfeedback/consultation</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="qmadvfeedback/adminhtml_consultation" name="consultation" />
+
+        </reference>
+    </adminhtml_advancedfeedback_consultation_index>
+    <adminhtml_advancedfeedback_consultation_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="qmadvfeedback/adminhtml_consultation_grid" name="consultation_grid"/>
+        </block>
+    </adminhtml_advancedfeedback_consultation_grid>
+    <!-- Consultation add/edit action -->
+    <adminhtml_advancedfeedback_consultation_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>customer/qmadvfeedback/consultation</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="qmadvfeedback/adminhtml_consultation_edit" name="consultation_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="qmadvfeedback/adminhtml_consultation_edit_tabs" name="consultation_tabs"></block>
+        </reference>
+    </adminhtml_advancedfeedback_consultation_edit>
+</layout>

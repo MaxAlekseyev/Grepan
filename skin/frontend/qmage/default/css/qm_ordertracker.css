@@ -1,0 +1,24 @@
+.order-tracking-box dl {
+    width: 100%;
+    overflow: hidden;
+}
+
+.order-tracking-box dt {
+    float: left;
+    width: 30%;
+}
+
+.order-tracking-box dd {
+    float: left;
+    width: 70%;
+}
+
+.order-tracking-box h2 {
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+}
+
+.tracking-holder {
+    margin-top: 10px;
+}

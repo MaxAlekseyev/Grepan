@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_CategoryBottomText>
+            <version>0.0.1</version>
+        </QM_CategoryBottomText>
+    </modules>
+
+    <global>
+        <resources>
+            <qmcategorybottomtext_setup>
+                <setup>
+                    <module>QM_CategoryBottomText</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>default_setup</use>
+                </connection>
+            </qmcategorybottomtext_setup>
+        </resources>
+    </global>
+</config>

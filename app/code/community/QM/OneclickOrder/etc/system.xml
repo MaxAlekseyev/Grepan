@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <qmoneclickorder translate="label">
+            <label>OneClick Order</label>
+            <tab>qmage</tab>
+            <frontend_type>text</frontend_type>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <sort_order>10</sort_order>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>10</sort_order>
+                    <fields>
+                        <enabled>
+                            <label>Enable OneClick Order</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                        </enabled>
+                        <insert_selector>
+                            <label>Order Place Button Selector</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Insert only "after" selected element.<br/>e.g. "#product-addtocart > span"]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>15</sort_order>
+                        </insert_selector>
+                        <enable_ajax>
+                            <label>Enable Ajax</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>20</sort_order>
+                            <depends><enabled>1</enabled></depends>
+                        </enable_ajax>
+                        <enable_confirmation>
+                            <label>Show Confirmation Dialog</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Showing after order successfully received</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>30</sort_order>
+                            <depends><enabled>1</enabled><enable_ajax>1</enable_ajax></depends>
+                        </enable_confirmation>
+                        <confirmation_text translate="label">
+                            <label>Confirmation Dialog Html</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[You can use placeholders: {{name}}, {{telephone}}]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>40</sort_order>
+                            <validate>required-entry</validate>
+                            <depends><enabled>1</enabled><enable_ajax>1</enable_ajax><enable_confirmation>1</enable_confirmation></depends>
+                        </confirmation_text>
+                        <show_name>
+                            <label>Show Field - Name</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>50</sort_order>
+                        </show_name>
+                        <show_telephone>
+                            <label>Show Field - Telephone</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>53</sort_order>
+                        </show_telephone>
+                        <show_email>
+                            <label>Show Field - Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>57</sort_order>
+                        </show_email>
+                        <show_comment>
+                            <label>Show Field - Comment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>60</sort_order>
+                        </show_comment>
+                        <customer_groups>
+                            <label>Customer groups</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>customer/resource_group_collection</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>70</sort_order>
+                        </customer_groups>
+                        <default_enable_on_new_product>
+                            <label>Default value 'Enable one click order' on new product creation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <sort_order>80</sort_order>
+                        </default_enable_on_new_product>
+                    </fields>
+                </general>
+                <notifications translate="label">
+                    <label>Notifications</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>20</sort_order>
+                    <fields>
+                        <email_notification_enabled>
+                            <label>Enable Email Notification</label>
+                            <frontend_type>select</frontend_type>
+                            <comment><![CDATA[Enable email notification of new order requests]]></comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                        </email_notification_enabled>
+                        <email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>20</sort_order>
+                            <depends><email_notification_enabled>1</email_notification_enabled></depends>
+                        </email_template>
+                        <send_email_notification_to>
+                            <label>List of Email Addresses</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[Each email address on a new line]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>30</sort_order>
+                            <depends><email_notification_enabled>1</email_notification_enabled></depends>
+                        </send_email_notification_to>
+                    </fields>
+                </notifications>
+            </groups>
+        </qmoneclickorder>
+    </sections>
+</config>

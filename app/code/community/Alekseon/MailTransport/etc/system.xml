@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author    Marcin Frymark
+ * @email     contact@alekseon.com
+ * @company   Alekseon
+ * @website   www.alekseon.com
+ */
+-->
+<config>
+    <tabs>
+        <alekseon>
+            <label>Alekseon</label>
+            <sort_order>450</sort_order>
+        </alekseon>
+    </tabs>
+    <sections>
+        <alekseon_adminNotification translate="label" module="alekseon_mailTransport">
+            <label>Alekseon Notifications</label>
+            <tab>alekseon</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <hint>
+                    <frontend_model>alekseon_mailTransport/adminhtml_system_config_form_field_alekseonLogo</frontend_model>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </hint>
+                <general translate="label">
+                    <label>General Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <frequency translate="label">
+                            <label>Update Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_notification_frequency</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </frequency>
+                        <last_update translate="label">
+                            <label>Last Update</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>alekseon_mailTransport/adminhtml_system_config_form_field_alekseonNotification</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </last_update>
+                    </fields>
+                </general>
+            </groups>
+        </alekseon_adminNotification>
+        <alekseon_mailTransport translate="label" module="alekseon_mailTransport">
+            <label>Mail Transport</label>
+            <tab>alekseon</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>30</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <hint>
+                    <frontend_model>alekseon_mailTransport/adminhtml_system_config_form_field_alekseonLogo</frontend_model>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </hint>
+                <general translate="label">
+                    <label>Transport Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <type translate="label comment">
+                            <label>Mail Transport Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>alekseon_mailTransport/system_config_source_mailTransportTypes</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Make sure that you don't use "File" type on live environment.</comment>
+                        </type>
+                        <smtp_host translate="label">
+                            <label>Host</label>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                        </smtp_host>
+                        <smtp_port translate="label">
+                            <label>Port</label>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                        </smtp_port>
+                        <smtp_ssl translate="label">
+                            <label>Encryption protocol</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>alekseon_mailTransport/system_config_source_encryptionProtocols</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                        </smtp_ssl>
+                        <smtp_auth translate="label">
+                            <label>Authentication Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>alekseon_mailTransport/system_config_source_smtpAuthModes</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                        </smtp_auth>
+                        <smtp_user translate="label">
+                            <label>User</label>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                        </smtp_user>
+                        <smtp_password translate="label">
+                            <label>Password</label>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <frontend_type>obscure</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                        </smtp_password>
+                        <file_path translate="label comment">
+                            <label>Path for directory</label>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>2</type></depends>
+                            <comment>For example: "var/mails". Make sure that path is correct and directory exists.</comment>
+                        </file_path>
+                    </fields>
+                </general>
+                <sent_email_history translate="label">
+                    <label>Sent Email History</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <remove_successed_after translate="label comment">
+                            <label>Remove Successed Sent Emails From History After</label>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>In days. Be sure that cron is added to your cron tab.</comment>
+                        </remove_successed_after>
+                        <remove_failed_after translate="label comment">
+                            <label>Remove Failed Sent Emails From History After</label>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>In days. Be sure that cron is added to your cron tab.</comment>
+                        </remove_failed_after>
+                        <confidential_templates translate="label comment">
+                            <label>Select Confidential Templates</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>alekseon_mailTransport/system_config_source_allTemplates</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Content of selected templates is not saved.</comment>
+                        </confidential_templates>
+                    </fields>
+                </sent_email_history>
+            </groups>
+        </alekseon_mailTransport>
+    </sections>
+</config>

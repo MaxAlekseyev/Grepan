@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_Pagelinks>
+            <version>1.0.0</version>
+        </QM_Pagelinks>
+    </modules>
+    <global>
+        <helpers>
+            <pagelinks>
+                <class>QM_Pagelinks_Helper</class>
+            </pagelinks>
+        </helpers>
+        <models>
+            <pagelinks>
+                <class>QM_Pagelinks_Model</class>
+            </pagelinks>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <http_response_send_before>
+                <observers>
+                    <pagelinks_http_response_send_before>
+                        <class>pagelinks/observer</class>
+                        <method>httpResponseSendBefore</method>
+                    </pagelinks_http_response_send_before>
+                </observers>
+            </http_response_send_before>
+        </events>
+    </frontend>
+</config>

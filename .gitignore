@@ -90,5 +90,7 @@ Thumbs.db
 /qmage/
 tmp/
 tmp/*
-/Working/
+Working/
+
+>>>>>>> Stashed changes
 #Specific theme directories

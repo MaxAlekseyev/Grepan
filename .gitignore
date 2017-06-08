@@ -89,5 +89,6 @@ Thumbs.db
 /RELEASE_NOTES.txt
 /qmage/
 tmp/
+tmp/*
 
 #Specific theme directories

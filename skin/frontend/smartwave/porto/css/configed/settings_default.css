@@ -1,4 +1,9 @@
 /**
  * WARNING: Do not change this file. Your changes will be lost.
- * 2014-11-14 04:03:52 */
+ * 2017-06-09 11:23:01 */
 
+.category-bottom-text ul, ol {
+    list-style: initial;
+    padding: 6px;
+    padding-left: 20px;
+}

@@ -122,7 +122,8 @@
                 <?php
                 if($footer['footer_logo']){
                 ?>
-                    <a href="<?php echo $this->getUrl('') ?>" class="logo footer-logo"><img src="<?php echo $this->getLogoSrc(); ?>" alt="<?php echo $this->getLogoAlt(); ?>" /></a>
+                    <!--<a href="<?php echo $this->getUrl('') ?>" class="logo footer-logo"><img src="<?php echo $this->getLogoSrc(); ?>" alt="<?php echo $this->getLogoAlt(); ?>" /></a>-->
+                    <a href="/" class="logo footer-logo"><img src="<?php echo $this->getSkinUrl('images/footer/footer_logo_01.png'); ?>" alt="<?php echo $this->getLogoAlt(); ?>" /></a>
                 <?php
                 }
                 if($footer['footer_bottom_socialicons']){
@@ -139,7 +140,7 @@
                     echo '<div class="custom-block f-right">'.$this->getLayout()->createBlock('cms/block')->setBlockId($footer['footer_bottom_custom_block_id_2'])->toHtml().'</div>';
                 }
                 ?>
-                <address><?php echo $footer['copyrights'] ?></address>
+                <address class="copyright"><?php echo $footer['copyrights'] ?></address>
             </div>
         </div>
     <?php

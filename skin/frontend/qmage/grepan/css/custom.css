@@ -251,18 +251,21 @@ script#bx24_form_button {
 }
 
 /* Footer */
-.footer-socials a{
+.footer-socials a {
     display: inline-block;
     margin-right: 5px;
     width: 26px;
     /*height: 24px;*/
 }
-.footer .copyright{
+
+.footer .copyright {
     color: #eee;
 }
-.footer-bottom .custom-block{
+
+.footer-bottom .custom-block {
     margin-left: 30px;
 }
+
 .parallax-slider {
 }
 
@@ -323,9 +326,11 @@ script#bx24_form_button {
 .footer-middle .block.block-subscribe .label {
     font-weight: 700;
 }
-.footer-middle p, .footer-middle .block.block-subscribe .label, .footer-middle p, .footer-middle .contact-info i{
+
+.footer-middle p, .footer-middle .block.block-subscribe .label, .footer-middle p, .footer-middle .contact-info i {
     color: #aaa;
 }
+
 @media only screen and (max-width: 992px) {
     .cms-index-index.cms-home .container .col-md-12.col-sm-6 {
         width: 100%;
@@ -334,9 +339,10 @@ script#bx24_form_button {
 
 @media only screen and (max-width: 768px) {
 
-    .b24-widget-button-popup.b24-widget-button-popup-show{
+    .b24-widget-button-popup.b24-widget-button-popup-show {
         display: none;
     }
+
     .footer .col-sm-3 {
         float: left;
         -webkit-box-sizing: border-box;
@@ -364,4 +370,52 @@ script#bx24_form_button {
     .footer .col-sm-3 {
         width: 100%;
     }
+}
+
+/* Product page */
+.fancybox-overlay {
+    background-image: none;
+    background: #000;
+    background-color: rgba(0, 0, 0, .65);
+    /*opacity: .9;*/
+}
+
+.product-img-box .glyphicon.glyphicon-search {
+    /*border: 1px solid red;*/
+    /*display: none;*/
+}
+
+.product-view .product-img-box .etalage a.big.fancy-images {
+    position: static;
+    top: auto;
+    bottom: auto;
+    z-index: auto;
+    border: 1px solid red;
+
+}
+
+.product-view .product-img-box .etalage a.fancy-images {
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 50;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.product-img-box .glyphicon-search {
+    position: absolute;
+    z-index: 49;
+    /*top: 88%;*/
+    top: auto;
+    right: 10px;
+    bottom: 8px;
+    height: 15px;
+}
+
+.product-view .product-img-box .etalage-control {
+    z-index: 60;
 }

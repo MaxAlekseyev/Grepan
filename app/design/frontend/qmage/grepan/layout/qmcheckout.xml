@@ -93,4 +93,15 @@
             <action method="setTemplate"><template>qm/checkout/centinel/complete.phtml</template></action>
         </reference>
     </centinel_index_authenticationcomplete>
+
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/jquery.prettyPhoto.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/prettyPhoto.css</name></action>
+        </reference>
+        <reference name="product.info">
+            <block type="core/template" name="youtube.video" as="youtube" template="catalog/product/view/video.phtml" />
+        </reference>
+    </catalog_product_view>
+
 </layout>

@@ -13,7 +13,7 @@
     .header-container.type11 .header-wrapper{display:none}
     .mobile-nav-shown .header-container.type11 .mobile-nav{display:block;background-color:rgba(0,0,0,0.6)}
 }
-@media (max-width:1200px){
+@media (max-width:1600px){
     .col-lg-2-4{width:20%}
     .col-lg-9-6{width:80%}
     .add-to-box .add-to-cart{

@@ -9588,11 +9588,13 @@ li.etalage_small_thumbs {
 }
 
 .footer-middle .contact-info i {
-    color: #777;
+    color: #999;
     display: inline-block;
     vertical-align: top;
     font-size: 14px;
-    line-height: 18px
+    line-height: 18px;
+    width: 22px;
+    overflow: hidden;
 }
 
 .footer-ribbon {

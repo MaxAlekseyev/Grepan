@@ -313,7 +313,7 @@ script#bx24_form_button {
 }
 
 .footer-middle .contact-info li:first-child i {
-    display: none;
+    /*display: none;*/
 }
 
 .footer-middle .block.block-subscribe .input-box {
@@ -379,6 +379,11 @@ script#bx24_form_button {
         width: 100%;
     }
 }
+@media (min-width: 768px){
+    .container {
+        width: 780px;
+    }
+}
 
 /* Product page */
 .fancybox-overlay {
@@ -437,3 +442,4 @@ h4.sku{
     width: 45px;
     margin-right: 0;
 }
+

@@ -421,3 +421,12 @@ script#bx24_form_button {
 .product-view .product-img-box .etalage-control {
     z-index: 60;
 }
+.product-view .product-name h1{
+    margin-bottom: 5px;
+}
+.product-view .no-rating{
+    margin-bottom: 10px;
+}
+h4.sku{
+    margin-bottom: 15px;
+}

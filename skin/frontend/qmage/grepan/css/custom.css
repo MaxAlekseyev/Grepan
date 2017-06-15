@@ -379,9 +379,10 @@ script#bx24_form_button {
         width: 100%;
     }
 }
-@media (min-width: 768px){
-    .container {
-        width: 780px;
+@media (min-width: 768px) and (max-width: 992px){
+    .footer .container {
+        width: 770px;
+        /*width: 90%;*/
     }
 }
 

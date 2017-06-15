@@ -28,12 +28,12 @@
         min-width: 110px;
     }
     .qty-holder{
-        margin-right:7px;
-        width: 57px;
+        /*margin-right:7px;*/
+        /*width: 57px;*/
     }
     .add-to-cart .qty{
         margin-right:2px;
-        width:35px !important;
+        /*width:35px !important;*/
     }
     button.btn-cart [class*="icon-"]::before{
         margin-left: .2em;

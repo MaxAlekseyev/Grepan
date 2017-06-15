@@ -430,3 +430,10 @@ script#bx24_form_button {
 h4.sku{
     margin-bottom: 15px;
 }
+.qty-holder{
+    margin-right: 7px;
+}
+.add-to-cart .qty {
+    width: 45px;
+    margin-right: 0;
+}

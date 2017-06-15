@@ -500,7 +500,7 @@ input.qty {
     display: inline-block;
     vertical-align: middle;
     height: 38px;
-    width: 26px !important;
+    /*width: 26px !important;*/
     font-size: 14px;
     text-align: center;
     color: #08c;
@@ -6154,11 +6154,9 @@ div.star-rating a {
 }
 
 .add-to-cart .qty {
-    margin-right: -4px;
     display: inline-block;
     vertical-align: middle;
     height: 38px;
-    width: 28px !important;
     font-size: 14px;
     text-align: center;
     color: #08c;

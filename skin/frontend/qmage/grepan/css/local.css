@@ -6582,21 +6582,7 @@ li.etalage_small_thumbs {
     line-height: 1
 }
 
-.product-view .add-to-links {
-    margin: 3px 0;
-    padding: 14px 0 0;
-    text-align: left;
-    display: inline-block;
-    vertical-align: middle
-}
 
-.product-view .add-to-links li {
-    margin-left: 8px
-}
-
-.product-view .add-to-links li:first-child {
-    margin-left: 0;
-}
 
 .product-view .add-to-links li,
 .product-view .add-to-links li .separator {
@@ -6604,15 +6590,6 @@ li.etalage_small_thumbs {
 }
 
 .product-view .add-to-links a {
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3px;
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    text-align: center;
-    line-height: 30px;
-    font-size: 18px;
 }
 
 .product-view .add-to-links a:hover {

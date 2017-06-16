@@ -16,14 +16,6 @@
 @media (max-width:1200px){
     .col-lg-2-4{width:20%}
     .col-lg-9-6{width:80%}
-    .add-to-box .add-to-cart{
-        display: inline-block;
-        float: left;
-    }
-    .product-view .add-to-links{
-        float: right;
-        padding-top: 0;
-    }
     .add-to-cart button.button span{
         min-width: 110px;
     }

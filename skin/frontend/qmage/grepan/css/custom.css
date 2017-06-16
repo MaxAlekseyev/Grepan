@@ -445,18 +445,39 @@ h4.sku{
 }
 
 /* Product icons */
+.product-view .add-to-links {
+    margin: 3px 0;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 10px;
+}
 .product-view .add-to-links a{
+    display: inline-block;
     width: auto;
+    height: 32px;
     color: #000;
-    -ms-word-wrap: ;
     word-wrap: none;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 700;
     padding-left: 6px;
     padding-right: 9px;
-
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 30px;
 }
+
+.product-view .add-to-links li {
+    margin-left: 5px
+}
+
+.product-view .add-to-links li:first-child {
+    margin-left: 0;
+}
+
 .product-view .add-to-links a img{
     margin-right: 3px;
 }
@@ -485,4 +506,5 @@ h4.sku{
     width: 100%;
     padding-top: 10px;
 }
+
 

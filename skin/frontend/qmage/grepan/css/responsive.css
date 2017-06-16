@@ -245,22 +245,12 @@
     .header > .logo {
     margin: 30px 20px 30px 0px;
     }
-    .header-container.type3 .compare-link_tablet{
-    display: inline-block;
-    float: left;
-    margin: 2px 18px;
-    }
-    .callback-tablet {
-    display: inline-block;
-    font-size: 27px;
-    float: right;
-    margin: 29px 24px 0 0;
-    }
+
     .header-container.type3 .mybag-link {
     padding: 0px;
     }
     .header-container.type3 .mybag-link .cart-info {
-    margin-top: -11px;
+    margin-top: -12px;
     }
     .header-container.type3 .header .header-phones .holder {
     margin: 0px 25px 10px 0;
@@ -284,17 +274,7 @@
 }
 }
 @media (max-width:991px){
-    .header > .logo {
-    display: block;
-    margin: 20px auto 0;
-    width: 100%;
-    text-align: center;
-    }
-    .header-container.type3 .header .custom-block {
-    position: absolute;
-    top: 65px;
-    left: 2%;
-    }
+
     body.boxed .page{width:760px}
 
     .header-container .header-wrapper{display:none}
@@ -316,12 +296,12 @@
     .header-container.type2 .header .form-search:before{content:"";display:block;position:absolute;right:75px;top:-25px;width:20px;height:20px;border:10px solid transparent;border-bottom-color:#ccc}
 
     .header-container.type3 .header #search_mini_form{display:none;width:0;margin:0}
-    .header-container.type3 .menu-icon{width:30px;text-align:center;line-height:40px;height:auto;padding:0;display:block;float:right;margin: 27px 8px 0 0;}
 
-    .header-container.type3 .cart-area{float:right;position:static;margin:35px 0px 20px 0}
-    .header-container.type3 .search-area{position:relative;left:0;top:0;float:right;margin:23px 10px 0;z-index:2}
+
+
+
     .header-container.type3 .search-area .search-icon{display:block;line-height:40px}
-    .header-container.type3 .mini-cart{width:auto;position:relative;top:-3px;left:0}
+
     .header-container.type3 .header .form-search{width:450px;position:absolute;right:-60px;top:40px;overflow:visible;border-width:5px;border-radius:25px;border-color:#ccc}
     .header-container.type3 .header .form-search:before{content:"";display:block;position:absolute;right:55px;top:-25px;width:20px;height:20px;border:10px solid transparent;border-bottom-color:#ccc}
 
@@ -1112,10 +1092,6 @@
     }
     .header-container.type3 .cart-area {
     margin: 0px 0px 10px;
-    }
-    .header-container.type3 .cart-wrapper {
-    margin-top: 28px;
-    margin-bottom: 5px;
     }
 }
 /*------------------------------------------------------------------------------------------------------------------------------*/

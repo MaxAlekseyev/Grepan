@@ -1,6 +1,6 @@
 /* Reset ================================================================================= */
 * {
-    outline: none !important
+    outline: none;
 }
 
 html, body {
@@ -1855,15 +1855,6 @@ tr.summary-details-excluded {
     text-align: left
 }
 
-.header > .logo {
-    margin: 37px 40px 37px 0;
-    text-decoration: none !important;
-    max-width: 170px;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    z-index: 2
-}
 
 .header > .logo > .logo {
     margin: 0 !important;
@@ -1903,7 +1894,7 @@ tr.summary-details-excluded {
 .header #search_mini_form {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 35px
+    /*margin-right: 35px*/
 }
 
 .header .form-search {
@@ -2361,13 +2352,9 @@ tr.summary-details-excluded {
 }
 
 .cart-area {
-    position: absolute;
-    top: 10px;
-    z-index: 1;
     display: inline-block;
-    right: 15px;
     text-align: right;
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 .header-container .header .custom-block span.split {
@@ -2857,12 +2844,6 @@ tr.summary-details-excluded {
     color: #333;
 }
 
-.header-container.type3 .cart-wrapper {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-    margin-top: -5px;
-}
 
 .header-container.type3 .cart-wrapper .title {
     display: block;

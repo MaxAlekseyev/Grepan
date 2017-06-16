@@ -334,7 +334,8 @@ body.boxed .header-container .top-links-container {
 
 .breadcrumbs li {
     display: inline;
-    vertical-align: top
+    vertical-align: top;
+    line-height: 1.6;
 }
 
 .breadcrumbs li strong {

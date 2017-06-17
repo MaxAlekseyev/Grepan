@@ -4405,7 +4405,6 @@ tr.summary-details-excluded {
 
 .block .block-subtitle {
     margin: 0;
-    margin: 0;
     padding: 10px 15px;
     font-size: 13px;
     font-weight: bold;
@@ -9985,10 +9984,10 @@ li.etalage_small_thumbs {
 }
 
 .block.block-related .block-title strong {
-    font-size: 18px;
-    padding: 10px 0;
-    line-height: 1;
-    color: #313131
+    /*font-size: 18px;*/
+    /*padding: 10px 0;*/
+    /*line-height: 1;*/
+    /*color: #313131*/
 }
 
 .block.block-related .block-content {
@@ -10005,19 +10004,6 @@ li.etalage_small_thumbs {
     padding: 0
 }
 
-.block.block-related .owl-theme .owl-controls {
-    position: absolute;
-    right: 0;
-    top: -73px
-}
-
-.block.block-related .owl-theme .owl-controls .owl-buttons div {
-    color: #08c;
-    font-size: 13px;
-    padding: 0;
-    margin: 0;
-    background: transparent
-}
 
 .block.block-related .product {
     margin: 10px 0 15px;

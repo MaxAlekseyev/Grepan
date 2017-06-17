@@ -479,7 +479,8 @@ h4.sku {
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    /*margin-top: -5px;*/
+    position: relative;
+    top: 3px;
 }
 
 .header-container.type3 .search-area.tablet, .custom-block.tablet {
@@ -531,7 +532,7 @@ h4.sku {
 
     .header > .logo {
         display: block;
-        margin: 30px auto 30px;
+        margin: 31px auto 31px;
         width: 100%;
         text-align: center;
     }
@@ -600,7 +601,6 @@ h4.sku {
     }
 
     .header-container.type3 .cart-wrapper {
-        position: relative;
         float: left;
         top: -5px;
     }
@@ -755,3 +755,61 @@ h4.sku {
     }
 }
 
+/* Related products*/
+
+.block.block-related{
+    /*padding-top: 16px;*/
+
+}
+.block.block-related .block-title{
+    margin-top: 21px;
+}
+
+.block.block-related .owl-controls.grepan-arrows {
+    position: absolute;
+    right: 13px;
+    top: 25px;
+}
+
+.block.block-related .owl-controls.grepan-arrows .owl-buttons div {
+    /*width: 15px;*/
+    color: #08c;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;/*IE7 life-saver */
+    border-radius: 30px;
+    overflow: hidden;
+}
+.block.block-related .owl-controls.grepan-arrows .owl-prev{
+    position: relative;
+    left: 5px;
+}
+
+.owl-controls.grepan-arrows {
+    text-align: center;
+}
+
+.owl-controls.grepan-arrows.clickable .owl-buttons div {
+    opacity: 1;
+    filter: Alpha(Opacity=100);
+    transition: all 0.2s;
+}
+
+.block.block-related .block-subtitle {
+    /*margin: 0;*/
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: none;
+    border: 1px solid #ddd;
+    color: #333;
+    position: relative;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+}

@@ -25,6 +25,7 @@ Thumbs.db
 /nbproject/
 *.komodoproject
 .vscode/
+/.komodotools/
 
 
 # Exclude Magento var dir
@@ -92,4 +93,3 @@ tmp/
 tmp/*
 Working/
 desktop.ini
-

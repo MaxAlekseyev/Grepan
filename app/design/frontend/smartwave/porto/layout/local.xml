@@ -25,6 +25,7 @@
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.min.css</name></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.rtl.min.css</name></action>
             <action method="addJs" ifconfig="porto_settings/general/rtl" condition="0"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.min.js</script></action>
+            <!--<action method="addJs" ifconfig="porto_settings/general/rtl" condition="0"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.js</script></action>-->
             <action method="addJs" ifconfig="porto_settings/general/rtl" condition="1"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.min.js</script></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.css</name></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.css</name></action>

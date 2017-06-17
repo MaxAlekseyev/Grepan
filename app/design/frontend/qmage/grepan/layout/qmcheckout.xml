@@ -15,17 +15,6 @@
             <action method="addJs"><script>qmcheckout.js</script></action>
         </reference>
 
-        <!-- <reference name="header">
-            <action method="unsetChild"><name>topMenu</name></action>
-            <action method="unsetChild"><name>topContainer</name></action>
-            <action method="unsetChild"><name>topLinks</name></action>
-            <action method="unsetChild"><name>topSearch</name></action>
-        </reference> -->
-
-        <!-- <reference name="footer">
-            <action method="unsetChildren"></action>
-        </reference> -->
-
         <reference name="checkout.cart">
             <block type="qmcheckout/block" name="qmcheckout.page" as="qmcheckout_page">
                 <block type="qmcheckout/block_info" name="qmcheckout.user_block" as="qmcheckout_user_block" template="qm/checkout/block/info.phtml">

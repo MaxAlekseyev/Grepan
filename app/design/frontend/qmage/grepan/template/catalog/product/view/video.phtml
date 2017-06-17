@@ -10,7 +10,9 @@
 
 
 <div class="product-video">
-	<h3 class="video-block-title"><img src="<?php echo $this->getSkinUrl('images/product/video_01.svg') ?>" alt="<?php echo $this->__('Видео'); ?>"><?php echo $this->__('Video'); ?></h3>
+	<h3 class="video-block-title"><img src="<?php echo $this->getSkinUrl('images/product/video_01.svg') ?>" alt="<?php echo $this->__('Видео'); ?>">
+		<?php echo $this->__('Video'); ?>
+	</h3>
 	<div class="yotube-product-video">
 		<a href="https://www.youtube.com/watch?v=92Bxzuz7ZH0" rel="prettyPhoto" title="Видео <?php echo $headBlock->getTitle() ?>" class="youtube-link"><img src="https://img.youtube.com/vi/92Bxzuz7ZH0/mqdefault.jpg" alt=""></a>
 		<img src="<?php echo $this->getSkinUrl('images/product/youtube_01.svg') ?>" alt="Play video" class="play-video-icon">
@@ -18,16 +20,16 @@
 	<div class="clear"></div>
 </div>
 
+<h3>Youtube ID: <?php echo     $helper_richsnippets ?></h3>
 
 <script>
-
-	jQuery(document).ready(function(){
+	jQuery(document).ready(function() {
 
 		var $j = jQuery.noConflict();
 
 		var videoWidth = document.body.clientWidth * 0.8;
 
-		if(videoWidth > 1000) videoWidth = 1000;
+		if (videoWidth > 1000) videoWidth = 1000;
 
 		var videoHeight = videoWidth / 16 * 9;
 

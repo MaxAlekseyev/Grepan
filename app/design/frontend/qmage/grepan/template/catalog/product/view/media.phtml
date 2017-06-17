@@ -108,6 +108,18 @@
                 jQuery("#etalage_<?php echo $rnd_str; ?>").height(Math.round(width*this.naturalHeight/this.naturalWidth+8)+"px");
             });
         }
+
+		// Hide product images if image is alone
+
+		var thumbArray = jQuery('.etalage_small_thumbs ul li');
+		var slideControl = jQuery('.product-view .product-img-box .etalage-control');
+
+		jQuery(thumbArray);
+		if(thumbArray.length < 2){
+			jQuery(slideControl).hide();
+			console.warn(thumbArray.length);
+		}
+
     });
 </script>
 <div class="clear"></div>

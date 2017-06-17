@@ -25,6 +25,7 @@ Thumbs.db
 /nbproject/
 *.komodoproject
 .vscode/
+/.komodotools/
 
 
 # Exclude Magento var dir
@@ -91,6 +92,4 @@ Thumbs.db
 tmp/
 tmp/*
 Working/
-
->>>>>>> Stashed changes
-#Specific theme directories
+desktop.ini

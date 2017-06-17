@@ -155,6 +155,9 @@ if($enable_addtocart_sticky){
                 <div class="product-name">
                     <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                 </div>
+				<?php if($sku = $_product->getSku()): ?>
+					<h4 class="sku"><?php echo $this->__('SKU:') ?> <?php echo $this->htmlEscape($_product->getData('sku'));?></h3>
+				<?php endif; ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
                 <?php if ($_product->getShortDescription()):?>
                     <div class="short-description">
@@ -328,6 +331,7 @@ if($enable_addtocart_sticky){
                 }
             }
         }.bind(productAddToCartForm);
+		
     //]]>
     </script>
 <?php else : ?>

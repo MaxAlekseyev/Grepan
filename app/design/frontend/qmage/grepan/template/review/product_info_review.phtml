@@ -25,46 +25,105 @@
  */
 ?>
 
-<?php $_items = $this->getReviewsCollection()->getItems();?>
+<?php
+
+$_items = $this->getReviewsCollection()->getItems();
+
+?>
 <?php if (count($_items)):?>
 <div class="collateral-box" id="product-customer-reviews">
 
-    <?php echo $this->getChildHtml('toolbar') ?>
+	<button type="submit" title="<?php echo $this->__('Add Review'); ?>" class="button first"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
 
-    <ol>
-        <?php foreach ($_items as $_review):?>
-            <li>
-                <div class="avatar-image">
-                    <img src="<?php echo Mage::getDesign()->getSkinUrl("images/reviews/avatar_05.svg"); ?>" alt="<?php echo $this->htmlEscape($_review->getNickname()); ?>"/>
-                </div>
-                <div class="review-area">
-                    <strong class="review-title"><?php echo $this->htmlEscape($_review->getTitle()) ?></strong>
-                    <span class="review-by"> <?php echo $this->__('review by %s', "<b>".$this->htmlEscape($_review->getNickname())."</b>") ?> <?php echo $this->__('on %s', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
-                    <div class="ratings-list">
-                    <?php foreach ($_review->getRatingVotes() as $_vote): ?>
-                        <div class="rating-item">
-                            <span class="label"><?php echo $_vote->getRatingCode() ?></span>
-                            <div class="rating-box">
-                                <div class="rating" style="width: <?php echo $_vote->getPercent() ?>%;"></div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                    </div>
-                    <p><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></p>
-                </div>
-                <div class="clearer"></div>
-            </li>
-        <?php endforeach; ?>
-    </ol>
+	<h3 class="reviews-block-title">
+	<?php echo $this->__('Reviews'); ?>:</h3>
 
-    <?php echo $this->getChildHtml('toolbar') ?>
+	<?php echo $this->getChildHtml('toolbar') ?>
+
+	<ol>
+		<?php foreach ($_items as $_review):?>
+		<li>
+			<div class="avatar-image">
+				<img src="<?php echo Mage::getDesign()->getSkinUrl("images/reviews/avatar_05.svg "); ?>" alt="<?php echo $this->htmlEscape($_review->getNickname()); ?>" />
+			</div>
+			<div class="review-area">
+				<strong class="review-title"><?php echo $this->htmlEscape($_review->getTitle()) ?></strong>
+				<span class="review-by"> <?php echo $this->__('review by %s', "<b>".$this->htmlEscape($_review->getNickname())."</b>") ?> <?php echo $this->__('on %s', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
+				<div class="ratings-list">
+					<?php foreach ($_review->getRatingVotes() as $_vote): ?>
+					<div class="rating-item">
+						<span class="label"><?php echo $_vote->getRatingCode() ?></span>
+						<div class="rating-box">
+							<div class="rating" style="width: <?php echo $_vote->getPercent() ?>%;"></div>
+						</div>
+					</div>
+					<?php endforeach; ?>
+				</div>
+				<p>
+					<?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
+				</p>
+			</div>
+			<div class="clearer"></div>
+		</li>
+		<?php endforeach; ?>
+	</ol>
+
+	<?php echo $this->getChildHtml('toolbar') ?>
+
+	<button type="submit" title="Добавить отзыв" class="button second"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
+
 </div>
 <?php else:?>
+
+
 <div class="collateral-box" id="product-customer-reviews">
-<ol><li><?php echo $this->__('Be the first to review this product'); ?></li></ol>
+	<!--
+<ol class="no-reviews"><li><?php echo $this->__('Be the first to review this product'); ?></li></ol>
+-->
 </div>
 <?php endif;?>
 
 <div class="add-review">
 	<?php echo $this->getLayout()->createBlock('review/form')->setBlockId('product.review.form')->toHtml() ?>
 </div>
+
+<script>
+	(function() {
+
+		var $j = jQuery.noConflict();
+
+		$j(document).ready(function() {
+
+			var rightReviewsDesc, descLength = 300,
+				i = 0;
+			var reviewsList = '#tab_review_tabbed_contents .collateral-box';
+			var addReview = '#tab_review_tabbed_contents .add-review';
+			var colRight = '.catalog-product-view .col-right';
+
+			console.log($j(reviewsList + ' ol').length);
+			if ($j(reviewsList + ' ol').length !== 0) {
+
+				$j(addReview).hide();
+				$j(reviewsList).clone().appendTo(colRight).removeAttr('id');
+
+				$j('.col-right .collateral-box li p').map(function() {
+					i++;
+					rightReviewDesc = $j(this).text();
+
+					if (rightReviewDesc.length > descLength) {
+						rightReviewDesc = rightReviewDesc.substring(0, descLength) + '&nbsp;<b>...</b>';
+					}
+
+					$j(this).html(rightReviewDesc);
+
+				});
+
+			} else {
+				console.log('No reviews!!!!!!!!!!!!!');
+
+			}
+
+		});
+
+	})();
+</script>

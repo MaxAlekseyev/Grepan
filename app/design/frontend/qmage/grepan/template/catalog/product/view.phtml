@@ -133,7 +133,6 @@ if($enable_addtocart_sticky){
 
 
 					<script>
-
 						jQuery(document).ready(function() {
 
 							var $j = jQuery.noConflict();
@@ -145,10 +144,10 @@ if($enable_addtocart_sticky){
 
 							if (videoWidth > 1000) videoWidth = 1000;
 
-							if(youtubeId === '') {
+							if (youtubeId === '') {
 								jQuery('.product-view .product-video').remove();
 								console.warn('No Youtube video for this product');
-							}else{
+							} else {
 								jQuery('.product-view .product-video').show();
 								console.log('Youtube ID: ' + youtubeId);
 							}
@@ -162,6 +161,21 @@ if($enable_addtocart_sticky){
 								default_width: videoWidth,
 								default_height: videoHeight
 							});
+
+							// ToDo Remove it
+
+							$j('.product-tabs li:first-child').removeClass('active');
+							$j('.product-tabs li:last-child').addClass('active');
+							$j('#tab_description_tabbed_contents').hide();
+							$j('#tab_review_tabbed_contents').show();
+
+							setTimeout(function() {
+								$j('.b24-widget-button-popup-show').hide();
+								console.log('Patuhov hidden');
+							}, 2500);
+
+
+
 
 						});
 					</script>
@@ -225,7 +239,6 @@ if($enable_addtocart_sticky){
 						<?php echo $this->htmlEscape($_product->getData('sku'));?>
 						</h3>
 						<?php endif; ?>
-						<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
 						<?php if ($_product->getShortDescription()):?>
 						<div class="short-description">
 							<h2>
@@ -235,6 +248,7 @@ if($enable_addtocart_sticky){
 								<?php endif; ?>>
 								<?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
 							</div>
+							<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
 						</div>
 						<?php endif;?>
 						<div class="product-info">
@@ -355,7 +369,7 @@ if($enable_addtocart_sticky){
 										ajaxcart_timer = setInterval(function() {
 											timer_sec--;
 											window.parent.jQuery('#after-loading-success-message .timer').html(timer_sec);
-										}, 1000)
+										}, 1000);
 										setTimeout(function() {
 											window.parent.jQuery('#after-loading-success-message').fadeOut(200);
 											clearTimeout(ajaxcart_timer);
@@ -384,7 +398,7 @@ if($enable_addtocart_sticky){
 										ajaxcart_timer = setInterval(function() {
 											timer_sec--;
 											jQuery('#after-loading-success-message .timer').html(timer_sec);
-										}, 1000)
+										}, 1000);
 										setTimeout(function() {
 											jQuery('#after-loading-success-message').fadeOut(200);
 											clearTimeout(ajaxcart_timer);

@@ -534,6 +534,8 @@ body a.pp_close {
 }
 .product-view .product-name h1 {
     margin-bottom: 5px;
+    line-height: 1.2;
+    margin-top: 10px;
 }
 
 .product-view .no-rating {
@@ -541,7 +543,7 @@ body a.pp_close {
 }
 
 h4.sku {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .qty-holder {
@@ -552,14 +554,45 @@ h4.sku {
     width: 45px;
     margin-right: 0;
 }
+.product-view .product-shop .price-box{
+    margin-bottom: 8px;
+}
+.product-view .product-info{
+    padding-bottom: 12px;
+}
+.product-view .product-shop .short-description{
+    color: #000;
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+.product-view .product-essential .ratings{
+    height: auto;
+    padding-top: 14px;
+    margin-bottom: 10px;
+}
+.product-view .no-rating{
+    height: auto;
+    padding-top: 14px;
+    margin-bottom: 10px;
 
+}
+.product-view .product-essential .ratings a{
+    color: #1e7ec8;
+}
 /* Product icons */
+..add-to-box{
+    padding-bottom: 17px;
+}
+.sharing-tool-area{
+    margin-top:17px;
+    padding-bottom: 10px;
+}
 .product-view .add-to-links {
     margin: 3px 0;
     text-align: left;
     display: inline-block;
     vertical-align: middle;
-    padding-top: 10px;
+    padding-top: 12px;
 }
 
 .product-view .add-to-links a {
@@ -987,4 +1020,47 @@ h4.sku {
     border-radius: 7px;
     margin-top: 14px;
     margin-bottom: 10px;
+}
+
+/* Reviews */
+.ratings .rating-links{
+    margin-left: 0;
+    
+}
+
+.ratings .rating-links a{
+    color: #555;
+}
+.review-area {
+    line-height: normal;
+    margin-left: 80px;
+}
+.review-area p{
+    padding-top: 5px;
+    color: #555;
+}
+.review-title{
+    display: block;
+    color: #555;
+}
+.review-area .review-by{
+    color: #777;
+}
+#product-customer-reviews ol{
+    list-style: none;
+    padding-left: 10px;
+}
+#product-customer-reviews{}
+#product-customer-reviews .ratings-list{
+    display: none;
+}
+.avatar-image{
+    float: left;
+    width: 65px;
+    height: 65px;
+    /*border: 1px solid #aaa;*/
+    border-bottom: 0;
+    position: relative;
+    top: 5px;
+
 }

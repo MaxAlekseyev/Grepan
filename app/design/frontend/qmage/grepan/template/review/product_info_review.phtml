@@ -33,10 +33,10 @@ $_items = $this->getReviewsCollection()->getItems();
 <?php if (count($_items)):?>
 <div class="collateral-box" id="product-customer-reviews">
 
-	<button type="submit" title="<?php echo $this->__('Add Review'); ?>" class="button first"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
+	<button type="submit" title="<?php echo $this->__('Add Review'); ?>" class="button first add-review-button"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
 
 	<h3 class="reviews-block-title">
-	<?php echo $this->__('Reviews'); ?>:</h3>
+		<?php echo $this->__('Reviews'); ?>:</h3>
 
 	<?php echo $this->getChildHtml('toolbar') ?>
 
@@ -70,7 +70,7 @@ $_items = $this->getReviewsCollection()->getItems();
 
 	<?php echo $this->getChildHtml('toolbar') ?>
 
-	<button type="submit" title="Добавить отзыв" class="button second"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
+	<button type="submit" title="Добавить отзыв" class="button second add-review-button"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
 
 </div>
 <?php else:?>
@@ -78,8 +78,8 @@ $_items = $this->getReviewsCollection()->getItems();
 
 <div class="collateral-box" id="product-customer-reviews">
 	<!--
-<ol class="no-reviews"><li><?php echo $this->__('Be the first to review this product'); ?></li></ol>
--->
+		<ol class="no-reviews"><li><?php echo $this->__('Be the first to review this product'); ?></li></ol>
+	-->
 </div>
 <?php endif;?>
 
@@ -94,34 +94,71 @@ $_items = $this->getReviewsCollection()->getItems();
 
 		$j(document).ready(function() {
 
-			var rightReviewsDesc, descLength = 300,
-				i = 0;
 			var reviewsList = '#tab_review_tabbed_contents .collateral-box';
 			var addReview = '#tab_review_tabbed_contents .add-review';
-			var colRight = '.catalog-product-view .col-right';
+			var productTabs = '.product-view #product_tabs';
+
+			//productTabs.hide();
+
+			console.log($j(productTabs).offset().top);
 
 			console.log($j(reviewsList + ' ol').length);
 			if ($j(reviewsList + ' ol').length !== 0) {
 
 				$j(addReview).hide();
-				$j(reviewsList).clone().appendTo(colRight).removeAttr('id');
-
-				$j('.col-right .collateral-box li p').map(function() {
-					i++;
-					rightReviewDesc = $j(this).text();
-
-					if (rightReviewDesc.length > descLength) {
-						rightReviewDesc = rightReviewDesc.substring(0, descLength) + '&nbsp;<b>...</b>';
-					}
-
-					$j(this).html(rightReviewDesc);
-
-				});
 
 			} else {
+
+				$j(reviewsList).hide();
 				console.log('No reviews!!!!!!!!!!!!!');
+			}
+
+			function scrollToReview(localOffset, addReviewActive) {
+
+				var scrollDelay = 500;
+
+				$j('html, body').animate({
+					scrollTop: parseInt($j(productTabs).offset().top - localOffset)
+				}, scrollDelay);
+
+				console.log($j(productTabs).offset().top);
+
+				$j(productTabs + " li").removeClass('active');
+				$j(productTabs + " #tab_review_tabbed").addClass('active');
+
+				setTimeout(function(){
+
+					if (addReviewActive === true && $j(reviewsList + ' ol').length > 0) {
+
+						$j(reviewsList).hide();
+						$j(addReview).show();
+
+					} else {
+
+						$j(addReview).hide();
+						$j(reviewsList).show();
+
+					}
+
+				}, 10);
 
 			}
+
+			$j('button.add-review-button').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(55, true);
+			});
+
+			$j('div.product-view p.no-rating a, div.product-view .rating-links a:first-child').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(100, false);
+			});
+
+			$j('div.product-view .rating-links a:last-child').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(100, true);
+			});
+
 
 		});
 

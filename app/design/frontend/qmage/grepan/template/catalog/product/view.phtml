@@ -135,24 +135,24 @@ if($enable_addtocart_sticky){
 					<script>
 						jQuery(document).ready(function() {
 
+							var $j = jQuery.noConflict();
 							var youtubeId = "<?php echo $this->htmlEscape($_product->getData('youtube_id'));?>";
-
 							var videoWidth = document.body.clientWidth * 0.8;
 
 
 							if (videoWidth > 1000) videoWidth = 1000;
 
 							if (youtubeId === '') {
-								jQuery('.product-view .product-video').remove();
+								$j('.product-view .product-video').remove();
 								console.warn('No Youtube video for this product');
 							} else {
-								jQuery('.product-view .product-video').show();
+								$j('.product-view .product-video').show();
 								console.log('Youtube ID: ' + youtubeId);
 							}
 
 							var videoHeight = videoWidth / 16 * 9;
 
-							jQuery("a[rel^='prettyPhoto']").prettyPhoto({
+							$j("a[rel^='prettyPhoto']").prettyPhoto({
 								iframe_markup: '<iframe src="https://www.youtube.com/embed/' + youtubeId + '?rel=0&autoplay=1" width="{width}" height="{height}" title="Youtube ID: ' + youtubeId + '" frameborder="no" allowfullscreen></iframe>',
 								hd: true,
 								social_tools: false,
@@ -166,14 +166,6 @@ if($enable_addtocart_sticky){
 							$j('.product-tabs li:last-child').addClass('active');
 							$j('#tab_description_tabbed_contents').hide();
 							$j('#tab_review_tabbed_contents').show();
-
-							setTimeout(function() {
-								$j('.b24-widget-button-popup-show').hide();
-								console.log('Petuhov hidden');
-							}, 3500);
-
-
-
 
 						});
 					</script>
@@ -473,7 +465,7 @@ if($enable_addtocart_sticky){
 		</script>
 	</div>
 
-	<div class="product-collateral">
+	<div class="product-collateral" id="product_tabs">
 		<?php echo $this->getChildHtml('product_additional_data'); ?>
 	</div>
 	<?php echo $this->getChildHtml('upsell_products'); ?>

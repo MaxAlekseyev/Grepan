@@ -33,7 +33,7 @@ $_items = $this->getReviewsCollection()->getItems();
 <?php if (count($_items)):?>
 <div class="collateral-box" id="product-customer-reviews">
 
-	<button type="submit" title="<?php echo $this->__('Add Review'); ?>" class="button first add-review-button"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
+	<button type="submit" title="<?php echo $this->__('Add Review'); ?>" class="button first add-review-button first"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
 
 	<h3 class="reviews-block-title">
 		<?php echo $this->__('Reviews'); ?>:</h3>
@@ -70,7 +70,7 @@ $_items = $this->getReviewsCollection()->getItems();
 
 	<?php echo $this->getChildHtml('toolbar') ?>
 
-	<button type="submit" title="Добавить отзыв" class="button second add-review-button"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
+	<button type="submit" title="Добавить отзыв" class="button second add-review-button last"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
 
 </div>
 <?php else:?>
@@ -113,7 +113,7 @@ $_items = $this->getReviewsCollection()->getItems();
 				console.log('No reviews!!!!!!!!!!!!!');
 			}
 
-			function scrollToReview(localOffset, addReviewActive) {
+			function scrollToReview(localOffset, addReviewActive, showDelay) {
 
 				var scrollDelay = 500;
 
@@ -129,24 +129,26 @@ $_items = $this->getReviewsCollection()->getItems();
 				setTimeout(function(){
 
 					if (addReviewActive === true && $j(reviewsList + ' ol').length > 0) {
-
 						$j(reviewsList).hide();
 						$j(addReview).show();
-
 					} else {
 
 						$j(addReview).hide();
 						$j(reviewsList).show();
-
 					}
 
-				}, 10);
+				}, showDelay);
 
 			}
 
-			$j('button.add-review-button').on('click touchend', function(e) {
+			$j('button.add-review-button.first').on('click touchend', function(e) {
 				e.preventDefault();
-				scrollToReview(55, true);
+				scrollToReview(55, true, 0);
+			});
+
+			$j('button.add-review-button.last').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(55, true, 500);
 			});
 
 			$j('div.product-view p.no-rating a, div.product-view .rating-links a:first-child').on('click touchend', function(e) {

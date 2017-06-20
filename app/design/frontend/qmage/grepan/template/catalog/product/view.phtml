@@ -135,8 +135,6 @@ if($enable_addtocart_sticky){
 					<script>
 						jQuery(document).ready(function() {
 
-							var $j = jQuery.noConflict();
-
 							var youtubeId = "<?php echo $this->htmlEscape($_product->getData('youtube_id'));?>";
 
 							var videoWidth = document.body.clientWidth * 0.8;
@@ -154,8 +152,8 @@ if($enable_addtocart_sticky){
 
 							var videoHeight = videoWidth / 16 * 9;
 
-							$j("a[rel^='prettyPhoto']").prettyPhoto({
-								iframe_markup: '<iframe src="https://www.youtube.com/embed/' + youtubeId + '?rel=1&autoplay=1" width="{width}" height="{height}" title="Youtube ID: ' + youtubeId + '" frameborder="no" allowfullscreen></iframe>',
+							jQuery("a[rel^='prettyPhoto']").prettyPhoto({
+								iframe_markup: '<iframe src="https://www.youtube.com/embed/' + youtubeId + '?rel=0&autoplay=1" width="{width}" height="{height}" title="Youtube ID: ' + youtubeId + '" frameborder="no" allowfullscreen></iframe>',
 								hd: true,
 								social_tools: false,
 								default_width: videoWidth,

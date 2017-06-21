@@ -47,8 +47,15 @@ $_items = $this->getReviewsCollection()->getItems();
 				<img src="<?php echo Mage::getDesign()->getSkinUrl("images/reviews/avatar_05.svg "); ?>" alt="<?php echo $this->htmlEscape($_review->getNickname()); ?>" />
 			</div>
 			<div class="review-area">
+
+				<?php if($this->htmlEscape($_review->getTitle())): ?>
 				<strong class="review-title"><?php echo $this->htmlEscape($_review->getTitle()) ?></strong>
+				<?php endif; ?>
+				
+				<?php if($this->htmlEscape($_review->getNickname())): ?>
 				<span class="review-by"> <?php echo $this->__('review by %s', "<b>".$this->htmlEscape($_review->getNickname())."</b>") ?> <?php echo $this->__('on %s', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
+				<?php endif; ?>
+
 				<div class="ratings-list">
 					<?php foreach ($_review->getRatingVotes() as $_vote): ?>
 					<div class="rating-item">

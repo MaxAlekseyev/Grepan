@@ -1084,7 +1084,6 @@ h4.sku {
 }
 
 .review-area p {
-    padding-top: 5px;
     color: #555;
 }
 
@@ -1095,6 +1094,8 @@ h4.sku {
 }
 
 .review-area .review-by {
+    display: block;
+    margin-bottom: 2px;
     color: #777;
 }
 

@@ -541,7 +541,8 @@ body a.pp_close {
     border-color: #bbb;
     padding-bottom: 20px;
 }
-.product-tabs .tab-content{
+
+.product-tabs .tab-content {
     margin-top: 0;
     padding-top: 20px;
 }
@@ -1084,7 +1085,6 @@ h4.sku {
 }
 
 .review-area p {
-    padding-top: 5px;
     color: #555;
 }
 
@@ -1095,7 +1095,16 @@ h4.sku {
 }
 
 .review-area .review-by {
-    color: #777;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.review-area .review-by b {
+    font-weight: bold;
 }
 
 .collateral-box ol {
@@ -1116,6 +1125,14 @@ h4.sku {
     padding: 20px 0 10px;
 }
 
+.product-view #product-customer-reviews li p {
+    margin-bottom: 13px;
+}
+
+.product-view #product-customer-reviews li:first-child {
+    padding-top: 29px;
+}
+
 .product-view #product-customer-reviews li:last-child {
     border: 0;
     padding-bottom: 0;
@@ -1125,16 +1142,22 @@ h4.sku {
     float: left;
     width: 65px;
     height: 65px;
-    /*border: 1px solid #aaa;*/
     border-bottom: 0;
     position: relative;
     top: 5px;
     overflow: hidden;
-
 }
 
 .add-review {
     padding-top: 20px;
+}
+
+.add-review h3{
+    color: #555;
+}
+
+label{
+    color: #555;
 }
 
 .add-review .buttons-set {
@@ -1207,16 +1230,18 @@ h4.sku {
 
 /*Review buttons*/
 
-.collateral-box button.button{}
+.collateral-box button.button {
+}
 
-.col-right .collateral-box > button.button.first{
+.col-right .collateral-box > button.button.first {
     position: absolute;
     z-index: 60;
     right: 15px;
     top: 22px;
     display: none;
 }
-.col-right .collateral-box > button.button.first span{
+
+.col-right .collateral-box > button.button.first span {
     font-size: 12px;
     padding: 1px 5px;
     line-height: normal;
@@ -1224,35 +1249,47 @@ h4.sku {
     color: #08c;
     background-color: #fff;
 }
-.col-right .collateral-box > button.button.first:hover span{
+
+.col-right .collateral-box > button.button.first:hover span {
     background-color: #08c;
     color: #fff;
 }
-.col-right .collateral-box > button.button.first span{}
-.col-right .collateral-box > button.button.first span span{
+
+.col-right .collateral-box > button.button.first span {
+}
+
+.col-right .collateral-box > button.button.first span span {
     border: 0;
     padding: 0;
 }
 
-.col-right > .block.block-related + .collateral-box > button.button.first{
+.col-right > .block.block-related + .collateral-box > button.button.first {
     display: none;
 }
-.product-tabs #tab_review_tabbed_contents{
+
+.product-tabs #tab_review_tabbed_contents {
     padding-top: 0;
 }
-.product-view #product-customer-reviews{
+
+.product-view #product-customer-reviews {
     position: relative;
     padding-top: 0;
     padding-bottom: 25px;
     margin-top: 0;
 }
-#product-customer-reviews button.button{
+
+#product-customer-reviews button.button {
     position: absolute;
     right: 0;
     z-index: 60;
 }
-#product-customer-reviews button.button.first{
+
+#product-customer-reviews button.button.first {
     top: 15px;
 }
-#product-customer-reviews button.button.second{}
-#product-customer-reviews button.button{}
+
+#product-customer-reviews button.button.second {
+}
+
+#product-customer-reviews button.button {
+}

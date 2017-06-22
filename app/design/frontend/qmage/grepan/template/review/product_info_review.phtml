@@ -44,11 +44,18 @@ $_items = $this->getReviewsCollection()->getItems();
 		<?php foreach ($_items as $_review):?>
 		<li>
 			<div class="avatar-image">
-				<img src="<?php echo Mage::getDesign()->getSkinUrl("images/reviews/avatar_05.svg "); ?>" alt="<?php echo $this->htmlEscape($_review->getNickname()); ?>" />
+				<img src="<?php echo Mage::getDesign()->getSkinUrl("images/reviews/avatar_05.svg"); ?>" alt="<?php echo $this->htmlEscape($_review->getNickname()); ?>" />
 			</div>
 			<div class="review-area">
-				<strong class="review-title"><?php echo $this->htmlEscape($_review->getTitle()) ?></strong>
+
+				<?php // if($this->htmlEscape($_review->getTitle())): ?>
+				<!--<strong class="review-title"><?php echo $this->htmlEscape($_review->getTitle()) ?></strong>-->
+				<?php // endif; ?>
+
+				<?php if($this->htmlEscape($_review->getNickname())): ?>
 				<span class="review-by"> <?php echo $this->__('review by %s', "<b>".$this->htmlEscape($_review->getNickname())."</b>") ?> <?php echo $this->__('on %s', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
+				<?php endif; ?>
+
 				<div class="ratings-list">
 					<?php foreach ($_review->getRatingVotes() as $_vote): ?>
 					<div class="rating-item">
@@ -94,23 +101,28 @@ $_items = $this->getReviewsCollection()->getItems();
 
 		$j(document).ready(function() {
 
-			var reviewsList = '#tab_review_tabbed_contents .collateral-box';
+			var reviewsListBlock = '#tab_review_tabbed_contents .collateral-box';
+			var reviewsListCells = reviewsListBlock + ' ol li';
 			var addReview = '#tab_review_tabbed_contents .add-review';
 			var productTabs = '.product-view #product_tabs';
 
-			//productTabs.hide();
+			//console.log($j(productTabs).offset().top);
+			//console.log("Reviews number: " + $j(reviewsListCells).length);
 
-			console.log($j(productTabs).offset().top);
+			if($j(reviewsListCells).length < 5){
 
-			console.log($j(reviewsList + ' ol').length);
-			if ($j(reviewsList + ' ol').length !== 0) {
+				$j(reviewsListBlock + ' button.add-review-button.last').hide();
+
+			}
+
+			if ($j(reviewsListCells).length !== 0) {
 
 				$j(addReview).hide();
 
 			} else {
 
-				$j(reviewsList).hide();
-				console.log('No reviews!!!!!!!!!!!!!');
+				$j(reviewsListBlock).hide();
+
 			}
 
 			function scrollToReview(localOffset, addReviewActive, showDelay) {
@@ -121,20 +133,20 @@ $_items = $this->getReviewsCollection()->getItems();
 					scrollTop: parseInt($j(productTabs).offset().top - localOffset)
 				}, scrollDelay);
 
-				console.log($j(productTabs).offset().top);
+				//console.log($j(productTabs).offset().top);
 
 				$j(productTabs + " li").removeClass('active');
 				$j(productTabs + " #tab_review_tabbed").addClass('active');
 
 				setTimeout(function(){
 
-					if (addReviewActive === true && $j(reviewsList + ' ol').length > 0) {
-						$j(reviewsList).hide();
+					if (addReviewActive === true && $j(reviewsListBlock + ' ol').length > 0) {
+						$j(reviewsListBlock).hide();
 						$j(addReview).show();
 					} else {
 
 						$j(addReview).hide();
-						$j(reviewsList).show();
+						$j(reviewsListBlock).show();
 					}
 
 				}, showDelay);
@@ -148,7 +160,7 @@ $_items = $this->getReviewsCollection()->getItems();
 
 			$j('button.add-review-button.last').on('click touchend', function(e) {
 				e.preventDefault();
-				scrollToReview(55, true, 500);
+				scrollToReview(55, true, 700);
 			});
 
 			$j('div.product-view p.no-rating a, div.product-view .rating-links a:first-child').on('click touchend', function(e) {

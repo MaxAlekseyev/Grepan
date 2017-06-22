@@ -112,7 +112,7 @@ class Mage_Adminhtml_Block_Review_Edit_Form extends Mage_Adminhtml_Block_Widget_
 
         $fieldset->addField('nickname', 'text', array(
             'label'     => Mage::helper('review')->__('Nickname'),
-            //'required'  => true,
+            'required'  => true,
             'name'      => 'nickname'
         ));
 

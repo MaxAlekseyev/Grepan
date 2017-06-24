@@ -3,11 +3,11 @@
 sharedDir=/home/magento/www/grepan.ua/shared
 workingDir=/home/magento/www/grepan.ua/releases/maxa
 
-ln -s ${workingDir}/apc.php ${sharedDir}/apc.php
-ln -s ${workingDir}/app/etc/local.xml ${sharedDir}/app/etc/local.xml
+ln -s ${sharedDir}/apc.php ${workingDir}/apc.php
+ln -s ${sharedDir}/app/etc/local.xml ${workingDir}/app/etc/local.xml
 
 
-ln -s ${workingDir}/media ${sharedDir}/media
-ln -s ${workingDir}/sitemaps ${sharedDir}/sitemaps
-ln -s ${workingDir}/staging ${sharedDir}/staging
-ln -s ${workingDir}/var ${sharedDir}/var
+ln -s ${sharedDir}/media ${workingDir}/media
+ln -s ${sharedDir}/sitemaps ${workingDir}/sitemaps
+ln -s ${sharedDir}/staging ${workingDir}/staging
+ln -s ${sharedDir}/var ${workingDir}/var

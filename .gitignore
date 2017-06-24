@@ -90,6 +90,12 @@ Thumbs.db
 /RELEASE_NOTES.txt
 /qmage/
 tmp/
-tmp/*
 Working/
 desktop.ini
+
+#Symlinks
+/media/
+/apc.php
+/sitemaps/
+/staging/
+/var/

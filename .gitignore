@@ -1,4 +1,6 @@
 /var/backup
+/var/backups
+/media/
 #Exclude backups, archives and logs
 *.tar
 *.gz

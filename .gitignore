@@ -95,5 +95,4 @@ tmp/
 tmp/*
 Working/
 desktop.ini
-/setsymlinks.cmd
-
+/setsymlinks.*

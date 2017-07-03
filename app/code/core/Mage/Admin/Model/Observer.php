@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Admin
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -34,7 +34,6 @@
 class Mage_Admin_Model_Observer
 {
     const FLAG_NO_LOGIN = 'no-login';
-
     /**
      * Handler for controller_action_predispatch event
      *
@@ -43,14 +42,16 @@ class Mage_Admin_Model_Observer
      */
     public function actionPreDispatchAdmin($observer)
     {
-        /** @var $session Mage_Admin_Model_Session */
         $session = Mage::getSingleton('admin/session');
+        /** @var $session Mage_Admin_Model_Session */
 
-        /** @var $request Mage_Core_Controller_Request_Http */
+        /**
+         * @var $request Mage_Core_Controller_Request_Http
+         */
         $request = Mage::app()->getRequest();
         $user = $session->getUser();
 
-        $requestedActionName = strtolower($request->getActionName());
+        $requestedActionName = $request->getActionName();
         $openActions = array(
             'forgotpassword',
             'resetpassword',
@@ -66,26 +67,11 @@ class Mage_Admin_Model_Observer
             }
             if (!$user || !$user->getId()) {
                 if ($request->getPost('login')) {
-
-                    /** @var Mage_Core_Model_Session $coreSession */
-                    $coreSession = Mage::getSingleton('core/session');
-
-                    if ($coreSession->validateFormKey($request->getPost("form_key"))) {
-                        $postLogin = $request->getPost('login');
-                        $username = isset($postLogin['username']) ? $postLogin['username'] : '';
-                        $password = isset($postLogin['password']) ? $postLogin['password'] : '';
-                        $session->login($username, $password, $request);
-                        $request->setPost('login', null);
-                    } else {
-                        if ($request && !$request->getParam('messageSent')) {
-                            Mage::getSingleton('adminhtml/session')->addError(
-                                Mage::helper('adminhtml')->__('Invalid Form Key. Please refresh the page.')
-                            );
-                            $request->setParam('messageSent', true);
-                        }
-                    }
-
-                    $coreSession->renewFormKey();
+                    $postLogin  = $request->getPost('login');
+                    $username   = isset($postLogin['username']) ? $postLogin['username'] : '';
+                    $password   = isset($postLogin['password']) ? $postLogin['password'] : '';
+                    $session->login($username, $password, $request);
+                    $request->setPost('login', null);
                 }
                 if (!$request->getInternallyForwarded()) {
                     $request->setInternallyForwarded();

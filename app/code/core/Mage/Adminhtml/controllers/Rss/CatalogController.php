@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -32,7 +32,7 @@
  * @author     Magento Core Team <core@magentocommerce.com>
  */
 
-class Mage_Adminhtml_Rss_CatalogController extends Mage_Adminhtml_Controller_Rss_Abstract
+class Mage_Adminhtml_Rss_CatalogController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * Check is allowed access to action
@@ -53,17 +53,15 @@ class Mage_Adminhtml_Rss_CatalogController extends Mage_Adminhtml_Controller_Rss
 
     public function notifystockAction()
     {
-        if ($this->checkFeedEnable('admin_catalog/notifystock')) {
-            $this->loadLayout(false);
-            $this->renderLayout();
-        }
+        $this->getResponse()->setHeader('Content-type', 'text/xml; charset=UTF-8');
+        $this->loadLayout(false);
+        $this->renderLayout();
     }
 
     public function reviewAction()
     {
-        if ($this->checkFeedEnable('admin_catalog/review')) {
-            $this->loadLayout(false);
-            $this->renderLayout();
-        }
+        $this->getResponse()->setHeader('Content-type', 'text/xml; charset=UTF-8');
+        $this->loadLayout(false);
+        $this->renderLayout();
     }
 }

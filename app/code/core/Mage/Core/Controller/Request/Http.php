@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -298,19 +298,11 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
         if (!isset($_SERVER['HTTP_HOST'])) {
             return false;
         }
-        $host = $_SERVER['HTTP_HOST'];
         if ($trimPort) {
-            $hostParts = explode(':', $_SERVER['HTTP_HOST']);
-            $host =  $hostParts[0];
+            $host = explode(':', $_SERVER['HTTP_HOST']);
+            return $host[0];
         }
-
-        if (strpos($host, ',') !== false || strpos($host, ';') !== false) {
-            $response = new Zend_Controller_Response_Http();
-            $response->setHttpResponseCode(400)->sendHeaders();
-            exit();
-        }
-
-        return $host;
+        return $_SERVER['HTTP_HOST'];
     }
 
     /**

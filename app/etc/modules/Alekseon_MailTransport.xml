@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Alekseon_MailTransport>
-            <active>false</active>
+            <active>true</active>
             <codePool>community</codePool>
         </Alekseon_MailTransport>
     </modules>

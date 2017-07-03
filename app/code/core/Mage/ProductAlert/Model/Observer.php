@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_ProductAlert
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -102,7 +102,6 @@ class Mage_ProductAlert_Model_Observer
     protected function _processPrice(Mage_ProductAlert_Model_Email $email)
     {
         $email->setType('price');
-        $originalStore = Mage::app()->getStore();
         foreach ($this->_getWebsites() as $website) {
             /* @var $website Mage_Core_Model_Website */
 
@@ -128,7 +127,6 @@ class Mage_ProductAlert_Model_Observer
 
             $previousCustomer = null;
             $email->setWebsite($website);
-            Mage::app()->setCurrentStore($website->getDefaultGroup()->getDefaultStore());
             foreach ($collection as $alert) {
                 try {
                     if (!$previousCustomer || $previousCustomer->getId() != $alert->getCustomerId()) {
@@ -180,7 +178,6 @@ class Mage_ProductAlert_Model_Observer
                 }
             }
         }
-        Mage::app()->setCurrentStore($originalStore);
         return $this;
     }
 
@@ -193,7 +190,6 @@ class Mage_ProductAlert_Model_Observer
     protected function _processStock(Mage_ProductAlert_Model_Email $email)
     {
         $email->setType('stock');
-        $originalStore = Mage::app()->getStore();
 
         foreach ($this->_getWebsites() as $website) {
             /* @var $website Mage_Core_Model_Website */
@@ -221,7 +217,6 @@ class Mage_ProductAlert_Model_Observer
 
             $previousCustomer = null;
             $email->setWebsite($website);
-            Mage::app()->setCurrentStore($website->getDefaultGroup()->getDefaultStore());
             foreach ($collection as $alert) {
                 try {
                     if (!$previousCustomer || $previousCustomer->getId() != $alert->getCustomerId()) {
@@ -273,7 +268,6 @@ class Mage_ProductAlert_Model_Observer
                 }
             }
         }
-        Mage::app()->setCurrentStore($originalStore);
 
         return $this;
     }

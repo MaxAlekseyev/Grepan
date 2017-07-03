@@ -20,9 +20,14 @@
  *
  * @category    Mage
  * @package     Mage_Centinel
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
+/**
+ * 3D Secure Validation Library for Payment
+ */
+include_once '3Dsecure/CentinelClient.php';
 
 /**
  * 3D Secure Validation Api
@@ -68,19 +73,19 @@ class Mage_Centinel_Model_Api extends Varien_Object
     /**
      * Centinel validation client
      *
-     * @var Mage_Centinel_Model_Api_Client
+     * @var CentinelClient
      */
     protected $_clientInstance = null;
 
     /**
      * Return Centinel thin client object
      *
-     * @return Mage_Centinel_Model_Api_Client
+     * @return CentinelClient
      */
     protected function _getClientInstance()
     {
         if (empty($this->_clientInstance)) {
-            $this->_clientInstance = new Mage_Centinel_Model_Api_Client();
+            $this->_clientInstance = new CentinelClient();
         }
         return $this->_clientInstance;
     }
@@ -131,7 +136,7 @@ class Mage_Centinel_Model_Api extends Varien_Object
      * @param $method string
      * @param $data array
      *
-     * @return Mage_Centinel_Model_Api_Client
+     * @return CentinelClient
      */
     protected function _call($method, $data)
     {

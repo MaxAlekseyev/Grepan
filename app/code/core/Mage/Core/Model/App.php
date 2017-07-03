@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -241,13 +241,6 @@ class Mage_Core_Model_App
     protected $_isCacheLocked = null;
 
     /**
-     * Flag for Magento installation status
-     *
-     * @var null|bool
-     */
-    protected $_isInstalled = null;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -277,11 +270,7 @@ class Mage_Core_Model_App
         $this->_config->init($options);
         Varien_Profiler::stop('mage::app::init::config');
 
-        if ($this->_isInstalled === null) {
-            $this->_isInstalled = Mage::isInstalled($options);
-        }
-
-        if ($this->_isInstalled) {
+        if (Mage::isInstalled($options)) {
             $this->_initCurrentStore($code, $type);
             $this->_initRequest();
         }
@@ -695,11 +684,7 @@ class Mage_Core_Model_App
      */
     public function isSingleStoreMode()
     {
-        if ($this->_isInstalled === null) {
-            $this->_isInstalled = Mage::isInstalled();
-        }
-
-        if (!$this->_isInstalled) {
+        if (!Mage::isInstalled()) {
             return false;
         }
         return $this->_isSingleStore;
@@ -826,11 +811,7 @@ class Mage_Core_Model_App
      */
     public function getStore($id = null)
     {
-        if ($this->_isInstalled === null) {
-            $this->_isInstalled = Mage::isInstalled();
-        }
-
-        if (!$this->_isInstalled || $this->getUpdateMode()) {
+        if (!Mage::isInstalled() || $this->getUpdateMode()) {
             return $this->_getDefaultStore();
         }
 
@@ -1289,7 +1270,6 @@ class Mage_Core_Model_App
 
     public function dispatchEvent($eventName, $args)
     {
-        $eventName = strtolower($eventName);
         foreach ($this->_events as $area=>$events) {
             if (!isset($events[$eventName])) {
                 $eventConfig = $this->getConfig()->getEventConfig($area, $eventName);
@@ -1477,6 +1457,9 @@ class Mage_Core_Model_App
 
         return $groups;
     }
+
+
+
 
     /**
      * Retrieve application installation flag

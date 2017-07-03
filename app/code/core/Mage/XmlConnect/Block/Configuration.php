@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_XmlConnect
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -34,27 +34,27 @@
 class Mage_XmlConnect_Block_Configuration extends Mage_Core_Block_Abstract
 {
     /**
-     * XmlConnect application model
+     * Current application model
      *
      * @var Mage_XmlConnect_Model_Application
      */
-    protected $_connectApp;
+    protected $_app;
 
     /**
-     * Retrieve initialized instance of XmlConnect application model
+     * Init current application
      *
-     * @return Mage_XmlConnect_Model_Application
+     * @return Mage_XmlConnect_Block_Configuration
      */
-    protected function _getConnectApp()
+    protected function _beforeToHtml()
     {
-        if (!$this->_connectApp) {
-            $this->_connectApp = Mage::helper('xmlconnect')->getApplication();
-            if (!$this->_connectApp) {
-                $this->_connectApp = Mage::getModel('xmlconnect/application');
-                $this->_connectApp->loadDefaultConfiguration();
-            }
+        $app = Mage::helper('xmlconnect')->getApplication();
+        if ($app) {
+            $this->_app = $app;
+        } else {
+            $this->_app = Mage::getModel('xmlconnect/application');
+            $this->_app->loadDefaultConfiguration();
         }
-        return $this->_connectApp;
+        return $this;
     }
 
     /**
@@ -115,8 +115,7 @@ class Mage_XmlConnect_Block_Configuration extends Mage_Core_Block_Abstract
     {
         /** @var $xml Mage_XmlConnect_Model_Simplexml_Element */
         $xml = Mage::getModel('xmlconnect/simplexml_element', '<configuration></configuration>');
-        $conf = $this->_getConnectApp()->getRenderConf();
-        $this->_buildRecursive($xml, Mage::helper('xmlconnect')->excludeXmlConfigKeys($conf))
+        $this->_buildRecursive($xml, Mage::helper('xmlconnect')->excludeXmlConfigKeys($this->_app->getRenderConf()))
             ->_addLocalization($xml);
         return $xml->asNiceXml();
     }

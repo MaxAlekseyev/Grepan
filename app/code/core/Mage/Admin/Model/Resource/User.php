@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Admin
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -177,7 +177,7 @@ class Mage_Admin_Model_Resource_User extends Mage_Core_Model_Resource_Db_Abstrac
      */
     protected function _afterSave(Mage_Core_Model_Abstract $user)
     {
-        $this->_unserializeExtraData($user);
+        $user->setExtra(unserialize($user->getExtra()));
         return $this;
     }
 
@@ -189,7 +189,10 @@ class Mage_Admin_Model_Resource_User extends Mage_Core_Model_Resource_Db_Abstrac
      */
     protected function _afterLoad(Mage_Core_Model_Abstract $user)
     {
-        return parent::_afterLoad($this->_unserializeExtraData($user));
+        if (is_string($user->getExtra())) {
+            $user->setExtra(unserialize($user->getExtra()));
+        }
+        return parent::_afterLoad($user);
     }
 
     /**
@@ -455,22 +458,5 @@ class Mage_Admin_Model_Resource_User extends Mage_Core_Model_Resource_Db_Abstrac
         }
 
         return $this;
-    }
-
-    /**
-     * Unserializes user extra data
-     *
-     * @param Mage_Core_Model_Abstract $user
-     * @return Mage_Core_Model_Abstract
-     */
-    protected function _unserializeExtraData(Mage_Core_Model_Abstract $user)
-    {
-        try {
-            $unsterilizedData = Mage::helper('core/unserializeArray')->unserialize($user->getExtra());
-            $user->setExtra($unsterilizedData);
-        } catch (Exception $e) {
-            $user->setExtra(false);
-        }
-        return $user;
     }
 }

@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Catalog
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -248,23 +248,7 @@ class Mage_Catalog_Model_Product_Status extends Mage_Core_Model_Abstract
      */
     public function getFlatColums()
     {
-        $attributeCode = $this->getAttribute()->getAttributeCode();
-        $column = array(
-            'unsigned'  => true,
-            'default'   => null,
-            'extra'     => null
-        );
-
-        if (Mage::helper('core')->useDbCompatibleMode()) {
-            $column['type']     = 'tinyint';
-            $column['is_null']  = true;
-        } else {
-            $column['type']     = Varien_Db_Ddl_Table::TYPE_SMALLINT;
-            $column['nullable'] = true;
-            $column['comment']  = 'Catalog Product Status ' . $attributeCode . ' column';
-        }
-
-        return array($attributeCode => $column);
+        return array();
     }
 
     /**
@@ -274,15 +258,7 @@ class Mage_Catalog_Model_Product_Status extends Mage_Core_Model_Abstract
      */
     public function getFlatIndexes()
     {
-        $indexes = array();
-
-        $index = 'IDX_' . strtoupper($this->getAttribute()->getAttributeCode());
-        $indexes[$index] = array(
-            'type'      => 'index',
-            'fields'    => array($this->getAttribute()->getAttributeCode())
-        );
-
-        return $indexes;
+        return array();
     }
 
     /**
@@ -294,8 +270,7 @@ class Mage_Catalog_Model_Product_Status extends Mage_Core_Model_Abstract
      */
     public function getFlatUpdateSelect($store)
     {
-        return Mage::getResourceSingleton('eav/entity_attribute')
-            ->getFlatUpdateSelect($this->getAttribute(), $store);
+        return null;
     }
 
     /**

@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_CatalogRule
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -319,16 +319,8 @@ class Mage_CatalogRule_Model_Action_Index_Refresh
             );
             $priceColumn = $this->_connection->getIfNullSql(
                 $this->_connection->getIfNullSql(
-                    $this->_connection->getCheckSql(
-                        'pg.is_percent = 1',
-                        'p.price * (100 - pg.value)/100',
-                        'pg.value'
-                    ),
-                    $this->_connection->getCheckSql(
-                        'pgd.is_percent = 1',
-                        'p.price * (100 - pgd.value)/100',
-                        'pgd.value'
-                    )
+                    'pg.value',
+                    'pgd.value'
                 ),
                 'p.price'
             );
@@ -351,22 +343,8 @@ class Mage_CatalogRule_Model_Action_Index_Refresh
                 );
             $priceColumn = $this->_connection->getIfNullSql(
                 $this->_connection->getIfNullSql(
-                    $this->_connection->getCheckSql(
-                        'pg.is_percent = 1',
-                        $this->_connection->getIfNullSql(
-                            'p.value',
-                            'pd.value'
-                        ) . ' * (100 - pg.value)/100',
-                        'pg.value'
-                    ),
-                    $this->_connection->getCheckSql(
-                        'pgd.is_percent = 1',
-                        $this->_connection->getIfNullSql(
-                            'p.value',
-                            'pd.value'
-                        ) . ' * (100 - pgd.value)/100',
-                        'pgd.value'
-                    )
+                    'pg.value',
+                    'pgd.value'
                 ),
                 $this->_connection->getIfNullSql(
                     'p.value',

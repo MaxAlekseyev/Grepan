@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Catalog
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -1889,28 +1889,17 @@ class Mage_Catalog_Model_Product extends Mage_Catalog_Model_Abstract
      *
      * @return array
      */
-    public function getCacheIdTagsWithCategories()
+    public function getCacheIdTags()
     {
-        $tags = $this->getCacheTags();
-        $affectedCategoryIds = $this->_getResource()->getCategoryIdsWithAnchors($this);
+        $tags = parent::getCacheIdTags();
+        $affectedCategoryIds = $this->getAffectedCategoryIds();
+        if (!$affectedCategoryIds) {
+            $affectedCategoryIds = $this->getCategoryIds();
+        }
         foreach ($affectedCategoryIds as $categoryId) {
             $tags[] = Mage_Catalog_Model_Category::CACHE_TAG.'_'.$categoryId;
         }
         return $tags;
-    }
-
-    /**
-     * Remove model onject related cache
-     *
-     * @return Mage_Core_Model_Abstract
-     */
-    public function cleanModelCache()
-    {
-        $tags = $this->getCacheIdTagsWithCategories();
-        if ($tags !== false) {
-            Mage::app()->cleanCache($tags);
-        }
-        return $this;
     }
 
     /**

@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Persistent
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -71,9 +71,7 @@ class Mage_Persistent_Model_Persistent_Config
         if (is_null($this->_xmlConfig)) {
             $filePath = $this->_configFilePath;
             if (!is_file($filePath) || !is_readable($filePath)) {
-                $io = new Varien_Io_File();
-                Mage::throwException(Mage::helper('persistent')->__('Cannot load configuration from file %s.',
-                    $io->getFilteredPath($filePath)));
+                Mage::throwException(Mage::helper('persistent')->__('Cannot load configuration from file %s.', $filePath));
             }
             $xml = file_get_contents($filePath);
             $this->_xmlConfig = new Varien_Simplexml_Element($xml);

@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -266,28 +266,27 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
      */
     public function initFromOrder(Mage_Sales_Model_Order $order)
     {
-        $session = $this->getSession();
         if (!$order->getReordered()) {
-            $session->setOrderId($order->getId());
+            $this->getSession()->setOrderId($order->getId());
         } else {
-            $session->setReordered($order->getId());
+            $this->getSession()->setReordered($order->getId());
         }
 
         /**
          * Check if we edit quest order
          */
-        $session->setCurrencyId($order->getOrderCurrencyCode());
+        $this->getSession()->setCurrencyId($order->getOrderCurrencyCode());
         if ($order->getCustomerId()) {
-            $session->setCustomerId($order->getCustomerId());
+            $this->getSession()->setCustomerId($order->getCustomerId());
         } else {
-            $session->setCustomerId(false);
+            $this->getSession()->setCustomerId(false);
         }
 
-        $session->setStoreId($order->getStoreId());
+        $this->getSession()->setStoreId($order->getStoreId());
 
         //Notify other modules about the session quote
         Mage::dispatchEvent('init_from_order_session_quote_initialized',
-                array('session_quote' => $session));
+                array('session_quote' => $this->getSession()));
 
         /**
          * Initialize catalog rule data with new session values
@@ -314,53 +313,52 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
             }
         }
 
-        $orderShippingAddress = $order->getShippingAddress();
-        if ($orderShippingAddress) {
-            $addressDiff = array_diff_assoc($orderShippingAddress->getData(), $order->getBillingAddress()->getData());
+        $shippingAddress = $order->getShippingAddress();
+        if ($shippingAddress) {
+            $addressDiff = array_diff_assoc($shippingAddress->getData(), $order->getBillingAddress()->getData());
             unset($addressDiff['address_type'], $addressDiff['entity_id']);
-            $orderShippingAddress->setSameAsBilling(empty($addressDiff));
+            $shippingAddress->setSameAsBilling(empty($addressDiff));
         }
 
         $this->_initBillingAddressFromOrder($order);
         $this->_initShippingAddressFromOrder($order);
 
-        $quote = $this->getQuote();
-        if (!$quote->isVirtual() && $this->getShippingAddress()->getSameAsBilling()) {
+        if (!$this->getQuote()->isVirtual() && $this->getShippingAddress()->getSameAsBilling()) {
             $this->setShippingAsBilling(1);
         }
 
         $this->setShippingMethod($order->getShippingMethod());
-        $quote->getShippingAddress()->setShippingDescription($order->getShippingDescription());
+        $this->getQuote()->getShippingAddress()->setShippingDescription($order->getShippingDescription());
 
-        $quote->getPayment()->addData($order->getPayment()->getData());
+        $this->getQuote()->getPayment()->addData($order->getPayment()->getData());
 
 
         $orderCouponCode = $order->getCouponCode();
         if ($orderCouponCode) {
-            $quote->setCouponCode($orderCouponCode);
+            $this->getQuote()->setCouponCode($orderCouponCode);
         }
 
-        if ($quote->getCouponCode()) {
-            $quote->collectTotals();
+        if ($this->getQuote()->getCouponCode()) {
+            $this->getQuote()->collectTotals();
         }
 
         Mage::helper('core')->copyFieldset(
             'sales_copy_order',
             'to_edit',
             $order,
-            $quote
+            $this->getQuote()
         );
 
         Mage::dispatchEvent('sales_convert_order_to_quote', array(
             'order' => $order,
-            'quote' => $quote
+            'quote' => $this->getQuote()
         ));
 
         if (!$order->getCustomerId()) {
-            $quote->setCustomerIsGuest(true);
+            $this->getQuote()->setCustomerIsGuest(true);
         }
 
-        if ($session->getUseOldShippingMethod(true)) {
+        if ($this->getSession()->getUseOldShippingMethod(true)) {
             /*
              * if we are making reorder or editing old order
              * we need to show old shipping as preselected
@@ -379,7 +377,7 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
         // $this->getQuote()->getShippingAddress()->setCollectShippingRates(true);
         // $this->getQuote()->getShippingAddress()->collectShippingRates();
 
-        $quote->save();
+        $this->getQuote()->save();
 
         return $this;
     }
@@ -595,9 +593,6 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
                         $cartItem = $cart->addProduct($product, $info);
                         if (is_string($cartItem)) {
                             Mage::throwException($cartItem);
-                        }
-                        if ($cartItem->getParentItem()) {
-                            $cartItem = $cartItem->getParentItem();
                         }
                         $cartItem->setPrice($item->getProduct()->getPrice());
                         $this->_needCollectCart = true;
@@ -1156,7 +1151,6 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
                 ->unsAddressType();
             $data = $tmpAddress->getData();
             $data['save_in_address_book'] = 0; // Do not duplicate address (billing address will do saving too)
-            unset($data['shipping_method']); // Do not reset shipping method to be able to recollect totals
             $this->getShippingAddress()->addData($data);
         }
         $this->getShippingAddress()->setSameAsBilling($flag);
@@ -1498,7 +1492,7 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
     }
 
     /**
-     * Prepare item options
+     * Prepare item otions
      */
     protected function _prepareQuoteItems()
     {
@@ -1531,9 +1525,8 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
         $this->_prepareQuoteItems();
 
         $service = Mage::getModel('sales/service_quote', $quote);
-        /** @var Mage_Sales_Model_Order $oldOrder */
-        $oldOrder = $this->getSession()->getOrder();
-        if ($oldOrder->getId()) {
+        if ($this->getSession()->getOrder()->getId()) {
+            $oldOrder = $this->getSession()->getOrder();
             $originalId = $oldOrder->getOriginalIncrementId();
             if (!$originalId) {
                 $originalId = $oldOrder->getIncrementId();
@@ -1547,25 +1540,24 @@ class Mage_Adminhtml_Model_Sales_Order_Create extends Varien_Object implements M
             );
             $quote->setReservedOrderId($orderData['increment_id']);
             $service->setOrderData($orderData);
-
-            $oldOrder->cancel();
         }
 
-        /** @var Mage_Sales_Model_Order $order */
         $order = $service->submit();
-        $customer = $quote->getCustomer();
-        if ((!$customer->getId() || !$customer->isInStore($this->getSession()->getStore()))
+        if ((!$quote->getCustomer()->getId() || !$quote->getCustomer()->isInStore($this->getSession()->getStore()))
             && !$quote->getCustomerIsGuest()
         ) {
-            $customer->setCreatedAt($order->getCreatedAt());
-            $customer
+            $quote->getCustomer()->setCreatedAt($order->getCreatedAt());
+            $quote->getCustomer()
                 ->save()
                 ->sendNewAccountEmail('registered', '', $quote->getStoreId());;
         }
-        if ($oldOrder->getId()) {
-            $oldOrder->setRelationChildId($order->getId());
-            $oldOrder->setRelationChildRealId($order->getIncrementId());
-            $oldOrder->save();
+        if ($this->getSession()->getOrder()->getId()) {
+            $oldOrder = $this->getSession()->getOrder();
+
+            $oldOrder->setRelationChildId($order->getId())
+                ->setRelationChildRealId($order->getIncrementId())
+                ->cancel()
+                ->save();
             $order->save();
         }
         if ($this->getSendConfirmation()) {

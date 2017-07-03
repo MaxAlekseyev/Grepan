@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Sales
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -178,16 +178,7 @@ class Mage_Sales_Model_Order_Invoice extends Mage_Sales_Model_Abstract
      */
     protected $_wasPayCalled = false;
 
-    public function __construct()
-    {
-        register_shutdown_function(array($this, 'destruct'));
-        parent::__construct();
-    }
-
-    /**
-     * Uploader clean on shutdown
-     */
-    public function destruct()
+    public function __destruct()
     {
         if ($this->_saveBeforeDestruct) {
             $this->save();
@@ -201,7 +192,6 @@ class Mage_Sales_Model_Order_Invoice extends Mage_Sales_Model_Abstract
     {
         $this->_init('sales/order_invoice');
     }
-
 
     /**
      * Init mapping array of short fields to its full names

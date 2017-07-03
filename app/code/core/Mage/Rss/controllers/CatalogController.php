@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Rss
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -32,41 +32,55 @@
  * @author      Magento Core Team <core@magentocommerce.com>
  */
 
-class Mage_Rss_CatalogController extends Mage_Rss_Controller_Abstract
+class Mage_Rss_CatalogController extends Mage_Core_Controller_Front_Action
 {
+    protected function isFeedEnable($code)
+    {
+        return Mage::getStoreConfig('rss/catalog/'.$code);
+    }
+
+    protected function checkFeedEnable($code)
+    {
+        if ($this->isFeedEnable($code)) {
+            $this->getResponse()->setHeader('Content-type', 'text/xml; charset=UTF-8');
+            return true;
+        } else {
+            $this->getResponse()->setHeader('HTTP/1.1','404 Not Found');
+            $this->getResponse()->setHeader('Status','404 File not found');
+            $this->_forward('nofeed','index','rss');
+            return false;
+        }
+    }
+
     public function newAction()
     {
-        if ($this->checkFeedEnable('catalog/new')) {
-            $this->loadLayout(false);
-            $this->renderLayout();
-        }
+        $this->checkFeedEnable('new');
+        $this->loadLayout(false);
+        $this->renderLayout();
     }
 
     public function specialAction()
     {
-        if ($this->checkFeedEnable('catalog/special')) {
-            $this->loadLayout(false);
-            $this->renderLayout();
-        }
+        $this->checkFeedEnable('special');
+        $this->loadLayout(false);
+        $this->renderLayout();
     }
 
     public function salesruleAction()
     {
-        if ($this->checkFeedEnable('catalog/salesrule')) {
-            $this->loadLayout(false);
-            $this->renderLayout();
-        }
+        $this->checkFeedEnable('salesrule');
+        $this->loadLayout(false);
+        $this->renderLayout();
     }
 
     public function tagAction()
     {
-        if ($this->isFeedEnable('catalog/tag')) {
+        if ($this->checkFeedEnable('tag')) {
             $tagName = urldecode($this->getRequest()->getParam('tagName'));
             $tagModel = Mage::getModel('tag/tag');
             $tagModel->loadByName($tagName);
             if ($tagModel->getId() && $tagModel->getStatus()==$tagModel->getApprovedStatus()) {
                 Mage::register('tag_model', $tagModel);
-                $this->getResponse()->setHeader('Content-type', 'text/xml; charset=UTF-8');
                 $this->loadLayout(false);
                 $this->renderLayout();
                 return;
@@ -77,23 +91,21 @@ class Mage_Rss_CatalogController extends Mage_Rss_Controller_Abstract
 
     public function notifystockAction()
     {
-        if ($this->checkFeedEnable('catalog/notifystock')) {
-            $this->loadLayout(false);
-            $this->renderLayout();
-        }
+        $this->getResponse()->setHeader('Content-type', 'text/xml; charset=UTF-8');
+        $this->loadLayout(false);
+        $this->renderLayout();
     }
 
     public function reviewAction()
     {
-        if ($this->checkFeedEnable('catalog/review')) {
-            $this->loadLayout(false);
-            $this->renderLayout();
-        }
+        $this->getResponse()->setHeader('Content-type', 'text/xml; charset=UTF-8');
+        $this->loadLayout(false);
+        $this->renderLayout();
     }
 
     public function categoryAction()
     {
-        if ($this->checkFeedEnable('catalog/category')) {
+        if ($this->checkFeedEnable('category')) {
             $this->loadLayout(false);
             $this->renderLayout();
         }
@@ -107,11 +119,11 @@ class Mage_Rss_CatalogController extends Mage_Rss_Controller_Abstract
     public function preDispatch()
     {
         $action = strtolower($this->getRequest()->getActionName());
-        if ($action == 'notifystock' && $this->isFeedEnable('catalog/notifystock')) {
+        if ($action == 'notifystock') {
             $this->_currentArea = 'adminhtml';
             Mage::helper('rss')->authAdmin('catalog/products');
         }
-        if ($action == 'review' && $this->isFeedEnable('catalog/review')) {
+        if ($action == 'review') {
             $this->_currentArea = 'adminhtml';
             Mage::helper('rss')->authAdmin('catalog/reviews_ratings');
         }

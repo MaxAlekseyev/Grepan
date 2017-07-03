@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Downloadable
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -32,7 +32,7 @@
  * @author      Magento Core Team <core@magentocommerce.com>
  */
 class Mage_Downloadable_Block_Adminhtml_Catalog_Product_Edit_Tab_Downloadable_Links
-    extends Mage_Uploader_Block_Single
+    extends Mage_Adminhtml_Block_Template
 {
     /**
      * Purchased Separately Attribute cache
@@ -135,12 +135,15 @@ class Mage_Downloadable_Block_Adminhtml_Catalog_Product_Edit_Tab_Downloadable_Li
     /**
      * Return true if price in website scope
      *
-     * @deprecated since 1.14.2.0
      * @return bool
      */
     public function getIsPriceWebsiteScope()
     {
-        return Mage::helper('downloadable')->getIsPriceWebsiteScope();
+        $scope =  (int) Mage::app()->getStore()->getConfig(Mage_Core_Model_Store::XML_PATH_PRICE_SCOPE);
+        if ($scope == Mage_Core_Model_Store::PRICE_SCOPE_WEBSITE) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -152,7 +155,7 @@ class Mage_Downloadable_Block_Adminhtml_Catalog_Product_Edit_Tab_Downloadable_Li
     {
         $linkArr = array();
         $links = $this->getProduct()->getTypeInstance(true)->getLinks($this->getProduct());
-        $priceWebsiteScope = Mage::helper('downloadable')->getIsPriceWebsiteScope();
+        $priceWebsiteScope = $this->getIsPriceWebsiteScope();
         foreach ($links as $item) {
             $tmpLinkItem = array(
                 'link_id' => $item->getId(),
@@ -242,7 +245,6 @@ class Mage_Downloadable_Block_Adminhtml_Catalog_Product_Edit_Tab_Downloadable_Li
      */
      protected function _prepareLayout()
     {
-        parent::_prepareLayout();
         $this->setChild(
             'upload_button',
             $this->getLayout()->createBlock('adminhtml/widget_button')->addData(array(
@@ -252,10 +254,6 @@ class Mage_Downloadable_Block_Adminhtml_Catalog_Product_Edit_Tab_Downloadable_Li
                 'onclick' => 'Downloadable.massUploadByType(\'links\');Downloadable.massUploadByType(\'linkssample\')'
             ))
         );
-        $this->_addElementIdsMapping(array(
-            'container' => $this->getHtmlId() . '-new',
-            'delete'    => $this->getHtmlId() . '-delete'
-        ));
     }
 
     /**
@@ -275,56 +273,33 @@ class Mage_Downloadable_Block_Adminhtml_Catalog_Product_Edit_Tab_Downloadable_Li
      */
     public function getConfigJson($type='links')
     {
-
-        $this->getUploaderConfig()
-            ->setFileParameterName($type)
-            ->setTarget(
-                Mage::getModel('adminhtml/url')
-                    ->addSessionParam()
-                    ->getUrl('*/downloadable_file/upload', array('type' => $type, '_secure' => true))
-            );
-        $this->getMiscConfig()
-            ->setReplaceBrowseWithRemove(true)
-        ;
-        return Mage::helper('core')->jsonEncode(parent::getJsonConfig());
-    }
-
-    /**
-     * @return string
-     */
-    public function getBrowseButtonHtml($type = '')
-    {
-        return $this->getChild('browse_button')
-            // Workaround for IE9
-            ->setBeforeHtml(
-                '<div style="display:inline-block; " id="downloadable_link_{{id}}_' . $type . 'file-browse">'
+        $this->getConfig()->setUrl(Mage::getModel('adminhtml/url')->addSessionParam()
+            ->getUrl('*/downloadable_file/upload', array('type' => $type, '_secure' => true)));
+        $this->getConfig()->setParams(array('form_key' => $this->getFormKey()));
+        $this->getConfig()->setFileField($type);
+        $this->getConfig()->setFilters(array(
+            'all'    => array(
+                'label' => Mage::helper('adminhtml')->__('All Files'),
+                'files' => array('*.*')
             )
-            ->setAfterHtml('</div>')
-            ->setId('downloadable_link_{{id}}_' . $type . 'file-browse_button')
-            ->toHtml();
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getDeleteButtonHtml($type = '')
-    {
-        return $this->getChild('delete_button')
-            ->setLabel('')
-            ->setId('downloadable_link_{{id}}_' . $type . 'file-delete')
-            ->setStyle('display:none; width:31px;')
-            ->toHtml();
+        ));
+        $this->getConfig()->setReplaceBrowseWithRemove(true);
+        $this->getConfig()->setWidth('32');
+        $this->getConfig()->setHideUploadButton(true);
+        return Mage::helper('core')->jsonEncode($this->getConfig()->getData());
     }
 
     /**
-     * Retrieve config object
+     * Retrive config object
      *
-     * @deprecated
-     * @return $this
+     * @return Varien_Config
      */
     public function getConfig()
     {
-        return $this;
+        if(is_null($this->_config)) {
+            $this->_config = new Varien_Object();
+        }
+
+        return $this->_config;
     }
 }

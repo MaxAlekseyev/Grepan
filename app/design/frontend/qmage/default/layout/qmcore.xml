@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<layout>
-    <qm_core_remove_compare>
-        <remove name="catalog.compare.sidebar"/>
-        <remove name="right.reports.product.viewed"/>
-    </qm_core_remove_compare>
-</layout>

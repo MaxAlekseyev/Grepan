@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <sales_order_view>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/qm_ordertracker.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="sales.order.info">
+            <block type="qm_ordertracker/tracking" name="sales.order.tracking" template="qm/ordertracker/tracking.phtml"/>
+        </reference>
+    </sales_order_view>
+
+    <sales_order_invoice>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/qm_ordertracker.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="sales.order.info">
+            <block type="qm_ordertracker/tracking" name="sales.order.tracking" template="qm/ordertracker/tracking.phtml"/>
+        </reference>
+    </sales_order_invoice>
+
+    <sales_order_shipment>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/qm_ordertracker.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="sales.order.info">
+            <block type="qm_ordertracker/tracking" name="sales.order.tracking" template="qm/ordertracker/tracking.phtml"/>
+        </reference>
+    </sales_order_shipment>
+</layout>

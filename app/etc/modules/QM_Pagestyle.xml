@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_CmsPagestyle>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Cms />
+            </depends>
+        </QM_CmsPagestyle>
+    </modules>
+</config>

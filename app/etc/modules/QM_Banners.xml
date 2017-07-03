@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <QM_Banners>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+				<Mage_Core />
+            	<QM_Core />
+			</depends>
+        </QM_Banners>
+    </modules>
+</config>

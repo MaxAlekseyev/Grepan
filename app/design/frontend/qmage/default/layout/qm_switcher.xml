@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<layout>
+    <PRODUCT_TYPE_configurable>
+        <reference name="head">
+            <action method="addJs" ifconfig="qm_switcher/settings/enabled">
+                <js>qm_switcher/event.simulate.js</js>
+            </action>
+            <action method="addJs" ifconfig="qm_switcher/settings/enabled">
+                <js>qm_switcher/product.js</js>
+            </action>
+            <action method="addCss" ifconfig="qm_switcher/settings/enabled">
+                <css>css/qm_switcher/styles.css</css>
+            </action>
+            <action method="removeItem" ifconfig="qm_switcher/settings/enabled">
+                <type>skin_js</type>
+                <name>js/configurableswatches/product-media.js</name>
+            </action>
+            <action method="removeItem" ifconfig="qm_switcher/settings/enabled">
+                <type>skin_js</type>
+                <name>js/configurableswatches/swatches-product.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="qm_switcher/catalog_product_view_type_configurable_config" template="qm/switcher/catalog/product/view/type/configurable/config.phtml" />
+        </reference>
+    </PRODUCT_TYPE_configurable>
+</layout>

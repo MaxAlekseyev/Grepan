@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QM_NewPostV2>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Checkout/>
+                <Mage_Shipping/>
+                <Mage_Sales/>
+                <Mage_Adminhtml/>
+                <QM_Core/>
+            </depends>
+        </QM_NewPostV2>
+    </modules>
+</config>

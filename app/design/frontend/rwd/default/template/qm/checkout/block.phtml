@@ -1,0 +1,7 @@
+<?php
+    $isLoggedIn = (bool) $this->isCustomerLoggedIn()
+?>
+<div id="checkout-block">
+    <?php echo $this->getLoginMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChild('qmcheckout_user_block')->setFilled($isLoggedIn)->toHtml() ?>
+</div>

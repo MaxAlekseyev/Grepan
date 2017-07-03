@@ -1,0 +1,41 @@
+<?php
+    $isLoggedIn = $this->getFilled() && $this->isCustomerLoggedIn();
+    $prefix = $isLoggedIn ? 'logged' : 'new';
+    $isLocationAsOneField = $this->helper('qmcheckout')->isLocationAsOneField();
+?>
+<form id="customer-checkout-form" data-action="<?php echo $this->helper('qmcheckout')->getUpdateUrl() ?>" action="<?php echo $this->helper('qmcheckout')->getPlaceUrl() ?>" method="post" name="user_info">
+    <div class="user-general">
+        <div class="field">
+            <label><?php echo $this->__('First and Last Name') ?></label>
+            <input type="text" class="input-text required-entry<?php echo $isLoggedIn ? ' disabled' : '' ?>" name="user[name]" value="<?php echo $this->htmlEscape($this->getCustomerName()) ?>" <?php if ($isLoggedIn): ?> readonly="readonly"<?php endif ?> />
+        </div>
+        <div class="field">
+            <label><?php echo $this->__('E-mail') ?></label>
+            <input type="text" class="validate-email input-text required-entry<?php echo $isLoggedIn ? ' disabled' : '' ?>" name="user[email]" value="<?php echo $this->htmlEscape($this->getCustomerEmail()) ?>" <?php if ($isLoggedIn): ?> readonly="readonly"<?php endif ?> />
+        </div>
+        <?php if (!$isLoggedIn): ?>
+            <div id="user-password-holder" class="field" style="display: none;">
+                <label><?php echo $this->__('Password') ?></label>
+                <div class="input-text-holder">
+                    <input type="password" class="input-text required-entry non-storable" name="user[password]" id="user-password-field" />
+                    <i id="user-password-close" class="close-password-field"></i>
+                </div>
+            </div>
+        <?php endif ?>
+        <div class="field relative">
+            <label><?php echo $this->__('Telephone') ?></label>
+            <input type="text" id="user-telephone" class="input-text required-entry validate-phone380" name="user[address][telephone]" value="<?php echo $this->htmlEscape($this->getCustomerPhone()) ?>" />
+        </div>
+        <div class="field">
+            <label><?php echo $this->__('Comment') ?></label>
+            <textarea name="user[note]"><?php echo $this->htmlEscape($this->getCustomerNote()) ?></textarea>
+        </div>
+    </div>
+</form>
+<?php echo $this->getChildHtml('qmcheckout.additional.data') ?>
+<script type="text/javascript">
+    isCustomerLoggedIn = <?php echo (int) $this->isCustomerLoggedIn() ?>;
+    jQuery(function($){
+        $("#user-telephone").mask("+38(099)999-99-99");
+    });
+</script>

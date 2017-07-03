@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Grepan_Fix>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Grepan_Fix>
+    </modules>
+</config>

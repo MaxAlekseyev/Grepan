@@ -1,0 +1,20 @@
+<?php
+/**
+ * override the spConfig variable
+ *
+ * @category    QM
+ * @package	    QM_Switcher
+ */
+?>
+<?php if (Mage::helper('qm_switcher')->isEnabled()) : ?>
+    <script type="text/javascript">
+    //<![CDATA[
+        var switcherConfig = <?php echo $this->getJsonAdditionalConfig() ?>;
+        document.observe('dom:loaded', function(){
+            if (spConfig){
+                spConfig = new QM.Switcher(Object.extend(spConfig.config, switcherConfig));
+            }
+        });
+    //]]>
+    </script>
+<?php endif;?>

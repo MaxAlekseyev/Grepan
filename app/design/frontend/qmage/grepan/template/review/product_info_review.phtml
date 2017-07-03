@@ -1,0 +1,180 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   design_default
+ * @package    Mage
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+
+$_items = $this->getReviewsCollection()->getItems();
+
+?>
+<?php if (count($_items)):?>
+<div class="collateral-box" id="product-customer-reviews">
+
+	<button type="submit" title="<?php echo $this->__('Add Review'); ?>" class="button first add-review-button first"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
+
+	<h3 class="reviews-block-title">
+		<?php echo $this->__('Reviews'); ?>:</h3>
+
+	<?php echo $this->getChildHtml('toolbar') ?>
+
+	<ol>
+		<?php foreach ($_items as $_review):?>
+		<li>
+			<div class="avatar-image">
+				<img src="<?php echo Mage::getDesign()->getSkinUrl("images/reviews/avatar_05.svg"); ?>" alt="<?php echo $this->htmlEscape($_review->getNickname()); ?>" />
+			</div>
+			<div class="review-area">
+
+				<?php // if($this->htmlEscape($_review->getTitle())): ?>
+				<!--<strong class="review-title"><?php echo $this->htmlEscape($_review->getTitle()) ?></strong>-->
+				<?php // endif; ?>
+
+				<?php if($this->htmlEscape($_review->getNickname())): ?>
+				<span class="review-by"> <?php echo $this->__('review by %s', "<b>".$this->htmlEscape($_review->getNickname())."</b>") ?> <?php echo $this->__('on %s', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
+				<?php endif; ?>
+
+				<div class="ratings-list">
+					<?php foreach ($_review->getRatingVotes() as $_vote): ?>
+					<div class="rating-item">
+						<span class="label"><?php echo $_vote->getRatingCode() ?></span>
+						<div class="rating-box">
+							<div class="rating" style="width: <?php echo $_vote->getPercent() ?>%;"></div>
+						</div>
+					</div>
+					<?php endforeach; ?>
+				</div>
+				<p>
+					<?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
+				</p>
+			</div>
+			<div class="clearer"></div>
+		</li>
+		<?php endforeach; ?>
+	</ol>
+
+	<?php echo $this->getChildHtml('toolbar') ?>
+
+	<button type="submit" title="Добавить отзыв" class="button second add-review-button last"><span><span><?php echo $this->__('Add Review'); ?></span></span></button>
+
+</div>
+<?php else:?>
+
+
+<div class="collateral-box" id="product-customer-reviews">
+	<!--
+		<ol class="no-reviews"><li><?php echo $this->__('Be the first to review this product'); ?></li></ol>
+	-->
+</div>
+<?php endif;?>
+
+<div class="add-review">
+	<?php echo $this->getLayout()->createBlock('review/form')->setBlockId('product.review.form')->toHtml() ?>
+</div>
+
+<script>
+	(function() {
+
+		var $j = jQuery.noConflict();
+
+		$j(document).ready(function() {
+
+			var reviewsListBlock = '#tab_review_tabbed_contents .collateral-box';
+			var reviewsListCells = reviewsListBlock + ' ol li';
+			var addReview = '#tab_review_tabbed_contents .add-review';
+			var productTabs = '.product-view #product_tabs';
+
+			//console.log($j(productTabs).offset().top);
+			//console.log("Reviews number: " + $j(reviewsListCells).length);
+
+			if($j(reviewsListCells).length < 5){
+
+				$j(reviewsListBlock + ' button.add-review-button.last').hide();
+
+			}
+
+			if ($j(reviewsListCells).length !== 0) {
+
+				$j(addReview).hide();
+
+			} else {
+
+				$j(reviewsListBlock).hide();
+
+			}
+
+			function scrollToReview(localOffset, addReviewActive, showDelay) {
+
+				var scrollDelay = 500;
+
+				$j('html, body').animate({
+					scrollTop: parseInt($j(productTabs).offset().top - localOffset)
+				}, scrollDelay);
+
+				//console.log($j(productTabs).offset().top);
+
+				$j(productTabs + " li").removeClass('active');
+				$j(productTabs + " #tab_review_tabbed").addClass('active');
+
+				setTimeout(function(){
+
+					if (addReviewActive === true && $j(reviewsListBlock + ' ol').length > 0) {
+						$j(reviewsListBlock).hide();
+						$j(addReview).show();
+					} else {
+
+						$j(addReview).hide();
+						$j(reviewsListBlock).show();
+					}
+
+				}, showDelay);
+
+			}
+
+			$j('button.add-review-button.first').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(55, true, 0);
+			});
+
+			$j('button.add-review-button.last').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(55, true, 700);
+			});
+
+			$j('div.product-view p.no-rating a, div.product-view .rating-links a:first-child').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(100, false);
+			});
+
+			$j('div.product-view .rating-links a:last-child').on('click touchend', function(e) {
+				e.preventDefault();
+				scrollToReview(100, true);
+			});
+
+
+		});
+
+	})();
+</script>

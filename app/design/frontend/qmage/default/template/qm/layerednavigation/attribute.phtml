@@ -1,0 +1,123 @@
+<ol class="<?php echo $this->getAttrClass() ?>" <?php if ($this->getCollapsed() && !$this->getHasSelection()): ?>style="display:none" <?php endif ?>>
+<?php
+switch ($this->getDisplayType()){
+    case 0: // labels only
+        if ($this->getShowSearch()){
+            echo '<li rel="search"><input type="text" class="layerednavigation_attr_search input-text" onkeyup="layerednavigation_attr_search(this)" /></li>';
+        }
+        foreach ($this->getItemsAsArray() as $item){
+            echo '<li rel="'.$item['label'].'" '.(isset($item['style']) ? $item['style'] : '').'><a class="'.$item['css'].'" href="'.$item['url'].'">'. $item['label'] . '</a>' . '<span class="qty" >' . $item['count'] . '</span>' . '</li>';
+        }
+    break;
+
+    case 1: // images only
+        echo '<li>';
+        foreach ($this->getItemsAsArray() as $item){
+            if (isset($item['image_hover']) && $item['image_hover'] != '') {
+                echo '<img src="' . $item['image_hover'] . '" style="display: none;" />';
+                $onHover = 'onmouseover=this.style.backgroundImage="url(' . $item['image_hover'] . ')"';
+                $onHover .= ' onmouseout=this.style.backgroundImage="url(' . $item['image'] . ')"';
+            } else {
+                $onHover = '';
+            }
+            echo '<a '.$item['style'].' class="'.$item['css'].'" href="'.$item['url'].'"><div class="filter_item"  style="background-image: url('.$item['image'].')" ' . $onHover . ' title="'. $item['label'] .'"></div></a>';
+
+        }
+        echo '</li>';
+    break;
+
+    case 2: // images and labels
+        if ($this->getShowSearch()){
+            echo '<li rel="search"><input type="text" class="layerednavigation_attr_search" onkeyup="layerednavigation_attr_search(this)" /></li>';
+        }
+        foreach ($this->getItemsAsArray() as $item){
+            echo '<li rel="'.$item['label'].'" '.$item['style'].'><a class="'.$item['css'].'" href="'.$item['url'].'">';
+
+            if (isset($item['image_hover']) && $item['image_hover'] != '') {
+                echo '<img src="' . $item['image_hover'] . '" style="display: none;" />';
+                $onHover = 'onmouseover=this.style.backgroundImage="url(' . $item['image_hover'] . ')"';
+                $onHover .= ' onmouseout=this.style.backgroundImage="url(' . $item['image'] . ')"';
+            } else {
+                $onHover = '';
+            }
+
+            if (!empty($item['image'])){
+                echo '<div class="filter_item"'.$onHover.' style="background-image: url('.$item['image'].')" title="'.$item['label'].'"></div>';
+            }
+            echo $item['label'].'</a>' . '<span class="qty" >' . $item['count'] . '</span>' . '</li>';
+        }
+    break;
+
+    case 3: // dropdown
+        echo '<li><select onchange="if (this.value) setLocation(this.value)" class="layerednavigation-select layerednavigation-ajax-select">';
+        //echo '<option value="">' . $this->getName() . '</option>';
+        echo '<option value="'.$this->getRemoveUrl().'"></option>';
+        foreach ($this->getItemsAsArray() as $item){
+            echo '<option '.$item['css'].' value="'.$item['url'].'">'. $item['label'] . $item['count'] . '</option>';
+        }
+        echo '</select></li>';
+    break;
+
+    case 4: // 2 columns
+        $items = $this->getItemsAsArray();
+        $size  = sizeof($items);
+        $half  =  ceil($size/2);
+
+        echo '<li>';
+        echo '<div class="layerednavigation-column">';
+        for ($i=0; $i<$half; $i++){
+            $item = $items[$i];
+            echo '<a class="'.$item['css'].'" href="'.$item['url'].'">'. $item['label'] . '</a>' . '<span class="qty" >' . $item['count'] . '</span>' . '<br/>';
+        }
+        echo '</div>';
+        echo '<div class="layerednavigation-column">';
+        for ($i=$half; $i<$size; $i++){
+            $item = $items[$i];
+            echo '<a class="'.$item['css'].'" href="'.$item['url'].'">'. $item['label'] . '</a>' . '<span class="qty" >' . $item['count'] . '</span>'. '<br/>';
+        }
+        echo '</div>';
+        echo '</li>';
+    break;
+
+    case 5: // images from qm chooser
+        echo '<li>';
+        foreach ($this->getItemsAsArray() as $item){
+            echo '<a '.$item['style'].' class=" '.$item['css'] . '" href=" '.$item['url'].'">';
+
+            if (isset($item['chooser_img_url']) && $item['chooser_img_url']) {
+                echo '<div class="filter_item" style="background-image: url('.$item['chooser_img_url'].')" title="'.$item['label'].'"></div>';
+            } else if(isset($item['chooser_img_hex']) && $item['chooser_img_hex']) {
+                echo '<div class="filter_item" style="background-color: '.$item['chooser_img_hex'].'" title="'.$item['label'].'"></div>';
+            }
+
+            echo '</a>';
+
+        }
+        echo '</li>';
+        break;
+
+    case 6: // images and labels from qm chooser
+        if ($this->getShowSearch()){
+            echo '<li rel="search"><input type="text" class="layerednavigation_attr_search" onkeyup="layerednavigation_attr_search(this)" /></li>';
+        }
+        foreach ($this->getItemsAsArray() as $item){
+            echo '<li rel="'.$item['label'].'" '.$item['style'].'><a class="'.$item['css'].'" href="'.$item['url'].'">';
+
+            if (isset($item['chooser_img_url']) && $item['chooser_img_url']) {
+                echo '<div class="filter_item" style="background-image: url('.$item['chooser_img_url'].')" title="'.$item['label'].'"></div>';
+            } else if(isset($item['chooser_img_hex']) && $item['chooser_img_hex']) {
+                echo '<div class="filter_item" style="background-color: '.$item['chooser_img_hex'].'" title="'.$item['label'].'"></div>';
+            }
+
+            echo $item['label'] . '</a>' . '<span class="qty" >' . $item['count'] . '</span>' . '</li>';
+        }
+
+        break;
+}
+
+if ($this->getDisplayType() < 3 && $this->getShowLessMore()){
+    echo '<li class="layerednavigation-clearer"><a id="layerednavigation-more-'.$this->getRequestValue().'" class="layerednavigation-more" href="#">' . $this->__('More ...') . '</a></li>';
+    echo '<li class="layerednavigation-clearer"><a id="layerednavigation-less-'.$this->getRequestValue().'" class="layerednavigation-less" href="#" style="display:none">' . $this->__('Less ...') . '</a></li>';
+}
+?>
+</ol>

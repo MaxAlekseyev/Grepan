@@ -69,6 +69,7 @@ $code  = $store->getCode();
                 <div class="details-area">
                     <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_product->getName() ?></a></h2>
 
+                    <!--	Category product SCU	-->
                     <div class="category-scu">
                         <?php echo $this->__('SCU'); ?>:
                         <?php echo nl2br($_product->getSku()) ?>

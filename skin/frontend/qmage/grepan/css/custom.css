@@ -1025,6 +1025,12 @@ h4.sku {
     top: 25px;
 }
 
+@media only screen and (max-width: 767px) {
+    .block.block-related .owl-controls.grepan-arrows {
+        top: 5px;
+    }
+}
+
 .block.block-related .owl-controls.grepan-arrows .owl-buttons div {
     /*width: 15px;*/
     color: #08c;
@@ -1152,11 +1158,11 @@ h4.sku {
     padding-top: 20px;
 }
 
-.add-review h3{
+.add-review h3 {
     color: #555;
 }
 
-label{
+label {
     color: #555;
 }
 
@@ -1294,13 +1300,23 @@ label{
 #product-customer-reviews button.button {
 }
 
-
 /* Category */
 
-.category-scu{
+.category-scu {
     padding-top: 6px;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
     color: #777;
+}
+
+.owl-item .product-name {
+    margin-bottom: 0;
+}
+
+.owl-item .category-scu {
+    text-align: left;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 19px;
 }

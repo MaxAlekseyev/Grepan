@@ -315,15 +315,15 @@ var i = 0;
                 </div>
                 <div class="details-area">
                     <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
-                    <?php if($_product->getRatingSummary()): ?>
-                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                    <?php else: ?>
+                    <?php // if($_product->getRatingSummary()): ?>
+                    <?php // echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php // else: ?>
 						<!--<div class="ratings">-->
                         <!--    <div class="rating-box">-->
                         <!--        <div class="rating" style="width:0"></div>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    <?php endif; ?>
+                    <?php // endif; ?>
 					<?php
 						if ($this->getChild('name.after')) {
 							$_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();

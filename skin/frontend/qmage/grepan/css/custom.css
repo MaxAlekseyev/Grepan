@@ -1302,7 +1302,7 @@ label {
 
 /* Category */
 
-.category-scu {
+.category-scu, #new_product .category-scu{
     padding-top: 6px;
     font-size: 14px;
     font-weight: 600;
